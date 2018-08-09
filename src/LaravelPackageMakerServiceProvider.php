@@ -1,6 +1,6 @@
 <?php
 
-namespace Naoray\LaravelPackage;
+namespace Naoray\LaravelPackageMaker;
 
 use Illuminate\Support\ServiceProvider;
 use Naoray\LaravelPackageMaker\Commands\AddPackage;
