@@ -74,7 +74,7 @@ class AddPackage extends Command
         }
 
         exec('composer config repositories.' . $name . ' ' . $type . ' ' . $path);
-        sleep(2);
+        sleep(1);
         exec('composer require "' . $vendor . '/' . $name . ':' . $branch . '"');
     }
 }
