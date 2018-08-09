@@ -111,7 +111,8 @@ class MakePackage extends Command
         $this->callSilent('package:add', [
             'name' => $this->packageName,
             'path' => $this->dir . $this->packageName,
-            'vendor' => $this->vendor,
+			'vendor' => $this->vendor,
+			'branch' => 'master',
             '--without-interaction' => true,
         ]);
     }
@@ -141,6 +142,11 @@ class MakePackage extends Command
      */
     protected function createDirectories($path)
     {
+		// create base path if it does not exist
+		if (! $this->alreadyExists( $this->getBasePath() )) {
+			$this->files->makeDirectory($this->getBasePath());
+		}
+
         $this->files->makeDirectory($path);
         $this->info('Package directory created successfully!');
         $this->files->makeDirectory($path . '/src');
@@ -208,7 +214,7 @@ class MakePackage extends Command
      */
     protected function buildFile($name)
     {
-        $stub = $this->files->get(__DIR__.'../../resources/stubs/' . $name . '.stub');
+        $stub = $this->files->get(__DIR__.'/../../resources/stubs/' . $name . '.stub');
 
         return $this->replaceNamespaces($stub)
             ->replaceNames($stub)
@@ -315,18 +321,24 @@ class MakePackage extends Command
     protected function alreadyExists($path)
     {
         return $this->files->isDirectory($path);
-    }
+	}
+	
+	/**
+	 * @return string
+	 */
+	protected function getBasePath()
+	{
+		$path = ends_with($this->dir, '/') ? $this->dir : $this->dir . '/';
+		
+		return base_path() . '/' . $path;
+	}
 
     /**
      * @return string
      */
     protected function getPackagePath()
     {
-		$path = ends_with($this->dir, '/') ? $this->dir : $this->dir . '/';
-		
-		$this->info($path);
-
-        return base_path() . '/' . $path . $this->packageName;
+        return $this->getBasePath() . $this->packageName;
     }
 
     /**
@@ -341,7 +353,7 @@ class MakePackage extends Command
         }
 
         if (!$this->dir = $this->argument('dir')) {
-            $this->dir = $this->anticipate('Where should the package be installed?', ['../packages/']);
+            $this->dir = $this->anticipate('Where should the package be installed?', ['../packages/', 'packages/']);
         }
 
         return $this->dir;
