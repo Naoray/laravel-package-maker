@@ -1,5 +1,5 @@
 {
-    "name": "naoray/laravel-package-maker-maker",
+    "name": "naoray/laravel-package-maker",
     "description": "A description for laravel-package-maker.",
     "type": "package",
     "license": "MIT",
