@@ -1,6 +1,6 @@
 {
-    "name": "naoray/laravel-package",
-    "description": "A description for laravel-package.",
+    "name": "DummyVendorName/DummyPackageName",
+    "description": "A description for DummyPackageName.",
     "type": "package",
     "license": "MIT",
     "keywords": [
@@ -8,23 +8,21 @@
     ],
     "authors": [
         {
-            "name": "Krishan Koenig",
-            "email": "krishan.koenig@googlemail.com"
+            "name": "DummyAuthorName",
+            "email": "DummyAuthorEmail"
         }
     ],
     "require": {
-        "illuminate/support": "5.6.*",
-        "illuminate/console": "5.6.*",
-        "illuminate/filesystem": "5.6.*"
+        "illuminate/support": "5.6.*"
     },
     "autoload": {
         "psr-4": {
-            "Naoray\\LaravelPackage\\": "./src"
+            "DummyComposerNamespace": "./src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Naoray\\LaravelPackage\\Test\\": "tests"
+            "DummyComposerNamespaceTest\\": "tests"
         }
     },
     "scripts": {
@@ -33,7 +31,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Naoray\\LaravelPackage\\LaravelPackageServiceProvider"
+                "DummyComposerProviderNamespace"
             ]
         }
     },

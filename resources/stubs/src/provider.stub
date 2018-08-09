@@ -1,12 +1,10 @@
 <?php
 
-namespace Naoray\LaravelPackage;
+namespace DummyRootNamespace;
 
 use Illuminate\Support\ServiceProvider;
-use Naoray\LaravelPackage\Commands\AddPackage;
-use Naoray\LaravelPackage\Commands\MakePackage;
 
-class LaravelPackageServiceProvider extends ServiceProvider
+class DummyClass extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
@@ -15,10 +13,7 @@ class LaravelPackageServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->commands([
-            AddPackage::class,
-            MakePackage::class,
-        ]);
+        //
     }
 
     /**

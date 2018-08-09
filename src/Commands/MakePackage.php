@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console\Commands;
+namespace Naoray\LaravelPackage\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
@@ -208,12 +208,12 @@ class MakePackage extends Command
      */
     protected function buildFile($name)
     {
-        $stub = $this->files->get(resource_path() . '/stubs/' . $name . '.stub');
+        $stub = $this->files->get(__DIR__.'../../resources/stubs/' . $name . '.stub');
 
         return $this->replaceNamespaces($stub)
             ->replaceNames($stub)
             ->replaceCredentials($stub);
-    }
+	}
 
     /**
      * Replace the namespace for the given stub.
@@ -322,7 +322,11 @@ class MakePackage extends Command
      */
     protected function getPackagePath()
     {
-        return base_path() . '/' . $this->dir . $this->packageName;
+		$path = ends_with($this->dir, '/') ? $this->dir : $this->dir . '/';
+		
+		$this->info($path);
+
+        return base_path() . '/' . $path . $this->packageName;
     }
 
     /**
