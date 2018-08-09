@@ -57,7 +57,7 @@ class AddPackage extends Command
         }
 
         if (!$path) {
-            $path = $this->anticipate('What is your package\'s path?', ['../packages/' . $name]);
+            $path = $this->anticipate('What is your package\'s path?', ['../packages/'.$name]);
         }
 
         if (!$branch) {
@@ -70,11 +70,11 @@ class AddPackage extends Command
         }
 
         if ($branch === 'dev' || $branch === 'master') {
-            $branch = 'dev-' . $branch;
+            $branch = 'dev-'.$branch;
         }
 
-        exec('composer config repositories.' . $name . ' ' . $type . ' ' . $path);
+        exec('composer config repositories.'.$name.' '.$type.' '.$path);
         sleep(1);
-        exec('composer require "' . $vendor . '/' . $name . ':' . $branch . '"');
+        exec('composer require "'.$vendor.'/'.$name.':'.$branch.'"');
     }
 }
