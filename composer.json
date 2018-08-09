@@ -33,7 +33,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Naoray\\LaravelPackageMaker\\LaravelPackageServiceProvider"
+                "Naoray\\LaravelPackageMaker\\LaravelPackageMakerServiceProvider"
             ]
         }
     },
