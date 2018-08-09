@@ -3,10 +3,10 @@
 namespace Naoray\LaravelPackage;
 
 use Illuminate\Support\ServiceProvider;
-use Naoray\LaravelPackage\Commands\AddPackage;
-use Naoray\LaravelPackage\Commands\MakePackage;
+use Naoray\LaravelPackageMaker\Commands\AddPackage;
+use Naoray\LaravelPackageMaker\Commands\MakePackage;
 
-class LaravelPackageServiceProvider extends ServiceProvider
+class LaravelPackageMakerServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.

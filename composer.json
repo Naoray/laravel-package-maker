@@ -1,6 +1,6 @@
 {
-    "name": "naoray/laravel-package",
-    "description": "A description for laravel-package.",
+    "name": "naoray/laravel-package-maker-maker",
+    "description": "A description for laravel-package-maker.",
     "type": "package",
     "license": "MIT",
     "keywords": [
@@ -19,12 +19,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Naoray\\LaravelPackage\\": "./src"
+            "Naoray\\LaravelPackageMaker\\": "./src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Naoray\\LaravelPackage\\Test\\": "tests"
+            "Naoray\\LaravelPackageMaker\\Test\\": "tests"
         }
     },
     "scripts": {
@@ -33,7 +33,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Naoray\\LaravelPackage\\LaravelPackageServiceProvider"
+                "Naoray\\LaravelPackageMaker\\LaravelPackageServiceProvider"
             ]
         }
     },

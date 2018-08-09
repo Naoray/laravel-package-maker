@@ -1,6 +1,6 @@
 <?php
 
-namespace Naoray\LaravelPackage\Test;
+namespace Naoray\LaravelPackageMaker\Test;
 
 use Orchestra\Testbench\TestCase as Orchestra;
 
@@ -16,7 +16,7 @@ class TestCase extends Orchestra
     protected function getPackageProviders($app)
     {
         return [
-            \Naoray\LaravelPackage\LaravelPackageServiceProvider::class,
+            \Naoray\LaravelPackageMaker\LaravelPackageServiceProvider::class,
         ];
     }
 

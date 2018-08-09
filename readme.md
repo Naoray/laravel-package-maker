@@ -1,11 +1,11 @@
-# laravel-package
+# laravel-package-maker
 
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
-[![Travis](https://img.shields.io/travis/naoray/laravel-package.svg?style=flat-square)]()
-[![Total Downloads](https://img.shields.io/packagist/dt/naoray/laravel-package.svg?style=flat-square)](https://packagist.org/packages/naoray/laravel-package)
+[![Travis](https://img.shields.io/travis/naoray/laravel-package-maker.svg?style=flat-square)]()
+[![Total Downloads](https://img.shields.io/packagist/dt/naoray/laravel-package-maker.svg?style=flat-square)](https://packagist.org/packages/naoray/laravel-package-maker)
 
 ## Install
-`composer require naoray/laravel-package`
+`composer require naoray/laravel-package-maker`
 
 ## Usage
 Write a few lines about the usage of this package.

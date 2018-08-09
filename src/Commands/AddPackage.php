@@ -1,6 +1,6 @@
 <?php
 
-namespace Naoray\LaravelPackage\Commands;
+namespace Naoray\LaravelPackageMaker\Commands;
 
 use Illuminate\Console\Command;
 

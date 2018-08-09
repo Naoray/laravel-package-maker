@@ -11,7 +11,7 @@
          syntaxCheck="false">
 
     <testsuites>
-        <testsuite name="naoray/laravel-package Test Suite">
+        <testsuite name="naoray/laravel-package-maker Test Suite">
             <directory>tests</directory>
         </testsuite>
     </testsuites>
