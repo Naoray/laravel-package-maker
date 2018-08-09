@@ -16,7 +16,7 @@ class TestCase extends Orchestra
     protected function getPackageProviders($app)
     {
         return [
-            \Naoray\LaravelPackageMaker\LaravelPackageServiceProvider::class,
+            \Naoray\LaravelPackageMaker\LaravelPackageMakerServiceProvider::class,
         ];
     }
 
