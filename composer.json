@@ -1,0 +1,41 @@
+{
+    "name": "naoray/laravel-package",
+    "description": "A description for laravel-package.",
+    "type": "package",
+    "license": "MIT",
+    "keywords": [
+        "laravel"
+    ],
+    "authors": [
+        {
+            "name": "Krishan Koenig",
+            "email": "krishan.koenig@googlemail.com"
+        }
+    ],
+    "require": {
+        "illuminate/support": "5.6.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Naoray\\LaravelPackage\\": "./src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Naoray\\LaravelPackage\\Test\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Naoray\\LaravelPackage\\LaravelPackageServiceProvider"
+            ]
+        }
+    },
+    "require-dev": {
+        "orchestra/testbench": "^3.6"
+    }
+}
