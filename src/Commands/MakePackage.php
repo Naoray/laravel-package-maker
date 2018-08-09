@@ -34,37 +34,43 @@ class MakePackage extends Command
 
     /**
      * Name of the package.
-     * @var String
+     *
+     * @var string
      */
     protected $packageName;
 
     /**
      * Directory where the package will be stored.
-     * @var String
+     *
+     * @var string
      */
     protected $dir;
 
     /**
      * Copyright fields which will be placed inside the License.md file.
-     * @var String
+     *
+     * @var string
      */
     protected $copyright;
 
     /**
      * The packages vendor name.
-     * @var String
+     *
+     * @var string
      */
     protected $vendor;
 
     /**
      * The packages author.
-     * @var String
+     *
+     * @var string
      */
     protected $author;
 
     /**
      * The mantainer's email address.
-     * @var String
+     *
+     * @var string
      */
     protected $mail;
 
@@ -83,8 +89,9 @@ class MakePackage extends Command
     /**
      * Execute the console command.
      *
-     * @return mixed
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     *
+     * @return mixed
      */
     public function handle()
     {
@@ -109,10 +116,10 @@ class MakePackage extends Command
         $this->createTestCase($packagePath);
 
         $this->callSilent('package:add', [
-            'name' => $this->packageName,
-            'path' => $this->dir . $this->packageName,
-			'vendor' => $this->vendor,
-			'branch' => 'master',
+            'name'                  => $this->packageName,
+            'path'                  => $this->dir.$this->packageName,
+            'vendor'                => $this->vendor,
+            'branch'                => 'master',
             '--without-interaction' => true,
         ]);
     }
@@ -132,7 +139,7 @@ class MakePackage extends Command
         $this->table(
             ['Name', 'Vendor', 'Directory', 'Author', 'E-mail', 'Copyright'],
             [
-                [$name, $vendor, $dir, $author, $mail, $copyright]
+                [$name, $vendor, $dir, $author, $mail, $copyright],
             ]
         );
     }
@@ -142,16 +149,16 @@ class MakePackage extends Command
      */
     protected function createDirectories($path)
     {
-		// create base path if it does not exist
-		if (! $this->alreadyExists( $this->getBasePath() )) {
-			$this->files->makeDirectory($this->getBasePath());
-		}
+        // create base path if it does not exist
+        if (!$this->alreadyExists($this->getBasePath())) {
+            $this->files->makeDirectory($this->getBasePath());
+        }
 
         $this->files->makeDirectory($path);
         $this->info('Package directory created successfully!');
-        $this->files->makeDirectory($path . '/src');
+        $this->files->makeDirectory($path.'/src');
         $this->info('Source directory created successfully!');
-        $this->files->makeDirectory($path . '/tests');
+        $this->files->makeDirectory($path.'/tests');
         $this->info('Tests directory created successfully!');
     }
 
@@ -159,38 +166,41 @@ class MakePackage extends Command
      * Create common files.
      *
      * @param $path
+     *
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
     protected function createCommonFiles($path)
     {
-        $this->files->put($path . '/readme.md', $this->buildFile('readme'));
-        $this->files->put($path . '/LICENSE.md', $this->buildFile('LICENSE'));
-        $this->files->put($path . '/CONTRIBUTING.md', $this->buildFile('CONTRIBUTING'));
-        $this->files->put($path . '/.travis.yml', $this->buildFile('.travis'));
-        $this->files->put($path . '/.syleci.yml', $this->buildFile('.styleci'));
-        $this->files->put($path . '/phpunit.xml', $this->buildFile('phpunit'));
-        $this->files->put($path . '/.gitignore', $this->buildFile('.gitignore'));
+        $this->files->put($path.'/readme.md', $this->buildFile('readme'));
+        $this->files->put($path.'/LICENSE.md', $this->buildFile('LICENSE'));
+        $this->files->put($path.'/CONTRIBUTING.md', $this->buildFile('CONTRIBUTING'));
+        $this->files->put($path.'/.travis.yml', $this->buildFile('.travis'));
+        $this->files->put($path.'/.syleci.yml', $this->buildFile('.styleci'));
+        $this->files->put($path.'/phpunit.xml', $this->buildFile('phpunit'));
+        $this->files->put($path.'/.gitignore', $this->buildFile('.gitignore'));
         $this->info('Common files created successfully!');
     }
 
     /**
      * @param $path
+     *
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
     protected function createComposer($path)
     {
-        $this->files->put($path . '/composer.json', $this->buildFile('composer'));
+        $this->files->put($path.'/composer.json', $this->buildFile('composer'));
         $this->info('Composer created successfully!');
     }
 
     /**
      * @param $path
+     *
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
     protected function createServiceProvider($path)
     {
         $this->files->put(
-            $path . '/src/' . $this->getPackageName() . 'ServiceProvider.php',
+            $path.'/src/'.$this->getPackageName().'ServiceProvider.php',
             $this->buildFile('src/provider')
         );
 
@@ -200,7 +210,7 @@ class MakePackage extends Command
     protected function createTestCase($path)
     {
         $this->files->put(
-            $path . '/tests/TestCase.php',
+            $path.'/tests/TestCase.php',
             $this->buildFile('tests/TestCase')
         );
 
@@ -209,22 +219,25 @@ class MakePackage extends Command
 
     /**
      * @param $name
-     * @return MakePackage
+     *
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     *
+     * @return MakePackage
      */
     protected function buildFile($name)
     {
-        $stub = $this->files->get(__DIR__.'/../../resources/stubs/' . $name . '.stub');
+        $stub = $this->files->get(__DIR__.'/../../resources/stubs/'.$name.'.stub');
 
         return $this->replaceNamespaces($stub)
             ->replaceNames($stub)
             ->replaceCredentials($stub);
-	}
+    }
 
     /**
      * Replace the namespace for the given stub.
      *
-     * @param  string $stub
+     * @param string $stub
+     *
      * @return $this
      */
     protected function replaceNamespaces(&$stub)
@@ -241,14 +254,15 @@ class MakePackage extends Command
     /**
      * Replace the names for the given stub.
      *
-     * @param  string $stub
+     * @param string $stub
+     *
      * @return $this
      */
     protected function replaceNames(&$stub)
     {
         $stub = str_replace(
             ['DummyVendorName', 'DummyPackageName', 'DummyClass', 'CompanyOrVendorName'],
-            [$this->vendor, $this->packageName, $this->getPackageName() . 'ServiceProvider', $this->copyright],
+            [$this->vendor, $this->packageName, $this->getPackageName().'ServiceProvider', $this->copyright],
             $stub
         );
 
@@ -259,6 +273,7 @@ class MakePackage extends Command
      * Replace Author credentials.
      *
      * @param $stub
+     *
      * @return mixed
      */
     protected function replaceCredentials(&$stub)
@@ -277,7 +292,7 @@ class MakePackage extends Command
      */
     protected function getRootNamespace()
     {
-        return ucfirst($this->vendor) . '\\' . $this->getPackageName();
+        return ucfirst($this->vendor).'\\'.$this->getPackageName();
     }
 
     /**
@@ -293,7 +308,7 @@ class MakePackage extends Command
      */
     protected function getComposerNamespace()
     {
-        return ucfirst($this->vendor) . '\\\\' . $this->getNamespace();
+        return ucfirst($this->vendor).'\\\\'.$this->getNamespace();
     }
 
     /**
@@ -301,7 +316,7 @@ class MakePackage extends Command
      */
     protected function getNamespace()
     {
-        return ucfirst(camel_case($this->packageName)) . '\\\\';
+        return ucfirst(camel_case($this->packageName)).'\\\\';
     }
 
     /**
@@ -309,36 +324,37 @@ class MakePackage extends Command
      */
     protected function getComposerProviderNamespace()
     {
-        return $this->getComposerNamespace() . $this->getPackageName() . 'ServiceProvider';
+        return $this->getComposerNamespace().$this->getPackageName().'ServiceProvider';
     }
 
     /**
      * Determine if the class already exists.
      *
      * @param $path
+     *
      * @return bool
      */
     protected function alreadyExists($path)
     {
         return $this->files->isDirectory($path);
-	}
-	
-	/**
-	 * @return string
-	 */
-	protected function getBasePath()
-	{
-		$path = ends_with($this->dir, '/') ? $this->dir : $this->dir . '/';
-		
-		return base_path() . '/' . $path;
-	}
+    }
+
+    /**
+     * @return string
+     */
+    protected function getBasePath()
+    {
+        $path = ends_with($this->dir, '/') ? $this->dir : $this->dir.'/';
+
+        return base_path().'/'.$path;
+    }
 
     /**
      * @return string
      */
     protected function getPackagePath()
     {
-        return $this->getBasePath() . $this->packageName;
+        return $this->getBasePath().$this->packageName;
     }
 
     /**
@@ -357,12 +373,12 @@ class MakePackage extends Command
         }
 
         return $this->dir;
-        ;
     }
 
     /**
      * Get copyright input.
-     * @return String
+     *
+     * @return string
      */
     public function getCopyrightInput()
     {
@@ -415,7 +431,8 @@ class MakePackage extends Command
 
     /**
      * Get the author name input.
-     * @return String
+     *
+     * @return string
      */
     public function getAuthorInput()
     {
@@ -432,7 +449,8 @@ class MakePackage extends Command
 
     /**
      * Get mail input.
-     * @return String
+     *
+     * @return string
      */
     public function getMailInput()
     {
