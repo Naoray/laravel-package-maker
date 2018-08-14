@@ -108,12 +108,12 @@ class MakePackage extends Command
         }
 
         $this->createDirectories($packagePath);
-
         $this->createCommonFiles($packagePath);
 
         $this->createComposer($packagePath);
         $this->createServiceProvider($packagePath);
         $this->createTestCase($packagePath);
+
         $this->createContinousIntegrationService($packagePath);
         $this->createCodeQualityService($packagePath);
         $this->createCodeCoverageService($packagePath);
@@ -129,6 +129,8 @@ class MakePackage extends Command
 
     /**
      * Checks for needed input and prints it out.
+     * 
+     * @return void
      */
     public function checkForInputs()
     {
@@ -148,7 +150,9 @@ class MakePackage extends Command
     }
 
     /**
-     * @param $path
+     * @param string $path
+     * 
+     * @return void
      */
     protected function createDirectories($path)
     {
@@ -159,8 +163,10 @@ class MakePackage extends Command
 
         $this->files->makeDirectory($path);
         $this->info('Package directory created successfully!');
+
         $this->files->makeDirectory($path.'/src');
         $this->info('Source directory created successfully!');
+
         $this->files->makeDirectory($path.'/tests');
         $this->info('Tests directory created successfully!');
     }
@@ -168,9 +174,11 @@ class MakePackage extends Command
     /**
      * Create common files.
      *
-     * @param $path
+     * @param string $path
      *
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     * 
+     * @return void
      */
     protected function createCommonFiles($path)
     {
@@ -179,24 +187,30 @@ class MakePackage extends Command
         $this->files->put($path.'/CONTRIBUTING.md', $this->buildFile('CONTRIBUTING'));
         $this->files->put($path.'/phpunit.xml', $this->buildFile('phpunit'));
         $this->files->put($path.'/.gitignore', $this->buildFile('.gitignore'));
+
         $this->info('Common files created successfully!');
     }
 
     /**
-     * @param $path
+     * @param string $path
      *
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     * 
+     * @return void
      */
     protected function createComposer($path)
     {
         $this->files->put($path.'/composer.json', $this->buildFile('composer'));
+
         $this->info('Composer created successfully!');
     }
 
     /**
-     * @param $path
+     * @param string $path
      *
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     * 
+     * @return void
      */
     protected function createServiceProvider($path)
     {
@@ -208,6 +222,11 @@ class MakePackage extends Command
         $this->info('Service Provider created successfully!');
     }
 
+    /**
+     * @param string $path
+     * 
+     * @return void
+     */
     protected function createTestCase($path)
     {
         $this->files->put(
@@ -219,7 +238,7 @@ class MakePackage extends Command
     }
 
     /**
-     * @param $path
+     * @param string $path
      * 
      * @return void
      */
@@ -239,7 +258,7 @@ class MakePackage extends Command
     }
 
     /**
-     * @param $path
+     * @param string $path
      * 
      * @return void
      */
@@ -259,7 +278,7 @@ class MakePackage extends Command
     }
 
     /**
-     * @param $path
+     * @param string $path
      * 
      * @return void
      */
@@ -279,11 +298,11 @@ class MakePackage extends Command
     }
 
     /**
-     * @param $name
+     * @param string $name
      *
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      *
-     * @return MakePackage
+     * @return \Naoray\LaravelPackageMaker\Commands\MakePackage
      */
     protected function buildFile($name)
     {
@@ -299,7 +318,7 @@ class MakePackage extends Command
      *
      * @param string $stub
      *
-     * @return $this
+     * @return \Naoray\LaravelPackageMaker\Commands\MakePackage
      */
     protected function replaceNamespaces(&$stub)
     {
@@ -317,7 +336,7 @@ class MakePackage extends Command
      *
      * @param string $stub
      *
-     * @return $this
+     * @return \Naoray\LaravelPackageMaker\Commands\MakePackage
      */
     protected function replaceNames(&$stub)
     {
@@ -335,7 +354,7 @@ class MakePackage extends Command
      *
      * @param $stub
      *
-     * @return mixed
+     * @return string
      */
     protected function replaceCredentials(&$stub)
     {
@@ -391,7 +410,7 @@ class MakePackage extends Command
     /**
      * Determine if the class already exists.
      *
-     * @param $path
+     * @param string $path
      *
      * @return bool
      */
