@@ -108,12 +108,15 @@ class MakePackage extends Command
         }
 
         $this->createDirectories($packagePath);
-
         $this->createCommonFiles($packagePath);
 
         $this->createComposer($packagePath);
         $this->createServiceProvider($packagePath);
         $this->createTestCase($packagePath);
+
+        $this->createContinousIntegrationService($packagePath);
+        $this->createCodeQualityService($packagePath);
+        $this->createCodeCoverageService($packagePath);
 
         $this->callSilent('package:add', [
             'name'                  => $this->packageName,
@@ -126,6 +129,8 @@ class MakePackage extends Command
 
     /**
      * Checks for needed input and prints it out.
+     * 
+     * @return void
      */
     public function checkForInputs()
     {
@@ -145,7 +150,9 @@ class MakePackage extends Command
     }
 
     /**
-     * @param $path
+     * @param string $path
+     * 
+     * @return void
      */
     protected function createDirectories($path)
     {
@@ -156,8 +163,10 @@ class MakePackage extends Command
 
         $this->files->makeDirectory($path);
         $this->info('Package directory created successfully!');
+
         $this->files->makeDirectory($path.'/src');
         $this->info('Source directory created successfully!');
+
         $this->files->makeDirectory($path.'/tests');
         $this->info('Tests directory created successfully!');
     }
@@ -165,38 +174,43 @@ class MakePackage extends Command
     /**
      * Create common files.
      *
-     * @param $path
+     * @param string $path
      *
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     * 
+     * @return void
      */
     protected function createCommonFiles($path)
     {
         $this->files->put($path.'/readme.md', $this->buildFile('readme'));
         $this->files->put($path.'/LICENSE.md', $this->buildFile('LICENSE'));
         $this->files->put($path.'/CONTRIBUTING.md', $this->buildFile('CONTRIBUTING'));
-        $this->files->put($path.'/.travis.yml', $this->buildFile('.travis'));
-        $this->files->put($path.'/.styleci.yml', $this->buildFile('.styleci'));
-        $this->files->put($path.'/codecov.yml', $this->buildFile('codecov'));
         $this->files->put($path.'/phpunit.xml', $this->buildFile('phpunit'));
         $this->files->put($path.'/.gitignore', $this->buildFile('.gitignore'));
+
         $this->info('Common files created successfully!');
     }
 
     /**
-     * @param $path
+     * @param string $path
      *
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     * 
+     * @return void
      */
     protected function createComposer($path)
     {
         $this->files->put($path.'/composer.json', $this->buildFile('composer'));
+
         $this->info('Composer created successfully!');
     }
 
     /**
-     * @param $path
+     * @param string $path
      *
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     * 
+     * @return void
      */
     protected function createServiceProvider($path)
     {
@@ -208,6 +222,11 @@ class MakePackage extends Command
         $this->info('Service Provider created successfully!');
     }
 
+    /**
+     * @param string $path
+     * 
+     * @return void
+     */
     protected function createTestCase($path)
     {
         $this->files->put(
@@ -219,11 +238,71 @@ class MakePackage extends Command
     }
 
     /**
-     * @param $name
+     * @param string $path
+     * 
+     * @return void
+     */
+    protected function createContinousIntegrationService($path)
+    {
+        $CI = $this->choice('What CI/CD service you want to use?', ['TravisCI'], 'TravisCI');
+
+        switch($CI) {
+            case 'TravisCI':
+                $this->files->put($path.'/.travis.yml', $this->buildFile('.travis'));
+                break;
+            default:
+                break;
+        }
+
+        $this->info('CI/CD provider was set up!');
+    }
+
+    /**
+     * @param string $path
+     * 
+     * @return void
+     */
+    protected function createCodeQualityService($path)
+    {
+        $CQ = $this->choice('What code quality service you want to use?', ['StyleCI'], 'StyleCI');
+
+        switch($CQ) {
+            case 'StyleCI':
+                $this->files->put($path.'/.styleci.yml', $this->buildFile('.styleci'));
+                break;
+            default:
+                break;
+        }
+
+        $this->info('Code quality provider was set up!');
+    }
+
+    /**
+     * @param string $path
+     * 
+     * @return void
+     */
+    protected function createCodeCoverageService($path)
+    {
+        $CC = $this->choice('What code coverage service you want to use?', ['Codecov'], 'Codecov');
+
+        switch($CC) {
+            case 'Codecov':
+                $this->files->put($path.'/codecov.yml', $this->buildFile('codecov'));
+                break;
+            default:
+                break;
+        }
+
+        $this->info('Code coverage provider was set up!');
+    }
+
+    /**
+     * @param string $name
      *
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      *
-     * @return MakePackage
+     * @return \Naoray\LaravelPackageMaker\Commands\MakePackage
      */
     protected function buildFile($name)
     {
@@ -239,7 +318,7 @@ class MakePackage extends Command
      *
      * @param string $stub
      *
-     * @return $this
+     * @return \Naoray\LaravelPackageMaker\Commands\MakePackage
      */
     protected function replaceNamespaces(&$stub)
     {
@@ -257,7 +336,7 @@ class MakePackage extends Command
      *
      * @param string $stub
      *
-     * @return $this
+     * @return \Naoray\LaravelPackageMaker\Commands\MakePackage
      */
     protected function replaceNames(&$stub)
     {
@@ -275,7 +354,7 @@ class MakePackage extends Command
      *
      * @param $stub
      *
-     * @return mixed
+     * @return string
      */
     protected function replaceCredentials(&$stub)
     {
@@ -331,7 +410,7 @@ class MakePackage extends Command
     /**
      * Determine if the class already exists.
      *
-     * @param $path
+     * @param string $path
      *
      * @return bool
      */
