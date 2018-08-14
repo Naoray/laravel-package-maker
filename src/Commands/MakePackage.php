@@ -114,6 +114,9 @@ class MakePackage extends Command
         $this->createComposer($packagePath);
         $this->createServiceProvider($packagePath);
         $this->createTestCase($packagePath);
+        $this->createContinousIntegrationService($packagePath);
+        $this->createCodeQualityService($packagePath);
+        $this->createCodeCoverageService($packagePath);
 
         $this->callSilent('package:add', [
             'name'                  => $this->packageName,
@@ -174,9 +177,6 @@ class MakePackage extends Command
         $this->files->put($path.'/readme.md', $this->buildFile('readme'));
         $this->files->put($path.'/LICENSE.md', $this->buildFile('LICENSE'));
         $this->files->put($path.'/CONTRIBUTING.md', $this->buildFile('CONTRIBUTING'));
-        $this->files->put($path.'/.travis.yml', $this->buildFile('.travis'));
-        $this->files->put($path.'/.styleci.yml', $this->buildFile('.styleci'));
-        $this->files->put($path.'/codecov.yml', $this->buildFile('codecov'));
         $this->files->put($path.'/phpunit.xml', $this->buildFile('phpunit'));
         $this->files->put($path.'/.gitignore', $this->buildFile('.gitignore'));
         $this->info('Common files created successfully!');
@@ -216,6 +216,66 @@ class MakePackage extends Command
         );
 
         $this->info('Test Case created sucessfully!');
+    }
+
+    /**
+     * @param $path
+     * 
+     * @return void
+     */
+    protected function createContinousIntegrationService($path)
+    {
+        $CI = $this->choice('What CI/CD service you want to use?', ['TravisCI'], 'TravisCI');
+
+        switch($CI) {
+            case 'TravisCI':
+                $this->files->put($path.'/.travis.yml', $this->buildFile('.travis'));
+                break;
+            default:
+                break;
+        }
+
+        $this->info('CI/CD provider was set up!');
+    }
+
+    /**
+     * @param $path
+     * 
+     * @return void
+     */
+    protected function createCodeQualityService($path)
+    {
+        $CQ = $this->choice('What code quality service you want to use?', ['StyleCI'], 'StyleCI');
+
+        switch($CQ) {
+            case 'StyleCI':
+                $this->files->put($path.'/.styleci.yml', $this->buildFile('.styleci'));
+                break;
+            default:
+                break;
+        }
+
+        $this->info('Code quality provider was set up!');
+    }
+
+    /**
+     * @param $path
+     * 
+     * @return void
+     */
+    protected function createCodeCoverageService($path)
+    {
+        $CC = $this->choice('What code coverage service you want to use?', ['Codecov'], 'Codecov');
+
+        switch($CC) {
+            case 'Codecov':
+                $this->files->put($path.'/codecov.yml', $this->buildFile('codecov'));
+                break;
+            default:
+                break;
+        }
+
+        $this->info('Code coverage provider was set up!');
     }
 
     /**
