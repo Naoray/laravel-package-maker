@@ -48,24 +48,24 @@ class AddPackage extends Command
             $name = str_after($name, '/');
         }
 
-        if (!$vendor) {
+        if (! $vendor) {
             $vendor = $this->ask('What is your package\'s vendor name?');
         }
 
-        if (!$name) {
+        if (! $name) {
             $name = $this->ask('What is your package\'s name?');
         }
 
-        if (!$path) {
+        if (! $path) {
             $path = $this->anticipate('What is your package\'s path?', ['../packages/'.$name]);
         }
 
-        if (!$branch) {
+        if (! $branch) {
             $branch = $this->anticipate('What branch do you want to link?', ['dev', 'master']);
         }
 
         $this->table(['vendor', 'name', 'path', 'branch', 'type'], [[$vendor, $name, $path, $branch, $type]]);
-        if (!$this->option('without-interaction') && !$this->confirm('Do you wish to continue?')) {
+        if (! $this->option('without-interaction') && ! $this->confirm('Do you wish to continue?')) {
             return;
         }
 

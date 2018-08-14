@@ -97,7 +97,7 @@ class MakePackage extends Command
     {
         $this->checkForInputs();
 
-        if (!$this->confirm('Do you wish to continue?')) {
+        if (! $this->confirm('Do you wish to continue?')) {
             return $this->error('Canceled command!');
         }
 
@@ -150,7 +150,7 @@ class MakePackage extends Command
     protected function createDirectories($path)
     {
         // create base path if it does not exist
-        if (!$this->alreadyExists($this->getBasePath())) {
+        if (! $this->alreadyExists($this->getBasePath())) {
             $this->files->makeDirectory($this->getBasePath());
         }
 
@@ -369,7 +369,7 @@ class MakePackage extends Command
             return $this->dir;
         }
 
-        if (!$this->dir = $this->argument('dir')) {
+        if (! $this->dir = $this->argument('dir')) {
             $this->dir = $this->anticipate('Where should the package be installed?', ['../packages/', 'packages/']);
         }
 
@@ -387,7 +387,7 @@ class MakePackage extends Command
             return $this->copyright;
         }
 
-        if (!$this->copyright = $this->argument('copyright')) {
+        if (! $this->copyright = $this->argument('copyright')) {
             $this->copyright = $this->ask('Who will hold the copyrights?');
         }
 
@@ -405,7 +405,7 @@ class MakePackage extends Command
             return $this->packageName;
         }
 
-        if (!$this->packageName = trim($this->argument('name'))) {
+        if (! $this->packageName = trim($this->argument('name'))) {
             $this->packageName = $this->ask('What\'s your packages name?');
         }
 
@@ -423,7 +423,7 @@ class MakePackage extends Command
             return $this->vendor;
         }
 
-        if (!$this->vendor = trim($this->argument('vendor'))) {
+        if (! $this->vendor = trim($this->argument('vendor'))) {
             $this->vendor = $this->ask('What\'s the packages github name (vendor name of the package)?');
         }
 
@@ -441,7 +441,7 @@ class MakePackage extends Command
             return $this->author;
         }
 
-        if (!$this->author = $this->argument('author')) {
+        if (! $this->author = $this->argument('author')) {
             $this->author = $this->ask('Who is the author of the package?');
         }
 
@@ -459,7 +459,7 @@ class MakePackage extends Command
             return $this->mail;
         }
 
-        if (!$this->mail = $this->argument('mail')) {
+        if (! $this->mail = $this->argument('mail')) {
             $this->mail = $this->ask('What\'s the mantainer\'s e-mail?');
         }
 
