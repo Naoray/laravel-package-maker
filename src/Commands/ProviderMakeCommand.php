@@ -2,9 +2,9 @@
 
 namespace Naoray\LaravelPackageMaker\Commands;
 
-use Illuminate\Foundation\Console\ProviderMakeCommand as MakeProvider;
-use Naoray\LaravelPackageMaker\Traits\CreatesPackageStubs;
 use Naoray\LaravelPackageMaker\Traits\HasNameAttribute;
+use Naoray\LaravelPackageMaker\Traits\CreatesPackageStubs;
+use Illuminate\Foundation\Console\ProviderMakeCommand as MakeProvider;
 
 class ProviderMakeCommand extends MakeProvider
 {
