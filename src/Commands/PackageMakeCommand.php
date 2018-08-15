@@ -195,7 +195,7 @@ class PackageMakeCommand extends Command
     {
         $cc = $this->choice('What Code Coverage service you want to configure?', ['Codecov', 'None'], 'None');
 
-        switch ($cq) {
+        switch ($cc) {
             case 'Codecov':
                 $this->call('make:package:codecov', $this->packageOptions());
                 break;
