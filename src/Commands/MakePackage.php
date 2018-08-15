@@ -238,7 +238,7 @@ class MakePackage extends Command
      *
      * @param string $stub
      *
-     * @return $this
+     * @return \Naoray\LaravelPackageMaker\Commands\MakePackage
      */
     protected function replaceNamespaces(&$stub)
     {
@@ -256,7 +256,7 @@ class MakePackage extends Command
      *
      * @param string $stub
      *
-     * @return $this
+     * @return \Naoray\LaravelPackageMaker\Commands\MakePackage
      */
     protected function replaceNames(&$stub)
     {

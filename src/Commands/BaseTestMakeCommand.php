@@ -64,7 +64,7 @@ class BaseTestMakeCommand extends GeneratorCommand
      *
      * @param string $stub
      *
-     * @return $this
+     * @return \Naoray\LaravelPackageMaker\Commands\BaseTestMakeCommand
      */
     protected function replaceStubSpecifics(&$stub, $name)
     {

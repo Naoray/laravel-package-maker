@@ -62,7 +62,7 @@ class ComposerMakeCommand extends GeneratorCommand
      *
      * @param string $stub
      *
-     * @return $this
+     * @return \Naoray\LaravelPackageMaker\Commands\ComposerMakeCommand
      */
     protected function replaceStubSpecifics(&$stub, $name)
     {
