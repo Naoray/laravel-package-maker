@@ -138,6 +138,7 @@ class PackageMakeCommand extends Command
         $this->call('make:package:contribution', $this->packageOptions());
         $this->call('make:package:travis', $this->packageOptions());
         $this->call('make:package:styleci', $this->packageOptions());
+        $this->call('make:package:codecov', $this->packageOptions());
         $this->call('make:package:phpunit', $this->packageOptions());
         $this->call('make:package:gitignore', $this->packageOptions());
     }
