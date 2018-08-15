@@ -110,6 +110,10 @@ class PackageMakeCommand extends Command
         $this->createServiceProvider();
         $this->createBaseTestCase();
 
+        $this->configureCICDService();
+        $this->configureCodeQualityService();
+        $this->configureCodeCoverageService();
+
         $this->info('Package successfully created!');
 
         $this->callSilent('package:add', [
@@ -136,11 +140,68 @@ class PackageMakeCommand extends Command
             ['--copyright' => $this->copyright]
         ));
         $this->call('make:package:contribution', $this->packageOptions());
-        $this->call('make:package:travis', $this->packageOptions());
-        $this->call('make:package:styleci', $this->packageOptions());
-        $this->call('make:package:codecov', $this->packageOptions());
         $this->call('make:package:phpunit', $this->packageOptions());
         $this->call('make:package:gitignore', $this->packageOptions());
+    }
+
+    /**
+     * Configure service for CI/CD.
+     *
+     * @param $path
+     *
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     */
+    protected function configureCICDService()
+    {
+        $cicd = $this->choice('What CI/CD service you want to configure?', ['TravisCI', 'None'], 'None');
+
+        switch ($cicd) {
+            case 'TravisCI':
+                $this->call('make:package:travis', $this->packageOptions());
+                break;
+            default:
+                break;
+        }
+    }
+
+    /**
+     * Configure service for Code Quality.
+     *
+     * @param $path
+     *
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     */
+    protected function configureCodeQualityService()
+    {
+        $cq = $this->choice('What Code Quality service you want to configure?', ['StyleCI', 'None'], 'None');
+
+        switch ($cq) {
+            case 'StyleCI':
+                $this->call('make:package:styleci', $this->packageOptions());
+                break;
+            default:
+                break;
+        }
+    }
+
+    /**
+     * Configure service for Code Coverage.
+     *
+     * @param $path
+     *
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     */
+    protected function configureCodeCoverageService()
+    {
+        $cc = $this->choice('What Code Coverage service you want to configure?', ['Codecov', 'None'], 'None');
+
+        switch ($cq) {
+            case 'Codecov':
+                $this->call('make:package:codecov', $this->packageOptions());
+                break;
+            default:
+                break;
+        }
     }
 
     /**
