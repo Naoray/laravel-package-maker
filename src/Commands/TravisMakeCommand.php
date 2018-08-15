@@ -32,7 +32,7 @@ class TravisMakeCommand extends GeneratorCommand
      */
     protected function getStub()
     {
-        return __DIR__ . '/stubs/.travis.stub';
+        return __DIR__.'/stubs/.travis.stub';
     }
 
     /**

@@ -19,7 +19,7 @@ class PackageMakeCommand extends Command
                              {author? : Author of the package}
                              {email? : Author\'s email address}
                              {copyright? : Copyright will be placed in the LICENSE file}';
-	
+
     /**
      * The console command description.
      *
@@ -85,12 +85,13 @@ class PackageMakeCommand extends Command
 
         $this->files = $files;
     }
-	
-	/**
+
+    /**
      * Execute the console command.
      *
-     * @return mixed
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     *
+     * @return mixed
      */
     public function handle()
     {
@@ -112,10 +113,10 @@ class PackageMakeCommand extends Command
         $this->info('Package successfully created!');
 
         $this->callSilent('package:add', [
-            'name' => $this->packageName,
-            'path' => $this->dir . $this->packageName,
-			'vendor' => $this->vendor,
-			'branch' => 'master',
+            'name'                  => $this->packageName,
+            'path'                  => $this->dir.$this->packageName,
+            'vendor'                => $this->vendor,
+            'branch'                => 'master',
             '--without-interaction' => true,
         ]);
     }
@@ -124,6 +125,7 @@ class PackageMakeCommand extends Command
      * Create common files.
      *
      * @param $path
+     *
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
     protected function createCommonFiles()
@@ -142,7 +144,7 @@ class PackageMakeCommand extends Command
 
     /**
      * Creates composer file.
-     * 
+     *
      * @return void
      */
     protected function createComposer()
@@ -151,21 +153,21 @@ class PackageMakeCommand extends Command
             $this->packageOptions(),
             [
                 '--author' => $this->author,
-                '--email' => $this->email
+                '--email'  => $this->email,
             ]
         ));
     }
 
     /**
      * Creates package service provider.
-     * 
+     *
      * @return void
      */
     protected function createServiceProvider()
     {
         $this->call('make:package:provider', array_merge(
             [
-                'name' => $this->packageName() . 'ServiceProvider'
+                'name' => $this->packageName().'ServiceProvider',
             ],
             $this->packageOptions()
         ));
@@ -173,14 +175,14 @@ class PackageMakeCommand extends Command
 
     /**
      * Creates base test.
-     * 
+     *
      * @return void
      */
     protected function createBaseTestCase()
     {
         $this->call('make:package:basetest', array_merge(
             [
-                'provider' => $this->packageName() . 'ServiceProvider'
+                'provider' => $this->packageName().'ServiceProvider',
             ],
             $this->packageOptions()
         ));
@@ -188,14 +190,14 @@ class PackageMakeCommand extends Command
 
     /**
      * Get package options.
-     * 
+     *
      * @return array
      */
     protected function packageOptions()
     {
         return [
             '--namespace' => $this->rootNamespace(),
-            '--dir' => $this->packagePath(),
+            '--dir'       => $this->packagePath(),
         ];
     }
 
@@ -204,7 +206,7 @@ class PackageMakeCommand extends Command
      */
     protected function rootNamespace()
     {
-        return ucfirst($this->vendor) . '\\' . $this->packageName();
+        return ucfirst($this->vendor).'\\'.$this->packageName();
     }
 
     /**
@@ -219,19 +221,20 @@ class PackageMakeCommand extends Command
      * Determine if the class already exists.
      *
      * @param $path
+     *
      * @return bool
      */
     protected function alreadyExists($path)
     {
         return $this->files->isDirectory($path);
-	}
+    }
 
     /**
      * @return string
      */
     protected function packagePath()
     {
-        return $this->getDirectoryInput() . $this->packageName;
+        return $this->getDirectoryInput().$this->packageName;
     }
 
     /**
@@ -249,7 +252,7 @@ class PackageMakeCommand extends Command
         $this->table(
             ['Name', 'Vendor', 'Directory', 'Author', 'E-mail', 'Copyright'],
             [
-                [$name, $vendor, $dir, $author, $email, $copyright]
+                [$name, $vendor, $dir, $author, $email, $copyright],
             ]
         );
     }
@@ -274,7 +277,8 @@ class PackageMakeCommand extends Command
 
     /**
      * Get copyright input.
-     * @return String
+     *
+     * @return string
      */
     public function getCopyrightInput()
     {
@@ -327,7 +331,8 @@ class PackageMakeCommand extends Command
 
     /**
      * Get the author name input.
-     * @return String
+     *
+     * @return string
      */
     public function getAuthorInput()
     {
@@ -344,7 +349,8 @@ class PackageMakeCommand extends Command
 
     /**
      * Get mail input.
-     * @return String
+     *
+     * @return string
      */
     public function getEmailInput()
     {

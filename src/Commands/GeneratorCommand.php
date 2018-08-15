@@ -2,8 +2,6 @@
 
 namespace Naoray\LaravelPackageMaker\Commands;
 
-use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Input\InputArgument;
 use Illuminate\Console\GeneratorCommand as Generator;
 use Naoray\LaravelPackageMaker\Traits\CreatesPackageStubs;
 

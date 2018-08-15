@@ -23,9 +23,9 @@ class ReadmeMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-	protected $type = 'readme';
-	
-	/**
+    protected $type = 'readme';
+
+    /**
      * Get the stub file for the generator.
      *
      * @return string
@@ -33,19 +33,19 @@ class ReadmeMakeCommand extends GeneratorCommand
     protected function getStub()
     {
         return __DIR__.'/stubs/readme.stub';
-	}
+    }
 
-	/**
-	 * Get the stub file type for the generator.
-	 * 
-	 * @return string
-	 */
-	public function getFileType()
-	{
-		return '.md';
-	}
+    /**
+     * Get the stub file type for the generator.
+     *
+     * @return string
+     */
+    public function getFileType()
+    {
+        return '.md';
+    }
 
-	/**
+    /**
      * Get the desired class name from the input.
      *
      * @return string
