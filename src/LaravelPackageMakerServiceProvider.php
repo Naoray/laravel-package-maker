@@ -4,18 +4,19 @@ namespace Naoray\LaravelPackageMaker;
 
 use Illuminate\Support\ServiceProvider;
 use Naoray\LaravelPackageMaker\Commands\AddPackage;
-use Naoray\LaravelPackageMaker\Commands\BaseTestMakeCommand;
-use Naoray\LaravelPackageMaker\Commands\ComposerMakeCommand;
-use Naoray\LaravelPackageMaker\Commands\ContributionMakeCommand;
-use Naoray\LaravelPackageMaker\Commands\GitignoreMakeCommand;
+use Naoray\LaravelPackageMaker\Commands\TestMakeCommand;
+use Naoray\LaravelPackageMaker\Commands\ReadmeMakeCommand;
+use Naoray\LaravelPackageMaker\Commands\TravisMakeCommand;
+use Naoray\LaravelPackageMaker\Commands\CodecovMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\LicenseMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\PackageMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\PhpunitMakeCommand;
-use Naoray\LaravelPackageMaker\Commands\ProviderMakeCommand;
-use Naoray\LaravelPackageMaker\Commands\ReadmeMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\StyleciMakeCommand;
-use Naoray\LaravelPackageMaker\Commands\TestMakeCommand;
-use Naoray\LaravelPackageMaker\Commands\TravisMakeCommand;
+use Naoray\LaravelPackageMaker\Commands\BaseTestMakeCommand;
+use Naoray\LaravelPackageMaker\Commands\ComposerMakeCommand;
+use Naoray\LaravelPackageMaker\Commands\ProviderMakeCommand;
+use Naoray\LaravelPackageMaker\Commands\GitignoreMakeCommand;
+use Naoray\LaravelPackageMaker\Commands\ContributionMakeCommand;
 
 class LaravelPackageMakerServiceProvider extends ServiceProvider
 {
@@ -31,6 +32,7 @@ class LaravelPackageMakerServiceProvider extends ServiceProvider
             TestMakeCommand::class,
             TravisMakeCommand::class,
             ReadmeMakeCommand::class,
+            CodecovMakeCommand::class,
             StyleciMakeCommand::class,
             LicenseMakeCommand::class,
             PhpunitMakeCommand::class,
