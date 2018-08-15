@@ -56,7 +56,7 @@ class AddPackage extends Command
             $name = $this->ask('What is your package\'s name?');
         }
 
-        if (! $path) {
+        if (!$path) {
             $path = $this->anticipate('What is your package\'s path?', ['../packages/'.$name]);
         }
 
