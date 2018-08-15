@@ -72,7 +72,7 @@ class LicenseMakeCommand extends GeneratorCommand
      *
      * @param string $stub
      *
-     * @return $this
+     * @return \Naoray\LaravelPackageMaker\Commands\LicenseMakeCommand
      */
     protected function replaceOthers(&$stub, $name)
     {

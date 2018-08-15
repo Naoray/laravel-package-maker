@@ -49,7 +49,7 @@ trait CreatesPackageStubs
      *
      * @param string $stub
      *
-     * @return $this
+     * @return \Naoray\LaravelPackageMaker\Traits\CreatsPackageStubs
      */
     protected function replacePackageName(&$stub)
     {
@@ -67,7 +67,7 @@ trait CreatesPackageStubs
      *
      * @param string $stub
      *
-     * @return $this
+     * @return \Naoray\LaravelPackageMaker\Traits\CreatePackageStubs
      */
     protected function replaceStubSpecifics(&$stub, $name)
     {

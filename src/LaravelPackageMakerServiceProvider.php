@@ -16,6 +16,7 @@ use Naoray\LaravelPackageMaker\Commands\ReadmeMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\StyleciMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\TestMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\TravisMakeCommand;
+use Naoray\LaravelPackageMaker\Commands\CodecovMakeCommand;
 
 class LaravelPackageMakerServiceProvider extends ServiceProvider
 {
@@ -31,6 +32,7 @@ class LaravelPackageMakerServiceProvider extends ServiceProvider
             TestMakeCommand::class,
             TravisMakeCommand::class,
             ReadmeMakeCommand::class,
+            CodecovMakeCommand::class,
             StyleciMakeCommand::class,
             LicenseMakeCommand::class,
             PhpunitMakeCommand::class,
