@@ -52,8 +52,6 @@ class TestMakeCommand extends MakeTest
     /**
      * Get the destination class path.
      *
-     * @param string $name
-     *
      * @return string
      */
     protected function resolveDirectory()
