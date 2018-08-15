@@ -1,6 +1,6 @@
 <?php
 
-namespace DummyRootNamespace\Test;
+namespace DummyNamespace;
 
 use Orchestra\Testbench\TestCase as Orchestra;
 
@@ -16,7 +16,7 @@ class TestCase extends Orchestra
     protected function getPackageProviders($app)
     {
         return [
-            \DummyRootNamespace\DummyClass::class,
+            \DummyRootNamespace\DummyPackageServiceProvider::class,
         ];
     }
 

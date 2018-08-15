@@ -1,5 +1,5 @@
 {
-    "name": "DummyVendorName/DummyPackageName",
+    "name": "DummyVendor/DummyPackageName",
     "description": "A description for DummyPackageName.",
     "type": "package",
     "license": "MIT",
@@ -8,8 +8,8 @@
     ],
     "authors": [
         {
-            "name": "DummyAuthorName",
-            "email": "DummyAuthorEmail"
+            "name": "DummyAuthor",
+            "email": "DummyEmail"
         }
     ],
     "require": {
