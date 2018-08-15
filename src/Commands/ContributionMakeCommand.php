@@ -32,18 +32,18 @@ class ContributionMakeCommand extends GeneratorCommand
      */
     protected function getStub()
     {
-        return __DIR__ . '/stubs/CONTRIBUTING.stub';
+        return __DIR__.'/stubs/CONTRIBUTING.stub';
     }
 
     /**
-	 * Get the stub file type for the generator.
-	 * 
-	 * @return string
-	 */
-	public function getFileType()
-	{
-		return '.md';
-	}
+     * Get the stub file type for the generator.
+     *
+     * @return string
+     */
+    public function getFileType()
+    {
+        return '.md';
+    }
 
     /**
      * Get the desired class name from the input.

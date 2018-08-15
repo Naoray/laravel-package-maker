@@ -34,7 +34,7 @@ class ComposerMakeCommand extends GeneratorCommand
      */
     protected function getStub()
     {
-        return __DIR__ . '/stubs/composer.stub';
+        return __DIR__.'/stubs/composer.stub';
     }
 
     /**
@@ -55,12 +55,13 @@ class ComposerMakeCommand extends GeneratorCommand
     protected function getNameInput()
     {
         return 'composer';
-	}
+    }
 
-	/**
+    /**
      * Replace the names for the given stub.
      *
-     * @param  string $stub
+     * @param string $stub
+     *
      * @return $this
      */
     protected function replaceStubSpecifics(&$stub, $name)
@@ -77,7 +78,7 @@ class ComposerMakeCommand extends GeneratorCommand
      */
     protected function composerNamespace()
     {
-        return ucfirst($this->vendorName()) . '\\\\' . ucfirst($this->packageName()) . '\\\\';
+        return ucfirst($this->vendorName()).'\\\\'.ucfirst($this->packageName()).'\\\\';
     }
 
     /**
@@ -85,7 +86,7 @@ class ComposerMakeCommand extends GeneratorCommand
      */
     protected function composerProviderNamespace()
     {
-        return $this->composerNamespace() . ucfirst($this->packageName()) . 'ServiceProvider';
+        return $this->composerNamespace().ucfirst($this->packageName()).'ServiceProvider';
     }
 
     /**
