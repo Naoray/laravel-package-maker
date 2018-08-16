@@ -154,7 +154,8 @@ class PackageMakeCommand extends Command
     protected function configureCICDService()
     {
         $cicdServices = [
-            'None' => function () {},
+            'None' => function () {
+            },
             'TravicCI' => function () {
                 $this->call('make:package:travis', $this->packageOptions());
             },
@@ -179,15 +180,16 @@ class PackageMakeCommand extends Command
     protected function configureCodeQualityService()
     {
         $codeQualityServices = [
-            'None' => function () {},
+            'None' => function () {
+            },
             'StyleCI' => function () {
                 $this->call('make:package:styleci', $this->packageOptions());
-            }
+            },
         ];
 
         $codeQuality = $this->choice(
             'What Code Quality service you want to configure?',
-            array_keys($codeQualityServices), 
+            array_keys($codeQualityServices),
             0
         );
 
@@ -204,10 +206,11 @@ class PackageMakeCommand extends Command
     protected function configureCodeCoverageService()
     {
         $codeCoverageServices = [
-            'None' => function () {},
+            'None' => function () {
+            },
             'Codecov' => function () {
                 $this->call('make:package:codecov', $this->packageOptions());
-            }
+            },
         ];
 
         $codeCoverage = $this->choice(
