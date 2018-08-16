@@ -155,6 +155,7 @@ trait CreatesPackageStubs
     protected function getOptions()
     {
         return array_merge(
+            parent::getOptions(),
             [
                 ['namespace', 'N', InputOption::VALUE_REQUIRED, 'The namespace in which the file will be created'],
 
