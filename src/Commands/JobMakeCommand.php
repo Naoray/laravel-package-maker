@@ -8,22 +8,22 @@ use Illuminate\Foundation\Console\JobMakeCommand as MakeJob;
 
 class JobMakeCommand extends MakeJob
 {
-	use CreatesPackageStubs, HasNameAttribute;
+    use CreatesPackageStubs, HasNameAttribute;
 
-	/**
-	 * The console command name.
-	 *
-	 * @var string
-	 */
-	protected $name = 'make:package:job';
+    /**
+     * The console command name.
+     *
+     * @var string
+     */
+    protected $name = 'make:package:job';
 
-	/**
-	 * Get the destination class path.
-	 *
-	 * @return string
-	 */
-	protected function resolveDirectory()
-	{
-		return $this->getDirInput() . '/src';
-	}
+    /**
+     * Get the destination class path.
+     *
+     * @return string
+     */
+    protected function resolveDirectory()
+    {
+        return $this->getDirInput().'/src';
+    }
 }
