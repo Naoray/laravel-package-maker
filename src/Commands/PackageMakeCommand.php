@@ -153,15 +153,20 @@ class PackageMakeCommand extends Command
      */
     protected function configureCICDService()
     {
-        $cicd = $this->choice('What CI/CD service you want to configure?', ['TravisCI', 'None'], 'None');
-
-        switch ($cicd) {
-            case 'TravisCI':
+        $cicdServices = [
+            'None' => function () {},
+            'TravicCI' => function () {
                 $this->call('make:package:travis', $this->packageOptions());
-                break;
-            default:
-                break;
-        }
+            },
+        ];
+
+        $cicd = $this->choice(
+            'What CI/CD service you want to configure?',
+            array_keys($cicdServices),
+            0
+        );
+
+        $cicdServices[$cicd]();
     }
 
     /**
@@ -173,15 +178,20 @@ class PackageMakeCommand extends Command
      */
     protected function configureCodeQualityService()
     {
-        $cq = $this->choice('What Code Quality service you want to configure?', ['StyleCI', 'None'], 'None');
-
-        switch ($cq) {
-            case 'StyleCI':
+        $codeQualityServices = [
+            'None' => function () {},
+            'StyleCI' => function () {
                 $this->call('make:package:styleci', $this->packageOptions());
-                break;
-            default:
-                break;
-        }
+            }
+        ];
+
+        $codeQuality = $this->choice(
+            'What Code Quality service you want to configure?',
+            array_keys($codeQualityServices), 
+            0
+        );
+
+        $codeQualityServices[$codeQuality]();
     }
 
     /**
@@ -193,15 +203,20 @@ class PackageMakeCommand extends Command
      */
     protected function configureCodeCoverageService()
     {
-        $cc = $this->choice('What Code Coverage service you want to configure?', ['Codecov', 'None'], 'None');
-
-        switch ($cc) {
-            case 'Codecov':
+        $codeCoverageServices = [
+            'None' => function () {},
+            'Codecov' => function () {
                 $this->call('make:package:codecov', $this->packageOptions());
-                break;
-            default:
-                break;
-        }
+            }
+        ];
+
+        $codeCoverage = $this->choice(
+            'What Code Coverage service you want to configure?',
+            array_keys($codeCoverageServices),
+            0
+        );
+
+        $codeCoverageServices[$codeCoverage]();
     }
 
     /**
