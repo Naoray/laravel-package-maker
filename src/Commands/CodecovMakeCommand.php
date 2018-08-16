@@ -2,7 +2,7 @@
 
 namespace Naoray\LaravelPackageMaker\Commands;
 
-class CodeCovMakeCommand extends GeneratorCommand
+class CodecovMakeCommand extends GeneratorCommand
 {
     /**
      * The console command name.
