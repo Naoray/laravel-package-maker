@@ -20,8 +20,6 @@ class ProviderMakeCommand extends MakeProvider
     /**
      * Get the destination class path.
      *
-     * @param string $name
-     *
      * @return string
      */
     protected function resolveDirectory()

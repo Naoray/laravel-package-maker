@@ -50,8 +50,6 @@ class BaseTestMakeCommand extends GeneratorCommand
     /**
      * Get the destination class path.
      *
-     * @param string $name
-     *
      * @return string
      */
     protected function resolveDirectory()
