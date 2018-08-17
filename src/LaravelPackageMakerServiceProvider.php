@@ -4,23 +4,6 @@ namespace Naoray\LaravelPackageMaker;
 
 use Illuminate\Support\ServiceProvider;
 use Naoray\LaravelPackageMaker\Commands\AddPackage;
-<<<<<<< HEAD
-use Naoray\LaravelPackageMaker\Commands\JobMakeCommand;
-use Naoray\LaravelPackageMaker\Commands\MailMakeCommand;
-use Naoray\LaravelPackageMaker\Commands\TestMakeCommand;
-use Naoray\LaravelPackageMaker\Commands\ReadmeMakeCommand;
-use Naoray\LaravelPackageMaker\Commands\TravisMakeCommand;
-use Naoray\LaravelPackageMaker\Commands\CodecovMakeCommand;
-use Naoray\LaravelPackageMaker\Commands\LicenseMakeCommand;
-use Naoray\LaravelPackageMaker\Commands\PackageMakeCommand;
-use Naoray\LaravelPackageMaker\Commands\PhpunitMakeCommand;
-use Naoray\LaravelPackageMaker\Commands\StyleciMakeCommand;
-use Naoray\LaravelPackageMaker\Commands\BaseTestMakeCommand;
-use Naoray\LaravelPackageMaker\Commands\ComposerMakeCommand;
-use Naoray\LaravelPackageMaker\Commands\ProviderMakeCommand;
-use Naoray\LaravelPackageMaker\Commands\GitignoreMakeCommand;
-use Naoray\LaravelPackageMaker\Commands\ContributionMakeCommand;
-=======
 use Naoray\LaravelPackageMaker\Commands\PackageMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Foundation\JobMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Package\ReadmeMakeCommand;
@@ -43,7 +26,6 @@ use Naoray\LaravelPackageMaker\Commands\Database\MigrationMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Routing\ControllerMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Foundation\ProviderMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Package\ContributionMakeCommand;
->>>>>>> master
 
 class LaravelPackageMakerServiceProvider extends ServiceProvider
 {
