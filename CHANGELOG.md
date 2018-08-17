@@ -1,5 +1,25 @@
 # Change Log
 
+## [v1.1.2](https://github.com/naoray/laravel-package-maker/tree/v1.1.2) (2018-08-17)
+[Full Changelog](https://github.com/naoray/laravel-package-maker/compare/v.1.1.1...v1.1.2)
+
+**Merged pull requests:**
+
+- Apply fixes from StyleCI [\#20](https://github.com/Naoray/laravel-package-maker/pull/20) ([Naoray](https://github.com/Naoray))
+- Apply fixes from StyleCI [\#19](https://github.com/Naoray/laravel-package-maker/pull/19) ([Naoray](https://github.com/Naoray))
+- Apply fixes from StyleCI [\#18](https://github.com/Naoray/laravel-package-maker/pull/18) ([Naoray](https://github.com/Naoray))
+- Apply fixes from StyleCI [\#17](https://github.com/Naoray/laravel-package-maker/pull/17) ([Naoray](https://github.com/Naoray))
+- Apply fixes from StyleCI [\#16](https://github.com/Naoray/laravel-package-maker/pull/16) ([Naoray](https://github.com/Naoray))
+
+## [v.1.1.1](https://github.com/naoray/laravel-package-maker/tree/v.1.1.1) (2018-08-16)
+[Full Changelog](https://github.com/naoray/laravel-package-maker/compare/v1.1...v.1.1.1)
+
+**Merged pull requests:**
+
+- Apply fixes from StyleCI [\#15](https://github.com/Naoray/laravel-package-maker/pull/15) ([Naoray](https://github.com/Naoray))
+- Apply fixes from StyleCI [\#14](https://github.com/Naoray/laravel-package-maker/pull/14) ([Naoray](https://github.com/Naoray))
+- Choices for CI/CD, Code Quality and Code Coverage. [\#13](https://github.com/Naoray/laravel-package-maker/pull/13) ([rennokki](https://github.com/rennokki))
+
 ## [v1.1](https://github.com/naoray/laravel-package-maker/tree/v1.1) (2018-08-15)
 [Full Changelog](https://github.com/naoray/laravel-package-maker/compare/v1.0...v1.1)
 
