@@ -1,29 +1,29 @@
 <?php
 
-namespace Naoray\LaravelPackageMaker\Commands;
+namespace Naoray\LaravelPackageMaker\Commands\Package;
 
-class ReadmeMakeCommand extends GeneratorCommand
+class ContributionMakeCommand extends GeneratorCommand
 {
     /**
      * The console command name.
      *
      * @var string
      */
-    protected $name = 'make:package:readme';
+    protected $name = 'make:package:contribution';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Create a new readme file';
+    protected $description = 'Create a new contribution guide';
 
     /**
      * The type of class being generated.
      *
      * @var string
      */
-    protected $type = 'readme';
+    protected $type = 'contribution';
 
     /**
      * Get the stub file for the generator.
@@ -32,7 +32,7 @@ class ReadmeMakeCommand extends GeneratorCommand
      */
     protected function getStub()
     {
-        return __DIR__.'/stubs/readme.stub';
+        return __DIR__.'/stubs/CONTRIBUTING.stub';
     }
 
     /**
@@ -52,6 +52,6 @@ class ReadmeMakeCommand extends GeneratorCommand
      */
     protected function getNameInput()
     {
-        return 'readme';
+        return 'CONTRIBUTING';
     }
 }

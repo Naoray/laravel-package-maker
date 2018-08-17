@@ -1,29 +1,29 @@
 <?php
 
-namespace Naoray\LaravelPackageMaker\Commands;
+namespace Naoray\LaravelPackageMaker\Commands\Package;
 
-class TravisMakeCommand extends GeneratorCommand
+class GitignoreMakeCommand extends GeneratorCommand
 {
     /**
      * The console command name.
      *
      * @var string
      */
-    protected $name = 'make:package:travis';
+    protected $name = 'make:package:gitignore';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Create a new .travis file';
+    protected $description = 'Create a new .gitignore file';
 
     /**
      * The type of class being generated.
      *
      * @var string
      */
-    protected $type = 'travis';
+    protected $type = 'gitignore';
 
     /**
      * Get the stub file for the generator.
@@ -32,7 +32,7 @@ class TravisMakeCommand extends GeneratorCommand
      */
     protected function getStub()
     {
-        return __DIR__.'/stubs/.travis.stub';
+        return __DIR__.'/stubs/.gitignore.stub';
     }
 
     /**
@@ -42,7 +42,7 @@ class TravisMakeCommand extends GeneratorCommand
      */
     public function getFileType()
     {
-        return '.yml';
+        return '';
     }
 
     /**
@@ -52,6 +52,6 @@ class TravisMakeCommand extends GeneratorCommand
      */
     protected function getNameInput()
     {
-        return '.travis';
+        return '.gitignore';
     }
 }

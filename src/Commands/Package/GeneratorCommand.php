@@ -1,6 +1,6 @@
 <?php
 
-namespace Naoray\LaravelPackageMaker\Commands;
+namespace Naoray\LaravelPackageMaker\Commands\Package;
 
 use Illuminate\Console\GeneratorCommand as Generator;
 use Naoray\LaravelPackageMaker\Traits\CreatesPackageStubs;

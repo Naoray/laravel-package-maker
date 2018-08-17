@@ -1,6 +1,6 @@
 <?php
 
-namespace Naoray\LaravelPackageMaker\Commands;
+namespace Naoray\LaravelPackageMaker\Commands\Foundation;
 
 use Naoray\LaravelPackageMaker\Traits\HasNameAttribute;
 use Naoray\LaravelPackageMaker\Traits\CreatesPackageStubs;
