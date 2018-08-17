@@ -27,7 +27,17 @@ trait CreatesPackageStubs
     {
         $name = str_replace_first($this->rootNamespace(), '', $name);
 
-        return base_path().'/'.$this->resolveDirectory().str_replace('\\', '/', $name).$this->getFileType();
+        return $this->basePath().str_replace('\\', '/', $name).$this->getFileType();
+    }
+
+    /**
+     * Get Packages base Path.
+     * 
+     * @return string
+     */
+    protected function basePath()
+    {
+        return base_path() . '/' . $this->resolveDirectory();
     }
 
     /**
@@ -160,8 +170,6 @@ trait CreatesPackageStubs
                 ['namespace', 'N', InputOption::VALUE_REQUIRED, 'The namespace in which the file will be created'],
 
                 ['dir', 'D', InputOption::VALUE_REQUIRED, 'Directory where the package will be stored'],
-
-                ['force', 'f', InputOption::VALUE_NONE, 'Create the file even if the file already exists.'],
             ],
             $this->additionalOptions()
         );
