@@ -1,6 +1,6 @@
 <?php
 
-namespace Naoray\LaravelPackageMaker\Commands;
+namespace Naoray\LaravelPackageMaker\Commands\Package;
 
 use Symfony\Component\Console\Input\InputOption;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Naoray\LaravelPackageMaker\Commands;
+namespace Naoray\LaravelPackageMaker\Commands\Foundation;
 
 use Symfony\Component\Console\Input\InputOption;
 use Naoray\LaravelPackageMaker\Traits\HasNameAttribute;
