@@ -26,57 +26,57 @@ class MigrationMakeCommand extends MakeMigration
      *
      * @var string
      */
-	protected $signature = null;
+    protected $signature = null;
 
-	/**
-	 * Create a new migration install command instance.
-	 *
-	 * @param  Illuminate\Filesystem\Filesystem  $creator
-	 * @param  \Illuminate\Database\Migrations\MigrationCreator  $creator
-	 * @param  \Illuminate\Support\Composer  $composer
-	 * @return void
-	 */
-	public function __construct(Filesystem $files, MigrationCreator $creator, Composer $composer)
-	{
-		parent::__construct($creator, $composer);
+    /**
+     * Create a new migration install command instance.
+     *
+     * @param  Illuminate\Filesystem\Filesystem  $creator
+     * @param  \Illuminate\Database\Migrations\MigrationCreator  $creator
+     * @param  \Illuminate\Support\Composer  $composer
+     * @return void
+     */
+    public function __construct(Filesystem $files, MigrationCreator $creator, Composer $composer)
+    {
+        parent::__construct($creator, $composer);
 
-		$this->files = $files;
-	}
+        $this->files = $files;
+    }
 
-	/**
-	 * Get migration path (either specified by '--path' option or default location).
-	 *
-	 * @return string
-	 */
-	protected function getMigrationPath()
-	{
-        $path = $this->basePath() . 'database/migrations';
+    /**
+     * Get migration path (either specified by '--path' option or default location).
+     *
+     * @return string
+     */
+    protected function getMigrationPath()
+    {
+        $path = $this->basePath().'database/migrations';
 
-        if (!is_null($targetPath = $this->input->getOption('path'))) {
-            $path = !$this->usingRealPath()
-                ? $this->basePath() . $targetPath
+        if (! is_null($targetPath = $this->input->getOption('path'))) {
+            $path = ! $this->usingRealPath()
+                ? $this->basePath().$targetPath
                 : $targetPath;
         }
 
-		$this->makeDirectory($path . '/some_migration.php');
+        $this->makeDirectory($path.'/some_migration.php');
 
-		return $path;
-	}
+        return $path;
+    }
 
-	/**
-	 * Build the directory for the class if necessary.
-	 *
-	 * @param  string  $path
-	 * @return string
-	 */
-	protected function makeDirectory($path)
-	{
-		if (!$this->files->isDirectory(dirname($path))) {
-			$this->files->makeDirectory(dirname($path), 0777, true, true);
-		}
+    /**
+     * Build the directory for the class if necessary.
+     *
+     * @param  string  $path
+     * @return string
+     */
+    protected function makeDirectory($path)
+    {
+        if (! $this->files->isDirectory(dirname($path))) {
+            $this->files->makeDirectory(dirname($path), 0777, true, true);
+        }
 
-		return $path;
-	}
+        return $path;
+    }
 
     /**
      * Adds additional options to the command.
