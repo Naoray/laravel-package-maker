@@ -1,29 +1,29 @@
 <?php
 
-namespace Naoray\LaravelPackageMaker\Commands;
+namespace Naoray\LaravelPackageMaker\Commands\Package;
 
-class ContributionMakeCommand extends GeneratorCommand
+class TravisMakeCommand extends GeneratorCommand
 {
     /**
      * The console command name.
      *
      * @var string
      */
-    protected $name = 'make:package:contribution';
+    protected $name = 'make:package:travis';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Create a new contribution guide';
+    protected $description = 'Create a new .travis file';
 
     /**
      * The type of class being generated.
      *
      * @var string
      */
-    protected $type = 'contribution';
+    protected $type = 'travis';
 
     /**
      * Get the stub file for the generator.
@@ -32,7 +32,7 @@ class ContributionMakeCommand extends GeneratorCommand
      */
     protected function getStub()
     {
-        return __DIR__.'/stubs/CONTRIBUTING.stub';
+        return __DIR__.'/stubs/.travis.stub';
     }
 
     /**
@@ -42,7 +42,7 @@ class ContributionMakeCommand extends GeneratorCommand
      */
     public function getFileType()
     {
-        return '.md';
+        return '.yml';
     }
 
     /**
@@ -52,6 +52,6 @@ class ContributionMakeCommand extends GeneratorCommand
      */
     protected function getNameInput()
     {
-        return 'CONTRIBUTING';
+        return '.travis';
     }
 }
