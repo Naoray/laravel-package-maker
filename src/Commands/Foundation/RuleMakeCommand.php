@@ -10,20 +10,20 @@ class RuleMakeCommand extends MakeRule
 {
     use CreatesPackageStubs, HasNameAttribute;
 
-	/**
-	 * The console command name.
-	 *
-	 * @var string
-	 */
-	protected $name = 'make:package:rule';
+    /**
+     * The console command name.
+     *
+     * @var string
+     */
+    protected $name = 'make:package:rule';
 
-	/**
-	 * Get the destination class path.
-	 *
-	 * @return string
-	 */
-	protected function resolveDirectory()
-	{
-		return $this->getDirInput() . '/src';
-	}
+    /**
+     * Get the destination class path.
+     *
+     * @return string
+     */
+    protected function resolveDirectory()
+    {
+        return $this->getDirInput().'/src';
+    }
 }
