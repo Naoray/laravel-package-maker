@@ -20,16 +20,17 @@ use Naoray\LaravelPackageMaker\Commands\Package\StyleciMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Package\PhpunitMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Package\BaseTestMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Foundation\EventMakeCommand;
-use Naoray\LaravelPackageMaker\Commands\Database\FactoryMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Foundation\ModelMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Package\ComposerMakeCommand;
+use Naoray\LaravelPackageMaker\Commands\Database\FactoryMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Foundation\PolicyMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Package\GitignoreMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Routing\ControllerMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Foundation\ConsoleMakeCommand;
-use Naoray\LaravelPackageMaker\Commands\Foundation\RequestMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Foundation\ChannelMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Database\MigrationMakeCommand;
+use Naoray\LaravelPackageMaker\Commands\Routing\MiddlewareMakeCommand;
+use Naoray\LaravelPackageMaker\Commands\Foundation\RequestMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Foundation\ProviderMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Foundation\ListenerMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Foundation\ObserverMakeCommand;
@@ -140,6 +141,7 @@ class LaravelPackageMakerServiceProvider extends ServiceProvider
     {
         return [
             ControllerMakeCommand::class,
+            MiddlewareMakeCommand::class,
         ];
     }
 }
