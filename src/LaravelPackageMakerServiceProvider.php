@@ -28,6 +28,7 @@ use Naoray\LaravelPackageMaker\Commands\Database\MigrationMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Routing\ControllerMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Foundation\ProviderMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Package\ContributionMakeCommand;
+use Naoray\LaravelPackageMaker\Commands\Foundation\ConsoleMakeCommand;
 
 class LaravelPackageMakerServiceProvider extends ServiceProvider
 {
@@ -92,6 +93,7 @@ class LaravelPackageMakerServiceProvider extends ServiceProvider
             EventMakeCommand::class,
             ModelMakeCommand::class,
             PolicyMakeCommand::class,
+            ConsoleMakeCommand::class,
             ProviderMakeCommand::class,
         ];
     }
