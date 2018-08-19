@@ -27,11 +27,12 @@ use Naoray\LaravelPackageMaker\Commands\Package\GitignoreMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Foundation\PolicyMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Routing\ControllerMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Foundation\ConsoleMakeCommand;
-use Naoray\LaravelPackageMaker\Commands\Foundation\ChannelMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Foundation\RequestMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Database\MigrationMakeCommand;
+use Naoray\LaravelPackageMaker\Commands\Foundation\ChannelMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Foundation\ProviderMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Foundation\ListenerMakeCommand;
+use Naoray\LaravelPackageMaker\Commands\Foundation\ObserverMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Package\ContributionMakeCommand;
 
 class LaravelPackageMakerServiceProvider extends ServiceProvider
@@ -103,6 +104,7 @@ class LaravelPackageMakerServiceProvider extends ServiceProvider
             ChannelMakeCommand::class,
             ProviderMakeCommand::class,
             ListenerMakeCommand::class,
+            ObserverMakeCommand::class,
         ];
     }
 
