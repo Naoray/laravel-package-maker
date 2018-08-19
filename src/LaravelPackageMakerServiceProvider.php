@@ -23,16 +23,17 @@ use Naoray\LaravelPackageMaker\Commands\Foundation\EventMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Database\FactoryMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Foundation\ModelMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Package\ComposerMakeCommand;
-use Naoray\LaravelPackageMaker\Commands\Package\GitignoreMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Foundation\PolicyMakeCommand;
+use Naoray\LaravelPackageMaker\Commands\Package\GitignoreMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Routing\ControllerMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Foundation\ConsoleMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Foundation\RequestMakeCommand;
-use Naoray\LaravelPackageMaker\Commands\Database\MigrationMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Foundation\ChannelMakeCommand;
+use Naoray\LaravelPackageMaker\Commands\Database\MigrationMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Foundation\ProviderMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Foundation\ListenerMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Foundation\ObserverMakeCommand;
+use Naoray\LaravelPackageMaker\Commands\Foundation\ResourceMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Package\ContributionMakeCommand;
 
 class LaravelPackageMakerServiceProvider extends ServiceProvider
@@ -105,6 +106,7 @@ class LaravelPackageMakerServiceProvider extends ServiceProvider
             ProviderMakeCommand::class,
             ListenerMakeCommand::class,
             ObserverMakeCommand::class,
+            ResourceMakeCommand::class,
         ];
     }
 
