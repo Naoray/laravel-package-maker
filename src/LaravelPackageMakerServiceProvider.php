@@ -5,7 +5,7 @@ namespace Naoray\LaravelPackageMaker;
 use Illuminate\Support\ServiceProvider;
 use Naoray\LaravelPackageMaker\Commands\AddPackage;
 use Naoray\LaravelPackageMaker\Commands\PackageMakeCommand;
-use Naoray\LaravelPackageMaker\Commands\SetPackageCredentials;
+use Naoray\LaravelPackageMaker\Commands\SavePackageCredentials;
 use Naoray\LaravelPackageMaker\Commands\DeletePackageCredentials;
 use Naoray\LaravelPackageMaker\Commands\Package\TravisMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Package\ReadmeMakeCommand;
@@ -59,7 +59,7 @@ class LaravelPackageMakerServiceProvider extends ServiceProvider
         return [
             AddPackage::class,
             PackageMakeCommand::class,
-            SetPackageCredentials::class,
+            SavePackageCredentials::class,
             DeletePackageCredentials::class,
         ];
     }

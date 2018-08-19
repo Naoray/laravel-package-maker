@@ -4,7 +4,7 @@ namespace Naoray\LaravelPackageMaker\Commands;
 
 use Illuminate\Console\Command;
 
-class SetPackageCredentials extends Command
+class SavePackageCredentials extends Command
 {
 	/**
 	 * The name and signature of the console command.
