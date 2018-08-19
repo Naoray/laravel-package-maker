@@ -101,7 +101,7 @@ trait CreatesPackageStubs
      */
     protected function vendorName()
     {
-        return str_before($this->getNamespaceInput(), '\\');
+        return lcfirst(str_before($this->getNamespaceInput(), '\\'));
     }
 
     /**
@@ -111,7 +111,7 @@ trait CreatesPackageStubs
      */
     protected function packageName()
     {
-        return str_after($this->getNamespaceInput(), '\\');
+        return lcfirst(str_after($this->getNamespaceInput(), '\\'));
     }
 
     /**
