@@ -121,7 +121,11 @@ trait CreatesPackageStubs
      */
     protected function getNamespaceInput()
     {
-        $namespace = trim($this->option('namespace'));
+        $namespace = cache()->get('package:namespace') ?? trim($this->option('namespace'));
+
+        if (!$namespace) {
+            $namespace = $this->ask('What is the namespace of your package?');
+        }
 
         if (str_contains($namespace, '\\')) {
             return $namespace;
@@ -142,9 +146,14 @@ trait CreatesPackageStubs
      */
     protected function getDirInput()
     {
-        return trim(
-            ends_with($this->option('dir'), '/') ? $this->option('dir') : $this->option('dir').'/'
-        );
+        $dir = cache()->get('package:path') ?? trim($this->option('dir'));
+
+        if (!$dir) {
+            $dir = $this->ask('Where is your package stored (relative path)?');
+        }
+
+
+        return ends_with($dir, '/') ? $dir : $dir.'/';
     }
 
     /**
