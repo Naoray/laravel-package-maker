@@ -32,12 +32,12 @@ trait CreatesPackageStubs
 
     /**
      * Get Packages base Path.
-     * 
+     *
      * @return string
      */
     protected function basePath()
     {
-        return base_path() . '/' . $this->resolveDirectory();
+        return base_path().'/'.$this->resolveDirectory();
     }
 
     /**

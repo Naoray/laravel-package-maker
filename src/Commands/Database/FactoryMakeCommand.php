@@ -24,6 +24,6 @@ class FactoryMakeCommand extends MakeFactory
      */
     protected function resolveDirectory()
     {
-        return $this->getDirInput() . '/database/factories/';
+        return $this->getDirInput().'/database/factories/';
     }
 }
