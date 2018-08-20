@@ -1,50 +1,125 @@
 # laravel-package-maker
 
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
-[![Travis](https://img.shields.io/travis/naoray/laravel-package-maker.svg?style=flat-square)]()
 [![Total Downloads](https://img.shields.io/packagist/dt/naoray/laravel-package-maker.svg?style=flat-square)](https://packagist.org/packages/naoray/laravel-package-maker)
 
-Developing packages with laravel is easy, but the process of creating the project folders, initializing composer, readme
-contribution guide, ... You get the point. This Package comes with two useful commands to create/use packages locally and serves as a quick package stub generator. With only one command you can create a new package with
-- Ready to use Composer file
-- License file (currently only MIT)
-- Contribution guidelines
-- .travis.yml
-- phpunit.xml
-- .styleci.yml
-- .gitignore
-- tests folder
-- base TestCase Class using Orchestra Testbench
-- Service Provider
+I hate creating new controllers, middlewares, ... by copy & paste. Wouldn't it be cool to have all the `make` commands you use in your daily Laravel app development workflow also for developing new packages? This package was created solely for the purpose to make package development as fast and easy as possible. Creating a new package only takes one command (`make:package`) and you will end up with the following file structure:
 
-... and your newly created package gets directly pulled in your project via composer repositories.
-
+```bash
+.
+└── package
+    ├── composer.json
+    ├── CONTRIBUTING.md
+    ├── .gitignore
+    ├── LICENSE.md
+    ├── phpunit.xml
+    ├── readme.md
+    ├── src
+    │   └── PackageServiceProvider.php
+    ├── .styleci.yml (optional)
+    └── tests
+        └── TestCase.php
 ```
-php artisan make:package
-```
-
-![make:package command](https://user-images.githubusercontent.com/10154100/43901805-b14e9e02-9be8-11e8-9617-6999509fb0d5.png)
 
 ## Install
 `composer require naoray/laravel-package-maker --dev`
 
 ## Usage
-### Creating a new package
-*To see all arguments/options available for make:package just type `php artisan package:make -h`*
+### Package Internals
+#### Creating a new package
 ```
 php artisan make:package
 ```
 
-![make:package command](https://user-images.githubusercontent.com/10154100/43901805-b14e9e02-9be8-11e8-9617-6999509fb0d5.png)
+![make:package](https://user-images.githubusercontent.com/10154100/44323501-89bdf000-a452-11e8-8fc4-3ec5c451c30a.gif)
 
-### Adding a package
-If you have already created a package or you want to add a modified version of a package which is currently only available locally, you can use the following command to add you package to your project.
+After calling `make:package` you will end up with the following files:
 
+```bash
+.
+└── package
+    ├── composer.json
+    ├── CONTRIBUTING.md
+    ├── .gitignore
+    ├── LICENSE.md
+    ├── phpunit.xml
+    ├── readme.md
+    ├── src
+    │   └── PackageServiceProvider.php
+    ├── .styleci.yml (optional)
+    └── tests
+        └── TestCase.php
+```
+
+#### Adding a package
 ```
 php artisan package:add
 ```
+If you have already created a package or you want to add a modified version of a package which is currently only available locally, you can use the following command to add you package to your project. It does simply add your package to your project`s composer repositories and requires a local version of it.
 
-![package:add command](https://user-images.githubusercontent.com/10154100/43901825-bc2fb91e-9be8-11e8-9142-c44558c9303c.png)
+**This command is run by `make:package` automatically, so you have no need to execute it after creating a package!**
+
+#### Saving package credentials
+```
+php artisan package:save
+				{namespace : Root namespace of the package (Vendor\Package_name)}
+				{path : Relative path to the package's directory}
+```
+Every `make:package:*` command needs to know the package`s *namespace* and the relative *path* to the location your package is stored. Because of that every `make:package:*` command comes with those two options by default. To avoid entering those two options every time a `make:package:*` command executed this command saves the credentials of your package in the cache.
+
+#### Delete package credentials
+```
+php artisan package:delete
+```
+This one wipes all stored credentials from your cache.
+
+#### Commands used for creating initial package stubs
+- `make:package:basetest {provider : The package's provider name}` - creates `TestCase` in `tests` folder
+- `make:package:codecov` - creates a `.codecov.yml` file
+- `make:package:composer {author : The author of the package.} {email : The author's email.}` - creates `composer.json`
+- `make:package:contribution` - creates `CONTRIBUTING.md`
+- `make:package:gitignore` - creates `.gitignore` file
+- `make:package:license {--copyright : The company or vendor name to place it int the license file}` - creates `LICENSE.md` file
+- `make:package:phpunit` - creates `phpunit.xml`
+- `make:package:readme` - creates `readme.md`
+- `make:package:styleci` - creates `.styleci.yml`
+- `make:package:travis` - creates `.travis.yml`
+
+### Commands you already know
+*Use a few `make` commands*
+![make:package:*](https://user-images.githubusercontent.com/10154100/44323506-8cb8e080-a452-11e8-9f7c-fb07462c9b96.gif)
+
+*All arguments & options you know from the standard `make` commands are available. Create a model with all option.*
+![make:package:model --all](https://user-images.githubusercontent.com/10154100/44323509-8f1b3a80-a452-11e8-9a98-1ecaa96b1ae6.gif)
+
+All of these commands do have all arguments & options to which you are used to in a normal laravel app! To execute any of these commands simply add the prefix `make:package:`.
+
+#### Foundation
+- `channel`
+- `console`
+- `event`
+- `exception`
+- `job`
+- `listener`
+- `mail`
+- `model`
+- `notification`
+- `observer`
+- `policy`
+- `provider`
+- `request`
+- `resource`
+- `rule`
+- `test`
+
+#### Database
+- `factory`
+- `migration`
+- `seeder`
+
+#### Routing
+- `controller`
+- `middleware`
 
 ## Testing
 Run the tests with:
