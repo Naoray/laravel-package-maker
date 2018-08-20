@@ -1,6 +1,6 @@
 {
     "name": "naoray/laravel-package-maker",
-    "description": "A description for laravel-package-maker.",
+    "description": "Get a package skeleton and all other `make` commands from laravel base for package development.",
     "type": "package",
     "license": "MIT",
     "keywords": [

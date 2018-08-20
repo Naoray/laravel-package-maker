@@ -1,6 +1,6 @@
 <?php
 
-namespace Naoray\LaravelPackageMaker\Commands;
+namespace Naoray\LaravelPackageMaker\Commands\Foundation;
 
 use Symfony\Component\Console\Input\InputOption;
 use Naoray\LaravelPackageMaker\Traits\HasNameAttribute;
@@ -51,8 +51,6 @@ class TestMakeCommand extends MakeTest
 
     /**
      * Get the destination class path.
-     *
-     * @param string $name
      *
      * @return string
      */

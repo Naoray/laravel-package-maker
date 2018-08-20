@@ -1,6 +1,6 @@
 <?php
 
-namespace Naoray\LaravelPackageMaker\Commands;
+namespace Naoray\LaravelPackageMaker\Commands\Package;
 
 use Symfony\Component\Console\Input\InputArgument;
 
@@ -49,8 +49,6 @@ class BaseTestMakeCommand extends GeneratorCommand
 
     /**
      * Get the destination class path.
-     *
-     * @param string $name
      *
      * @return string
      */

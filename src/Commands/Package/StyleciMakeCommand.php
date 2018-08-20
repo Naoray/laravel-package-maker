@@ -1,29 +1,29 @@
 <?php
 
-namespace Naoray\LaravelPackageMaker\Commands;
+namespace Naoray\LaravelPackageMaker\Commands\Package;
 
-class PhpunitMakeCommand extends GeneratorCommand
+class StyleciMakeCommand extends GeneratorCommand
 {
     /**
      * The console command name.
      *
      * @var string
      */
-    protected $name = 'make:package:phpunit';
+    protected $name = 'make:package:styleci';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Create a new phpunit file';
+    protected $description = 'Create a new .styleci file';
 
     /**
      * The type of class being generated.
      *
      * @var string
      */
-    protected $type = 'phpunit';
+    protected $type = 'styleci';
 
     /**
      * Get the stub file for the generator.
@@ -32,7 +32,7 @@ class PhpunitMakeCommand extends GeneratorCommand
      */
     protected function getStub()
     {
-        return __DIR__.'/stubs/phpunit.stub';
+        return __DIR__.'/stubs/.styleci.stub';
     }
 
     /**
@@ -42,7 +42,7 @@ class PhpunitMakeCommand extends GeneratorCommand
      */
     public function getFileType()
     {
-        return '.xml';
+        return '.yml';
     }
 
     /**
@@ -52,6 +52,6 @@ class PhpunitMakeCommand extends GeneratorCommand
      */
     protected function getNameInput()
     {
-        return 'phpunit';
+        return '.styleci';
     }
 }

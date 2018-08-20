@@ -1,29 +1,29 @@
 <?php
 
-namespace Naoray\LaravelPackageMaker\Commands;
+namespace Naoray\LaravelPackageMaker\Commands\Package;
 
-class StyleciMakeCommand extends GeneratorCommand
+class CodecovMakeCommand extends GeneratorCommand
 {
     /**
      * The console command name.
      *
      * @var string
      */
-    protected $name = 'make:package:styleci';
+    protected $name = 'make:package:codecov';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Create a new .styleci file';
+    protected $description = 'Create a new codecov file.';
 
     /**
      * The type of class being generated.
      *
      * @var string
      */
-    protected $type = 'styleci';
+    protected $type = 'codecov';
 
     /**
      * Get the stub file for the generator.
@@ -32,7 +32,7 @@ class StyleciMakeCommand extends GeneratorCommand
      */
     protected function getStub()
     {
-        return __DIR__.'/stubs/.styleci.stub';
+        return __DIR__.'/stubs/.codecov.stub';
     }
 
     /**
@@ -52,6 +52,6 @@ class StyleciMakeCommand extends GeneratorCommand
      */
     protected function getNameInput()
     {
-        return '.styleci';
+        return '.codecov';
     }
 }

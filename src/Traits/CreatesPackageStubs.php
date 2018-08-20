@@ -27,7 +27,17 @@ trait CreatesPackageStubs
     {
         $name = str_replace_first($this->rootNamespace(), '', $name);
 
-        return base_path().'/'.$this->resolveDirectory().str_replace('\\', '/', $name).$this->getFileType();
+        return $this->basePath().str_replace('\\', '/', $name).$this->getFileType();
+    }
+
+    /**
+     * Get Packages base Path.
+     *
+     * @return string
+     */
+    protected function basePath()
+    {
+        return base_path().'/'.$this->resolveDirectory();
     }
 
     /**
@@ -91,7 +101,7 @@ trait CreatesPackageStubs
      */
     protected function vendorName()
     {
-        return str_before($this->getNamespaceInput(), '\\');
+        return lcfirst(str_before($this->getNamespaceInput(), '\\'));
     }
 
     /**
@@ -101,7 +111,7 @@ trait CreatesPackageStubs
      */
     protected function packageName()
     {
-        return str_after($this->getNamespaceInput(), '\\');
+        return lcfirst(str_after($this->getNamespaceInput(), '\\'));
     }
 
     /**
@@ -112,6 +122,10 @@ trait CreatesPackageStubs
     protected function getNamespaceInput()
     {
         $namespace = trim($this->option('namespace'));
+
+        if (! $namespace && ! $namespace = cache()->get('package:namespace')) {
+            $namespace = $this->ask('What is the namespace of your package?');
+        }
 
         if (str_contains($namespace, '\\')) {
             return $namespace;
@@ -132,9 +146,13 @@ trait CreatesPackageStubs
      */
     protected function getDirInput()
     {
-        return trim(
-            ends_with($this->option('dir'), '/') ? $this->option('dir') : $this->option('dir').'/'
-        );
+        $dir = trim($this->option('dir'));
+
+        if (! $dir && ! $dir = cache()->get('package:path')) {
+            $dir = $this->ask('Where is your package stored (relative path)?');
+        }
+
+        return ends_with($dir, '/') ? $dir : $dir.'/';
     }
 
     /**
@@ -155,12 +173,11 @@ trait CreatesPackageStubs
     protected function getOptions()
     {
         return array_merge(
+            parent::getOptions(),
             [
                 ['namespace', 'N', InputOption::VALUE_REQUIRED, 'The namespace in which the file will be created'],
 
                 ['dir', 'D', InputOption::VALUE_REQUIRED, 'Directory where the package will be stored'],
-
-                ['force', 'f', InputOption::VALUE_NONE, 'Create the file even if the file already exists.'],
             ],
             $this->additionalOptions()
         );

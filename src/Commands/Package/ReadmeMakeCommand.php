@@ -1,29 +1,29 @@
 <?php
 
-namespace Naoray\LaravelPackageMaker\Commands;
+namespace Naoray\LaravelPackageMaker\Commands\Package;
 
-class TravisMakeCommand extends GeneratorCommand
+class ReadmeMakeCommand extends GeneratorCommand
 {
     /**
      * The console command name.
      *
      * @var string
      */
-    protected $name = 'make:package:travis';
+    protected $name = 'make:package:readme';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Create a new .travis file';
+    protected $description = 'Create a new readme file';
 
     /**
      * The type of class being generated.
      *
      * @var string
      */
-    protected $type = 'travis';
+    protected $type = 'readme';
 
     /**
      * Get the stub file for the generator.
@@ -32,7 +32,7 @@ class TravisMakeCommand extends GeneratorCommand
      */
     protected function getStub()
     {
-        return __DIR__.'/stubs/.travis.stub';
+        return __DIR__.'/stubs/readme.stub';
     }
 
     /**
@@ -42,7 +42,7 @@ class TravisMakeCommand extends GeneratorCommand
      */
     public function getFileType()
     {
-        return '.yml';
+        return '.md';
     }
 
     /**
@@ -52,6 +52,6 @@ class TravisMakeCommand extends GeneratorCommand
      */
     protected function getNameInput()
     {
-        return '.travis';
+        return 'readme';
     }
 }
