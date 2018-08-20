@@ -28,15 +28,15 @@ I hate creating new controllers, middlewares, ... by copy & paste. Wouldn't it b
 
 ## Usage
 - [Package Internals](#internals)
- + [Create a package](#internals-create)
- + [Add a package](#internals-add)
- + [Save package credentials](#internals-save)
- + [Delete package credentials](#internals-delete)
- + [Commands used for creating initial package stubs](#internals-stubs)
+    + [Create a package](#internals-create)
+    + [Add a package](#internals-add)
+    + [Save package credentials](#internals-save)
+	+ [Delete package credentials](#internals-delete)
+	+ [Commands used for creating initial package stubs](#internals-stubs)
 - [Commands you already know](make-commands)
- + [Foundation](make-commands-foundation)
- + [Database](make-commands-database)
- + [Routing](make-commands-routing)
+	+ [Foundation](make-commands-foundation)
+	+ [Database](make-commands-database)
+	+ [Routing](make-commands-routing)
 
 <a name="internals"/>
 
