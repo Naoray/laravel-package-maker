@@ -37,6 +37,7 @@ I hate creating new controllers, middlewares, ... by copy & paste. Wouldn't it b
 	+ [Foundation](#make-commands-foundation)
 	+ [Database](#make-commands-database)
 	+ [Routing](#make-commands-routing)
+	+ [Examples](#make-commands-examples)
 
 <a name="internals"/>
 
@@ -96,12 +97,6 @@ This one wipes all stored credentials from your cache.
 <a name="make-commands"/>
 
 ### Commands you already know
-*Use a few `make` commands*
-![make:package:*](https://user-images.githubusercontent.com/10154100/44323506-8cb8e080-a452-11e8-9f7c-fb07462c9b96.gif)
-
-*All arguments & options you know from the standard `make` commands are available. Create a model with all option.*
-![make:package:model --all](https://user-images.githubusercontent.com/10154100/44323509-8f1b3a80-a452-11e8-9a98-1ecaa96b1ae6.gif)
-
 All of these commands do have all arguments & options to which you are used to in a normal laravel app! To execute any of these commands simply add the prefix `make:package:`.
 
 <a name="make-commands-foundation"/>
@@ -136,6 +131,15 @@ All of these commands do have all arguments & options to which you are used to i
 #### Routing
 - `controller`
 - `middleware`
+
+<a name="make-commands-examples"/>
+
+#### Examples
+*Use a few `make` commands*
+![make:package:*](https://user-images.githubusercontent.com/10154100/44323506-8cb8e080-a452-11e8-9f7c-fb07462c9b96.gif)
+
+*All arguments & options you know from the standard `make` commands are available. Create a model with all option.*
+![make:package:model --all](https://user-images.githubusercontent.com/10154100/44323509-8f1b3a80-a452-11e8-9a98-1ecaa96b1ae6.gif)
 
 ## Testing
 Run the tests with:
