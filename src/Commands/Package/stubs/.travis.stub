@@ -16,4 +16,4 @@ install:
   - travis_retry composer update ${COMPOSER_OPTIONS} --prefer-source
 
 script:
-  - phpunit --coverage-text --coverage-clover=coverage.xml
+  - phpunit
