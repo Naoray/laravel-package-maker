@@ -72,7 +72,7 @@ class ModelMakeCommand extends MakeModel
 
         $modelName = $this->qualifyClass($this->getNameInput());
 
-        $this->call('make:packae:controller', [
+        $this->call('make:package:controller', [
             'name' => "{$controller}Controller",
             '--model' => $this->option('resource') ? $modelName : null,
             '--namespace' => $this->rootNamespace(),
