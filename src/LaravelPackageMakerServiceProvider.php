@@ -36,6 +36,7 @@ use Naoray\LaravelPackageMaker\Commands\Foundation\ObserverMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Foundation\ResourceMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Foundation\ProviderMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Package\ContributionMakeCommand;
+use Naoray\LaravelPackageMaker\Commands\Foundation\ExceptionMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Foundation\NotificationMakeCommand;
 
 class LaravelPackageMakerServiceProvider extends ServiceProvider
@@ -109,6 +110,7 @@ class LaravelPackageMakerServiceProvider extends ServiceProvider
             ListenerMakeCommand::class,
             ObserverMakeCommand::class,
             ResourceMakeCommand::class,
+            ExceptionMakeCommand::class,
             NotificationMakeCommand::class,
         ];
     }
