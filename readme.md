@@ -27,15 +27,33 @@ I hate creating new controllers, middlewares, ... by copy & paste. Wouldn't it b
 `composer require naoray/laravel-package-maker --dev`
 
 ## Usage
+- [Package Internals](#internals)
+ + [Create a package](#internals-create)
+ + [Add a package](#internals-add)
+ + [Save package credentials](#internals-save)
+ + [Delete package credentials](#internals-delete)
+ + [Commands used for creating initial package stubs](#internals-stubs)
+- [Commands you already know](make-commands)
+ + [Foundation](make-commands-foundation)
+ + [Database](make-commands-database)
+ + [Routing](make-commands-routing)
+
+<a name="internals"/>
+
 ### Package Internals
-#### Creating a new package
+
+<a name="internals-create"/>
+
+#### Create a package
 ```
 php artisan make:package
 ```
 
 ![make:package](https://user-images.githubusercontent.com/10154100/44323501-89bdf000-a452-11e8-8fc4-3ec5c451c30a.gif)
 
-#### Adding a package
+<a name="internals-add"/>
+
+#### Add a package
 ```
 php artisan package:add
 ```
@@ -43,7 +61,9 @@ If you have already created a package or you want to add a modified version of a
 
 **This command is run by `make:package` automatically, so you have no need to execute it after creating a package!**
 
-#### Saving package credentials
+<a name="internals-save"/>
+
+#### Save package credentials
 ```
 php artisan package:save
 				{namespace : Root namespace of the package (Vendor\Package_name)}
@@ -51,11 +71,15 @@ php artisan package:save
 ```
 Every `make:package:*` command needs to know the package's *namespace* and the relative *path* to the location your package is stored. Because of that every `make:package:*` command comes with those two options by default. To avoid entering those two options every time a `make:package:*` command executed this command saves the credentials of your package in the cache.
 
+<a name="internals-delete"/>
+
 #### Delete package credentials
 ```
 php artisan package:delete
 ```
 This one wipes all stored credentials from your cache.
+
+<a name="internals-stubs"/>
 
 #### Commands used for creating initial package stubs
 - `make:package:basetest {provider : The package's provider name}` - creates `TestCase` in `tests` folder
@@ -69,6 +93,8 @@ This one wipes all stored credentials from your cache.
 - `make:package:styleci` - creates `.styleci.yml`
 - `make:package:travis` - creates `.travis.yml`
 
+<a name="make-commands"/>
+
 ### Commands you already know
 *Use a few `make` commands*
 ![make:package:*](https://user-images.githubusercontent.com/10154100/44323506-8cb8e080-a452-11e8-9f7c-fb07462c9b96.gif)
@@ -77,6 +103,8 @@ This one wipes all stored credentials from your cache.
 ![make:package:model --all](https://user-images.githubusercontent.com/10154100/44323509-8f1b3a80-a452-11e8-9a98-1ecaa96b1ae6.gif)
 
 All of these commands do have all arguments & options to which you are used to in a normal laravel app! To execute any of these commands simply add the prefix `make:package:`.
+
+<a name="make-commands-foundation"/>
 
 #### Foundation
 - `channel`
@@ -96,10 +124,14 @@ All of these commands do have all arguments & options to which you are used to i
 - `rule`
 - `test`
 
+<a name="make-commands-database"/>
+
 #### Database
 - `factory`
 - `migration`
 - `seeder`
+
+<a name="make-commands-routing"/>
 
 #### Routing
 - `controller`
