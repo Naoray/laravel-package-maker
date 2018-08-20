@@ -118,7 +118,7 @@ class PackageMakeCommand extends Command
 
         $this->call('package:save', [
             'namespace' => $this->rootNamespace(),
-            'path' => $this->dir.$this->packageName
+            'path' => $this->dir.$this->packageName,
         ]);
 
         $this->callSilent('package:add', [

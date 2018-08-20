@@ -123,7 +123,7 @@ trait CreatesPackageStubs
     {
         $namespace = trim($this->option('namespace'));
 
-        if (!$namespace && ! $namespace = cache()->get('package:namespace')) {
+        if (! $namespace && ! $namespace = cache()->get('package:namespace')) {
             $namespace = $this->ask('What is the namespace of your package?');
         }
 
@@ -148,7 +148,7 @@ trait CreatesPackageStubs
     {
         $dir = trim($this->option('dir'));
 
-        if (!$dir && ! $dir = cache()->get('package:path')) {
+        if (! $dir && ! $dir = cache()->get('package:path')) {
             $dir = $this->ask('Where is your package stored (relative path)?');
         }
 

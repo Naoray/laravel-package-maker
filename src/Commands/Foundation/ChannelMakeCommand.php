@@ -24,6 +24,6 @@ class ChannelMakeCommand extends MakeChannel
      */
     protected function resolveDirectory()
     {
-        return $this->getDirInput() . '/src';
+        return $this->getDirInput().'/src';
     }
 }
