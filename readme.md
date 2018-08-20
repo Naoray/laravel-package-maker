@@ -27,25 +27,20 @@ I hate creating new controllers, middlewares, ... by copy & paste. Wouldn't it b
 `composer require naoray/laravel-package-maker --dev`
 
 ## Usage
-- [Package Internals](#internals)
-    + [Create a package](#internals-create)
-    + [Add a package](#internals-add)
-    + [Save package credentials](#internals-save)
-	+ [Delete package credentials](#internals-delete)
-	+ [Commands used for creating initial package stubs](#internals-stubs)
-- [Commands you already know](#make-commands)
+- [Create a package](#internals-create)
+- [Add a package](#internals-add)
+- [Save package credentials](#internals-save)
+- [Delete package credentials](#internals-delete)
+- [Make Commands](#make-commands)
 	+ [Foundation](#make-commands-foundation)
 	+ [Database](#make-commands-database)
 	+ [Routing](#make-commands-routing)
-	+ [Examples](#make-commands-examples)
-
-<a name="internals"/>
-
-### Package Internals
+- [Other Commands](#internals-stubs)
+- [Example Usage](#make-commands-example-usage)
 
 <a name="internals-create"/>
 
-#### Create a package
+### Create a package
 ```
 php artisan make:package
 ```
@@ -54,7 +49,7 @@ php artisan make:package
 
 <a name="internals-add"/>
 
-#### Add a package
+### Add a package
 ```
 php artisan package:add
 ```
@@ -64,7 +59,7 @@ If you have already created a package or you want to add a modified version of a
 
 <a name="internals-save"/>
 
-#### Save package credentials
+### Save package credentials
 ```
 php artisan package:save
 				{namespace : Root namespace of the package (Vendor\Package_name)}
@@ -74,29 +69,17 @@ Every `make:package:*` command needs to know the package's *namespace* and the r
 
 <a name="internals-delete"/>
 
-#### Delete package credentials
+### Delete package credentials
 ```
 php artisan package:delete
 ```
 This one wipes all stored credentials from your cache.
 
-<a name="internals-stubs"/>
 
-#### Commands used for creating initial package stubs
-- `make:package:basetest {provider : The package's provider name}` - creates `TestCase` in `tests` folder
-- `make:package:codecov` - creates a `.codecov.yml` file
-- `make:package:composer {author : The author of the package.} {email : The author's email.}` - creates `composer.json`
-- `make:package:contribution` - creates `CONTRIBUTING.md`
-- `make:package:gitignore` - creates `.gitignore` file
-- `make:package:license {--copyright : The company or vendor name to place it int the license file}` - creates `LICENSE.md` file
-- `make:package:phpunit` - creates `phpunit.xml`
-- `make:package:readme` - creates `readme.md`
-- `make:package:styleci` - creates `.styleci.yml`
-- `make:package:travis` - creates `.travis.yml`
 
 <a name="make-commands"/>
 
-### Commands you already know
+### Make:Package Commands
 All of these commands do have all arguments & options to which you are used to in a normal laravel app! To execute any of these commands simply add the prefix `make:package:`.
 
 <a name="make-commands-foundation"/>
@@ -132,9 +115,23 @@ All of these commands do have all arguments & options to which you are used to i
 - `controller`
 - `middleware`
 
-<a name="make-commands-examples"/>
+<a name="internals-stubs"/>
 
-#### Examples
+### Commands used for creating initial package stubs
+- `make:package:basetest {provider : The package's provider name}` - creates `TestCase` in `tests` folder
+- `make:package:codecov` - creates a `.codecov.yml` file
+- `make:package:composer {author : The author of the package.} {email : The author's email.}` - creates `composer.json`
+- `make:package:contribution` - creates `CONTRIBUTING.md`
+- `make:package:gitignore` - creates `.gitignore` file
+- `make:package:license {--copyright : The company or vendor name to place it int the license file}` - creates `LICENSE.md` file
+- `make:package:phpunit` - creates `phpunit.xml`
+- `make:package:readme` - creates `readme.md`
+- `make:package:styleci` - creates `.styleci.yml`
+- `make:package:travis` - creates `.travis.yml`
+
+<a name="make-commands-example-usage"/>
+
+### Example Usage
 *Use a few `make` commands*
 ![make:package:*](https://user-images.githubusercontent.com/10154100/44323506-8cb8e080-a452-11e8-9f7c-fb07462c9b96.gif)
 
