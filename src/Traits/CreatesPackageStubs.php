@@ -101,7 +101,7 @@ trait CreatesPackageStubs
      */
     protected function vendorName()
     {
-        return str_before($this->getNamespaceInput(), '\\');
+        return lcfirst(str_before($this->getNamespaceInput(), '\\'));
     }
 
     /**
@@ -111,7 +111,7 @@ trait CreatesPackageStubs
      */
     protected function packageName()
     {
-        return str_after($this->getNamespaceInput(), '\\');
+        return lcfirst(str_after($this->getNamespaceInput(), '\\'));
     }
 
     /**
@@ -122,6 +122,10 @@ trait CreatesPackageStubs
     protected function getNamespaceInput()
     {
         $namespace = trim($this->option('namespace'));
+
+        if (! $namespace && ! $namespace = cache()->get('package:namespace')) {
+            $namespace = $this->ask('What is the namespace of your package?');
+        }
 
         if (str_contains($namespace, '\\')) {
             return $namespace;
@@ -142,9 +146,13 @@ trait CreatesPackageStubs
      */
     protected function getDirInput()
     {
-        return trim(
-            ends_with($this->option('dir'), '/') ? $this->option('dir') : $this->option('dir').'/'
-        );
+        $dir = trim($this->option('dir'));
+
+        if (! $dir && ! $dir = cache()->get('package:path')) {
+            $dir = $this->ask('Where is your package stored (relative path)?');
+        }
+
+        return ends_with($dir, '/') ? $dir : $dir.'/';
     }
 
     /**

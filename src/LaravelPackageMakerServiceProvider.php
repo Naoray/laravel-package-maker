@@ -5,9 +5,12 @@ namespace Naoray\LaravelPackageMaker;
 use Illuminate\Support\ServiceProvider;
 use Naoray\LaravelPackageMaker\Commands\AddPackage;
 use Naoray\LaravelPackageMaker\Commands\PackageMakeCommand;
+use Naoray\LaravelPackageMaker\Commands\SavePackageCredentials;
+use Naoray\LaravelPackageMaker\Commands\DeletePackageCredentials;
 use Naoray\LaravelPackageMaker\Commands\Foundation\JobMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Package\ReadmeMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Package\TravisMakeCommand;
+use Naoray\LaravelPackageMaker\Commands\Database\SeederMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Foundation\MailMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Foundation\RuleMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Foundation\TestMakeCommand;
@@ -23,9 +26,18 @@ use Naoray\LaravelPackageMaker\Commands\Package\ComposerMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Foundation\PolicyMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Package\GitignoreMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Database\MigrationMakeCommand;
+use Naoray\LaravelPackageMaker\Commands\Foundation\ChannelMakeCommand;
+use Naoray\LaravelPackageMaker\Commands\Foundation\ConsoleMakeCommand;
+use Naoray\LaravelPackageMaker\Commands\Foundation\RequestMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Routing\ControllerMakeCommand;
+use Naoray\LaravelPackageMaker\Commands\Routing\MiddlewareMakeCommand;
+use Naoray\LaravelPackageMaker\Commands\Foundation\ListenerMakeCommand;
+use Naoray\LaravelPackageMaker\Commands\Foundation\ObserverMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Foundation\ProviderMakeCommand;
+use Naoray\LaravelPackageMaker\Commands\Foundation\ResourceMakeCommand;
+use Naoray\LaravelPackageMaker\Commands\Foundation\ExceptionMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Package\ContributionMakeCommand;
+use Naoray\LaravelPackageMaker\Commands\Foundation\NotificationMakeCommand;
 
 class LaravelPackageMakerServiceProvider extends ServiceProvider
 {
@@ -36,40 +48,104 @@ class LaravelPackageMakerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->commands([
-            AddPackage::class,
-            JobMakeCommand::class,
-            TestMakeCommand::class,
-            MailMakeCommand::class,
-            RuleMakeCommand::class,
-            EventMakeCommand::class,
-            ModelMakeCommand::class,
-            ReadmeMakeCommand::class,
-            PolicyMakeCommand::class,
-            TravisMakeCommand::class,
-            PackageMakeCommand::class,
-            StyleciMakeCommand::class,
-            CodecovMakeCommand::class,
-            FactoryMakeCommand::class,
-            LicenseMakeCommand::class,
-            PhpunitMakeCommand::class,
-            ComposerMakeCommand::class,
-            BaseTestMakeCommand::class,
-            ProviderMakeCommand::class,
-            GitignoreMakeCommand::class,
-            MigrationMakeCommand::class,
-            ControllerMakeCommand::class,
-            ContributionMakeCommand::class,
-        ]);
+        $this->commands(
+            array_merge(
+                $this->packageInternalCommands(),
+                $this->databaseCommands(),
+                $this->foundationCommands(),
+                $this->packageCommands(),
+                $this->routingCommands()
+            )
+        );
     }
 
     /**
-     * Register the application services.
+     * Get package internal related commands.
      *
-     * @return void
+     * @return array
      */
-    public function register()
+    protected function packageInternalCommands()
     {
-        //
+        return [
+            AddPackage::class,
+            PackageMakeCommand::class,
+            SavePackageCredentials::class,
+            DeletePackageCredentials::class,
+        ];
+    }
+
+    /**
+     * Get package database related commands.
+     *
+     * @return array
+     */
+    protected function databaseCommands()
+    {
+        return [
+            SeederMakeCommand::class,
+            FactoryMakeCommand::class,
+            MigrationMakeCommand::class,
+        ];
+    }
+
+    /**
+     * Get package foundation related commands.
+     *
+     * @return array
+     */
+    protected function foundationCommands()
+    {
+        return [
+            JobMakeCommand::class,
+            MailMakeCommand::class,
+            TestMakeCommand::class,
+            RuleMakeCommand::class,
+            EventMakeCommand::class,
+            ModelMakeCommand::class,
+            PolicyMakeCommand::class,
+            ConsoleMakeCommand::class,
+            RequestMakeCommand::class,
+            ChannelMakeCommand::class,
+            ProviderMakeCommand::class,
+            ListenerMakeCommand::class,
+            ObserverMakeCommand::class,
+            ResourceMakeCommand::class,
+            ExceptionMakeCommand::class,
+            NotificationMakeCommand::class,
+        ];
+    }
+
+    /**
+     * Get package related commands.
+     *
+     * @return array
+     */
+    protected function packageCommands()
+    {
+        return [
+            TravisMakeCommand::class,
+            ReadmeMakeCommand::class,
+            StyleciMakeCommand::class,
+            LicenseMakeCommand::class,
+            PhpunitMakeCommand::class,
+            CodecovMakeCommand::class,
+            ComposerMakeCommand::class,
+            BaseTestMakeCommand::class,
+            GitignoreMakeCommand::class,
+            ContributionMakeCommand::class,
+        ];
+    }
+
+    /**
+     * Get package routing related commands.
+     *
+     * @return array
+     */
+    protected function routingCommands()
+    {
+        return [
+            ControllerMakeCommand::class,
+            MiddlewareMakeCommand::class,
+        ];
     }
 }
