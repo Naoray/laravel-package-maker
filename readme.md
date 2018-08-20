@@ -33,10 +33,10 @@ I hate creating new controllers, middlewares, ... by copy & paste. Wouldn't it b
     + [Save package credentials](#internals-save)
 	+ [Delete package credentials](#internals-delete)
 	+ [Commands used for creating initial package stubs](#internals-stubs)
-- [Commands you already know](make-commands)
-	+ [Foundation](make-commands-foundation)
-	+ [Database](make-commands-database)
-	+ [Routing](make-commands-routing)
+- [Commands you already know](#make-commands)
+	+ [Foundation](#make-commands-foundation)
+	+ [Database](#make-commands-database)
+	+ [Routing](#make-commands-routing)
 
 <a name="internals"/>
 
