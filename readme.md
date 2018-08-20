@@ -8,6 +8,7 @@ I hate creating new controllers, middlewares, ... by copy & paste. Wouldn't it b
 ```bash
 .
 └── package
+    ├── .codecov.yml
     ├── composer.json
     ├── CONTRIBUTING.md
     ├── .gitignore
@@ -16,9 +17,10 @@ I hate creating new controllers, middlewares, ... by copy & paste. Wouldn't it b
     ├── readme.md
     ├── src
     │   └── PackageServiceProvider.php
-    ├── .styleci.yml (optional)
-    └── tests
-        └── TestCase.php
+    ├── .styleci.yml
+    ├── tests
+    │   └── TestCase.php
+    └── .travis.yml
 ```
 
 ## Install
@@ -32,24 +34,6 @@ php artisan make:package
 ```
 
 ![make:package](https://user-images.githubusercontent.com/10154100/44323501-89bdf000-a452-11e8-8fc4-3ec5c451c30a.gif)
-
-After calling `make:package` you will end up with the following files:
-
-```bash
-.
-└── package
-    ├── composer.json
-    ├── CONTRIBUTING.md
-    ├── .gitignore
-    ├── LICENSE.md
-    ├── phpunit.xml
-    ├── readme.md
-    ├── src
-    │   └── PackageServiceProvider.php
-    ├── .styleci.yml (optional)
-    └── tests
-        └── TestCase.php
-```
 
 #### Adding a package
 ```
@@ -65,7 +49,7 @@ php artisan package:save
 				{namespace : Root namespace of the package (Vendor\Package_name)}
 				{path : Relative path to the package's directory}
 ```
-Every `make:package:*` command needs to know the package`s *namespace* and the relative *path* to the location your package is stored. Because of that every `make:package:*` command comes with those two options by default. To avoid entering those two options every time a `make:package:*` command executed this command saves the credentials of your package in the cache.
+Every `make:package:*` command needs to know the package's *namespace* and the relative *path* to the location your package is stored. Because of that every `make:package:*` command comes with those two options by default. To avoid entering those two options every time a `make:package:*` command executed this command saves the credentials of your package in the cache.
 
 #### Delete package credentials
 ```
