@@ -8,22 +8,22 @@ use Illuminate\Foundation\Console\ResourceMakeCommand as MakeResource;
 
 class ResourceMakeCommand extends MakeResource
 {
-	use CreatesPackageStubs, HasNameAttribute;
+    use CreatesPackageStubs, HasNameAttribute;
 
-	/**
-	 * The console command name.
-	 *
-	 * @var string
-	 */
-	protected $name = 'make:package:resource';
+    /**
+     * The console command name.
+     *
+     * @var string
+     */
+    protected $name = 'make:package:resource';
 
-	/**
-	 * Get the destination class path.
-	 *
-	 * @return string
-	 */
-	protected function resolveDirectory()
-	{
-		return $this->getDirInput() . '/src';
-	}
+    /**
+     * Get the destination class path.
+     *
+     * @return string
+     */
+    protected function resolveDirectory()
+    {
+        return $this->getDirInput().'/src';
+    }
 }
