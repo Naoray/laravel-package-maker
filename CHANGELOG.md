@@ -1,5 +1,22 @@
 # Change Log
 
+## [v.1.2](https://github.com/naoray/laravel-package-maker/tree/v.1.2) (2018-08-20)
+[Full Changelog](https://github.com/naoray/laravel-package-maker/compare/v1.1.4...v.1.2)
+
+**Merged pull requests:**
+
+- Apply fixes from StyleCI [\#22](https://github.com/Naoray/laravel-package-maker/pull/22) ([Naoray](https://github.com/Naoray))
+
+## [v1.1.4](https://github.com/naoray/laravel-package-maker/tree/v1.1.4) (2018-08-19)
+[Full Changelog](https://github.com/naoray/laravel-package-maker/compare/v1.1.3...v1.1.4)
+
+## [v1.1.3](https://github.com/naoray/laravel-package-maker/tree/v1.1.3) (2018-08-17)
+[Full Changelog](https://github.com/naoray/laravel-package-maker/compare/v1.1.2...v1.1.3)
+
+**Merged pull requests:**
+
+- Apply fixes from StyleCI [\#21](https://github.com/Naoray/laravel-package-maker/pull/21) ([Naoray](https://github.com/Naoray))
+
 ## [v1.1.2](https://github.com/naoray/laravel-package-maker/tree/v1.1.2) (2018-08-17)
 [Full Changelog](https://github.com/naoray/laravel-package-maker/compare/v.1.1.1...v1.1.2)
 
