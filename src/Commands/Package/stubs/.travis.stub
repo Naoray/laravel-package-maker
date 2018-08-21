@@ -4,12 +4,16 @@ php:
   - 7.1
   - 7.2
 
+env:
+  matrix:
+    - COMPOSER_OPTIONS=""
+
 before_install:
   - sudo apt-get update
   - travis_retry composer self-update
 
 install:
-  - travis_retry composer update --prefer-source
+  - travis_retry composer update ${COMPOSER_OPTIONS} --prefer-source
 
 script:
   - phpunit
