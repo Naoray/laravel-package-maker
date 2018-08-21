@@ -161,7 +161,7 @@ class PackageMakeCommand extends Command
         $cicdServices = [
             'None' => function () {
             },
-            'TravicCI' => function () {
+            'TravisCI' => function () {
                 $this->call('make:package:travis', $this->packageOptions());
             },
         ];
