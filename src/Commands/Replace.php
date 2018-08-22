@@ -58,13 +58,13 @@ class Replace extends Command
                 $this->renameFile($path);
             }
         );
-        
+
         $this->info('All old inputs got replaced!');
     }
 
     /**
      * Replace old contents.
-     * 
+     *
      * @param string $path
      * @return string
      */
@@ -77,7 +77,7 @@ class Replace extends Command
 
     /**
      * Rename file.
-     * 
+     *
      * @param string $path
      * @return void
      */
@@ -92,7 +92,7 @@ class Replace extends Command
 
     /**
      * Replace all occurrenes of old values with new ones.
-     * 
+     *
      * @param string $stub
      * @return string
      */
@@ -103,7 +103,7 @@ class Replace extends Command
 
     /**
      * Replace old with new namespace.
-     * 
+     *
      * @param string $stub
      * @return $this
      */
@@ -146,7 +146,7 @@ class Replace extends Command
 
     /**
      * Get packages namespace name.
-     * 
+     *
      * @param string $name
      * @return string
      */
@@ -202,7 +202,7 @@ class Replace extends Command
 
     /**
      * Get package directory.
-     * 
+     *
      * @return string
      */
     public function getPackageInput()
