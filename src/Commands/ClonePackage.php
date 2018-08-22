@@ -49,15 +49,27 @@ class ClonePackage extends Command
      */
     public function handle()
     {
-        if ($this->files->isDirectory($this->getTargetInput())) {
-            $this->error($this->getTargetInput().' directory already exists!');
+        if ($this->files->isDirectory($target = $this->getTargetInput())) {
+            $this->error($target.' directory already exists!');
         }
 
         if ($this->srcIsRemote()) {
             return $this->gitClone();
         }
 
+        $this->localClone();
+    }
+
+    public function localClone()
+    {
         $this->files->copyDirectory($this->getSrcInput(), $this->getTargetInput());
+
+        if ($this->files->isDirectory($vendor = $this->getTargetInput().'/vendor')) {
+            $this->files->deleteDirectory($vendor);
+            
+            $this->info('Removed vendor folder.');
+        }
+
         $this->info('Cloning was successful!');
     }
     
