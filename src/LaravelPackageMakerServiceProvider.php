@@ -38,6 +38,8 @@ use Naoray\LaravelPackageMaker\Commands\Foundation\ResourceMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Foundation\ExceptionMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Package\ContributionMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Foundation\NotificationMakeCommand;
+use Naoray\LaravelPackageMaker\Commands\ReplaceNamespace;
+use Naoray\LaravelPackageMaker\Commands\ClonePackage;
 
 class LaravelPackageMakerServiceProvider extends ServiceProvider
 {
@@ -68,6 +70,7 @@ class LaravelPackageMakerServiceProvider extends ServiceProvider
     {
         return [
             AddPackage::class,
+            ClonePackage::class,
             PackageMakeCommand::class,
             SavePackageCredentials::class,
             DeletePackageCredentials::class,
