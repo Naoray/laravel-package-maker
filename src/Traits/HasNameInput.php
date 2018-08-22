@@ -4,7 +4,7 @@ namespace Naoray\LaravelPackageMaker\Traits;
 
 use Symfony\Component\Console\Input\InputArgument;
 
-trait HasNameAttribute
+trait HasNameInput
 {
     /**
      * Get the console command arguments.

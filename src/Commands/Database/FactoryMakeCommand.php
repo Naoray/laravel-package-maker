@@ -2,13 +2,13 @@
 
 namespace Naoray\LaravelPackageMaker\Commands\Database;
 
-use Naoray\LaravelPackageMaker\Traits\HasNameAttribute;
+use Naoray\LaravelPackageMaker\Traits\HasNameInput;
 use Naoray\LaravelPackageMaker\Traits\CreatesPackageStubs;
 use Illuminate\Database\Console\Factories\FactoryMakeCommand as MakeFactory;
 
 class FactoryMakeCommand extends MakeFactory
 {
-    use CreatesPackageStubs, HasNameAttribute;
+    use CreatesPackageStubs, HasNameInput;
 
     /**
      * The console command name.
