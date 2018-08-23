@@ -15,7 +15,7 @@ class RuleMakeCommand extends MakeRule
      *
      * @var string
      */
-    protected $name = 'make:package:rule';
+    protected $name = 'package:rule';
 
     /**
      * Get the destination class path.

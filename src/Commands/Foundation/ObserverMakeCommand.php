@@ -15,7 +15,7 @@ class ObserverMakeCommand extends MakeObserver
      *
      * @var string
      */
-    protected $name = 'make:package:observer';
+    protected $name = 'package:observer';
 
     /**
      * Get the destination class path.

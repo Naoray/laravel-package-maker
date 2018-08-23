@@ -19,7 +19,7 @@ class MigrationMakeCommand extends MakeMigration
      *
      * @var string
      */
-    protected $name = 'make:package:migration';
+    protected $name = 'package:migration';
 
     /**
      * The console command name.

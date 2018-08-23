@@ -16,7 +16,7 @@ class TestMakeCommand extends MakeTest
      *
      * @var string
      */
-    protected $name = 'make:package:test';
+    protected $name = 'package:test';
 
     /**
      * The console command name.

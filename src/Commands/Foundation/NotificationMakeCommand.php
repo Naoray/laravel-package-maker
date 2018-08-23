@@ -15,7 +15,7 @@ class NotificationMakeCommand extends MakeNotification
      *
      * @var string
      */
-    protected $name = 'make:package:notification';
+    protected $name = 'package:notification';
 
     /**
      * Get the destination class path.

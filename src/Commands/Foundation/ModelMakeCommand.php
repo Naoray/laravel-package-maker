@@ -15,7 +15,7 @@ class ModelMakeCommand extends MakeModel
      *
      * @var string
      */
-    protected $name = 'make:package:model';
+    protected $name = 'package:model';
 
     /**
      * Get the destination class path.
@@ -36,7 +36,7 @@ class ModelMakeCommand extends MakeModel
     {
         $factory = studly_case(class_basename($this->argument('name')));
 
-        $this->call('make:package:factory', [
+        $this->call('package:factory', [
             'name' => "{$factory}Factory",
             '--model' => $this->argument('name'),
             '--namespace' => $this->rootNamespace(),
@@ -53,7 +53,7 @@ class ModelMakeCommand extends MakeModel
     {
         $table = str_plural(snake_case(class_basename($this->argument('name'))));
 
-        $this->call('make:package:migration', [
+        $this->call('package:migration', [
             'name' => "create_{$table}_table",
             '--create' => $table,
             '--namespace' => $this->rootNamespace(),
@@ -72,7 +72,7 @@ class ModelMakeCommand extends MakeModel
 
         $modelName = $this->qualifyClass($this->getNameInput());
 
-        $this->call('make:package:controller', [
+        $this->call('package:controller', [
             'name' => "{$controller}Controller",
             '--model' => $this->option('resource') ? $modelName : null,
             '--namespace' => $this->rootNamespace(),

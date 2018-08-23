@@ -15,7 +15,7 @@ class EventMakeCommand extends MakeEvent
      *
      * @var string
      */
-    protected $name = 'make:package:event';
+    protected $name = 'package:event';
 
     /**
      * Get the destination class path.

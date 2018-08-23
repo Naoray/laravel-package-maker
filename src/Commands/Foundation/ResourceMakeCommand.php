@@ -15,7 +15,7 @@ class ResourceMakeCommand extends MakeResource
      *
      * @var string
      */
-    protected $name = 'make:package:resource';
+    protected $name = 'package:resource';
 
     /**
      * Get the destination class path.

@@ -15,7 +15,7 @@ class ListenerMakeCommand extends MakeListener
      *
      * @var string
      */
-    protected $name = 'make:package:listener';
+    protected $name = 'package:listener';
 
     /**
      * Get the destination class path.

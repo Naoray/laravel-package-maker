@@ -11,7 +11,7 @@ class LicenseMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'make:package:license';
+    protected $name = 'package:license';
 
     /**
      * The console command description.

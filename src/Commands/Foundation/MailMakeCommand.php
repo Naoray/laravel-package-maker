@@ -15,7 +15,7 @@ class MailMakeCommand extends MakeMail
      *
      * @var string
      */
-    protected $name = 'make:package:mail';
+    protected $name = 'package:mail';
 
     /**
      * Get the destination class path.

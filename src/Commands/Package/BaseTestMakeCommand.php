@@ -11,7 +11,7 @@ class BaseTestMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'make:package:basetest';
+    protected $name = 'package:basetest';
 
     /**
      * The console command description.

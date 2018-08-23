@@ -9,7 +9,7 @@ class StyleciMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'make:package:styleci';
+    protected $name = 'package:styleci';
 
     /**
      * The console command description.

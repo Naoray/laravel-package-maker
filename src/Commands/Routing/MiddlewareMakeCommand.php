@@ -15,7 +15,7 @@ class MiddlewareMakeCommand extends MakeMiddleware
      *
      * @var string
      */
-    protected $name = 'make:package:middleware';
+    protected $name = 'package:middleware';
 
     /**
      * Get the destination class path.

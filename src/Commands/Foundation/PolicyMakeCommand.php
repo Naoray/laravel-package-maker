@@ -15,7 +15,7 @@ class PolicyMakeCommand extends MakePolicy
      *
      * @var string
      */
-    protected $name = 'make:package:policy';
+    protected $name = 'package:policy';
 
     /**
      * Get the destination class path.

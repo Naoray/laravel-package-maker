@@ -15,7 +15,7 @@ class ControllerMakeCommand extends MakeController
      *
      * @var string
      */
-    protected $name = 'make:package:controller';
+    protected $name = 'package:controller';
 
     /**
      * Get the destination class path.
@@ -38,7 +38,7 @@ class ControllerMakeCommand extends MakeController
 
         if (! class_exists($parentModelClass)) {
             if ($this->confirm("A {$parentModelClass} model does not exist. Do you want to generate it?", true)) {
-                $this->call('make:package:model', [
+                $this->call('package:model', [
                     'name' => $parentModelClass,
                     '--namespace' => $this->rootNamespace(),
                     '--dir' => $this->basePath(),
@@ -65,7 +65,7 @@ class ControllerMakeCommand extends MakeController
 
         if (! class_exists($modelClass)) {
             if ($this->confirm("A {$modelClass} model does not exist. Do you want to generate it?", true)) {
-                $this->call('make:package:model', [
+                $this->call('package:model', [
                     'name' => $modelClass,
                     '--namespace' => $this->rootNamespace(),
                     '--dir' => $this->basePath(),

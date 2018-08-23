@@ -15,7 +15,7 @@ class ExceptionMakeCommand extends MakeException
      *
      * @var string
      */
-    protected $name = 'make:package:exception';
+    protected $name = 'package:exception';
 
     /**
      * Get the destination class path.

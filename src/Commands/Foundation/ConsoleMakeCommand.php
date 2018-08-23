@@ -15,7 +15,7 @@ class ConsoleMakeCommand extends MakeConsole
      *
      * @var string
      */
-    protected $name = 'make:package:command';
+    protected $name = 'package:command';
 
     /**
      * Get the destination class path.

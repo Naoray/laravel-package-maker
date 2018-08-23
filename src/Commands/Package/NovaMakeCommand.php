@@ -11,7 +11,7 @@ class NovaMakeCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'make:package:nova';
+    protected $signature = 'package:nova';
 
     /**
      * The console command description.

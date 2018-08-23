@@ -15,7 +15,7 @@ class FactoryMakeCommand extends MakeFactory
      *
      * @var string
      */
-    protected $name = 'make:package:factory';
+    protected $name = 'package:factory';
 
     /**
      * Get the destination class path.

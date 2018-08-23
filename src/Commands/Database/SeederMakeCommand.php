@@ -15,7 +15,7 @@ class SeederMakeCommand extends MakeSeeder
      *
      * @var string
      */
-    protected $name = 'make:package:seeder';
+    protected $name = 'package:seeder';
 
     /**
      * Get the destination class path.

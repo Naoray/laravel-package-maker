@@ -15,7 +15,7 @@ class ProviderMakeCommand extends MakeProvider
      *
      * @var string
      */
-    protected $name = 'make:package:provider';
+    protected $name = 'package:provider';
 
     /**
      * Get the destination class path.

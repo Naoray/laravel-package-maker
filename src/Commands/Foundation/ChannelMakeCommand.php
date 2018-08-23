@@ -15,7 +15,7 @@ class ChannelMakeCommand extends MakeChannel
      *
      * @var string
      */
-    protected $name = 'make:package:channel';
+    protected $name = 'package:channel';
 
     /**
      * Get the destination class path.

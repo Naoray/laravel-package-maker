@@ -15,7 +15,7 @@ class JobMakeCommand extends MakeJob
      *
      * @var string
      */
-    protected $name = 'make:package:job';
+    protected $name = 'package:job';
 
     /**
      * Get the destination class path.

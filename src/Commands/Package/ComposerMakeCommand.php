@@ -11,7 +11,7 @@ class ComposerMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'make:package:composer';
+    protected $name = 'package:composer';
 
     /**
      * The console command description.

@@ -9,7 +9,7 @@ class ContributionMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'make:package:contribution';
+    protected $name = 'package:contribution';
 
     /**
      * The console command description.

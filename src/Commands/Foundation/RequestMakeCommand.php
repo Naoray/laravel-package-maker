@@ -15,7 +15,7 @@ class RequestMakeCommand extends MakeRequest
      *
      * @var string
      */
-    protected $name = 'make:package:request';
+    protected $name = 'package:request';
 
     /**
      * Get the destination class path.

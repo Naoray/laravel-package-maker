@@ -9,7 +9,7 @@ class GitignoreMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'make:package:gitignore';
+    protected $name = 'package:gitignore';
 
     /**
      * The console command description.
