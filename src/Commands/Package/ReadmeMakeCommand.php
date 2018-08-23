@@ -9,7 +9,7 @@ class ReadmeMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'make:package:readme';
+    protected $name = 'package:readme';
 
     /**
      * The console command description.

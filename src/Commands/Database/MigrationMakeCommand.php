@@ -5,21 +5,21 @@ namespace Naoray\LaravelPackageMaker\Commands\Database;
 use Illuminate\Support\Composer;
 use Illuminate\Filesystem\Filesystem;
 use Symfony\Component\Console\Input\InputOption;
+use Naoray\LaravelPackageMaker\Traits\HasNameInput;
 use Illuminate\Database\Migrations\MigrationCreator;
-use Naoray\LaravelPackageMaker\Traits\HasNameAttribute;
 use Naoray\LaravelPackageMaker\Traits\CreatesPackageStubs;
 use Illuminate\Database\Console\Migrations\MigrateMakeCommand as MakeMigration;
 
 class MigrationMakeCommand extends MakeMigration
 {
-    use CreatesPackageStubs, HasNameAttribute;
+    use CreatesPackageStubs, HasNameInput;
 
     /**
      * The console command name.
      *
      * @var string
      */
-    protected $name = 'make:package:migration';
+    protected $name = 'package:migration';
 
     /**
      * The console command name.

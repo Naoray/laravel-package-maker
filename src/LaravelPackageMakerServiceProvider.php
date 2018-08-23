@@ -3,7 +3,10 @@
 namespace Naoray\LaravelPackageMaker;
 
 use Illuminate\Support\ServiceProvider;
+use Naoray\LaravelPackageMaker\Commands\Replace;
 use Naoray\LaravelPackageMaker\Commands\AddPackage;
+use Naoray\LaravelPackageMaker\Commands\ClonePackage;
+use Naoray\LaravelPackageMaker\Commands\NovaMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\PackageMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\SavePackageCredentials;
 use Naoray\LaravelPackageMaker\Commands\DeletePackageCredentials;
@@ -68,9 +71,11 @@ class LaravelPackageMakerServiceProvider extends ServiceProvider
     {
         return [
             AddPackage::class,
+            ClonePackage::class,
             PackageMakeCommand::class,
             SavePackageCredentials::class,
             DeletePackageCredentials::class,
+            Replace::class,
         ];
     }
 
@@ -123,11 +128,12 @@ class LaravelPackageMakerServiceProvider extends ServiceProvider
     protected function packageCommands()
     {
         return [
-            TravisMakeCommand::class,
+            NovaMakeCommand::class,
             ReadmeMakeCommand::class,
-            StyleciMakeCommand::class,
+            TravisMakeCommand::class,
             LicenseMakeCommand::class,
             PhpunitMakeCommand::class,
+            StyleciMakeCommand::class,
             CodecovMakeCommand::class,
             ComposerMakeCommand::class,
             BaseTestMakeCommand::class,

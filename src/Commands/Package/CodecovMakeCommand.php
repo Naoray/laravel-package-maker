@@ -9,7 +9,7 @@ class CodecovMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'make:package:codecov';
+    protected $name = 'package:codecov';
 
     /**
      * The console command description.

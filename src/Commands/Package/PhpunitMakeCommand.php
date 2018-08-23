@@ -9,7 +9,7 @@ class PhpunitMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'make:package:phpunit';
+    protected $name = 'package:phpunit';
 
     /**
      * The console command description.

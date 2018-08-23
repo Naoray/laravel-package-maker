@@ -2,20 +2,20 @@
 
 namespace Naoray\LaravelPackageMaker\Commands\Database;
 
-use Naoray\LaravelPackageMaker\Traits\HasNameAttribute;
+use Naoray\LaravelPackageMaker\Traits\HasNameInput;
 use Naoray\LaravelPackageMaker\Traits\CreatesPackageStubs;
 use Illuminate\Database\Console\Factories\FactoryMakeCommand as MakeFactory;
 
 class FactoryMakeCommand extends MakeFactory
 {
-    use CreatesPackageStubs, HasNameAttribute;
+    use CreatesPackageStubs, HasNameInput;
 
     /**
      * The console command name.
      *
      * @var string
      */
-    protected $name = 'make:package:factory';
+    protected $name = 'package:factory';
 
     /**
      * Get the destination class path.

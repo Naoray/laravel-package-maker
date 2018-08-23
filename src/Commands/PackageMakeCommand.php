@@ -139,14 +139,14 @@ class PackageMakeCommand extends Command
      */
     protected function createCommonFiles()
     {
-        $this->call('make:package:readme', $this->packageOptions());
-        $this->call('make:package:license', array_merge(
+        $this->call('package:readme', $this->packageOptions());
+        $this->call('package:license', array_merge(
             $this->packageOptions(),
             ['--copyright' => $this->copyright]
         ));
-        $this->call('make:package:contribution', $this->packageOptions());
-        $this->call('make:package:phpunit', $this->packageOptions());
-        $this->call('make:package:gitignore', $this->packageOptions());
+        $this->call('package:contribution', $this->packageOptions());
+        $this->call('package:phpunit', $this->packageOptions());
+        $this->call('package:gitignore', $this->packageOptions());
     }
 
     /**
@@ -162,7 +162,7 @@ class PackageMakeCommand extends Command
             'None' => function () {
             },
             'TravisCI' => function () {
-                $this->call('make:package:travis', $this->packageOptions());
+                $this->call('package:travis', $this->packageOptions());
             },
         ];
 
@@ -188,7 +188,7 @@ class PackageMakeCommand extends Command
             'None' => function () {
             },
             'StyleCI' => function () {
-                $this->call('make:package:styleci', $this->packageOptions());
+                $this->call('package:styleci', $this->packageOptions());
             },
         ];
 
@@ -214,7 +214,7 @@ class PackageMakeCommand extends Command
             'None' => function () {
             },
             'Codecov' => function () {
-                $this->call('make:package:codecov', $this->packageOptions());
+                $this->call('package:codecov', $this->packageOptions());
             },
         ];
 
@@ -234,7 +234,7 @@ class PackageMakeCommand extends Command
      */
     protected function createComposer()
     {
-        $this->call('make:package:composer', array_merge(
+        $this->call('package:composer', array_merge(
             $this->packageOptions(),
             [
                 '--author' => $this->author,
@@ -250,7 +250,7 @@ class PackageMakeCommand extends Command
      */
     protected function createServiceProvider()
     {
-        $this->call('make:package:provider', array_merge(
+        $this->call('package:provider', array_merge(
             [
                 'name' => $this->packageName().'ServiceProvider',
             ],
@@ -265,7 +265,7 @@ class PackageMakeCommand extends Command
      */
     protected function createBaseTestCase()
     {
-        $this->call('make:package:basetest', array_merge(
+        $this->call('package:basetest', array_merge(
             [
                 'provider' => $this->packageName().'ServiceProvider',
             ],
