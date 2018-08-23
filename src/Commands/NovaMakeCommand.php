@@ -22,7 +22,7 @@ class NovaMakeCommand extends Command
 
     /**
      * Source from which the tool will be cloned.
-     * 
+     *
      * @var string
      */
     protected $skeletonSrc = 'https://github.com/spatie/skeleton-nova-tool';
@@ -43,7 +43,7 @@ class NovaMakeCommand extends Command
         $vendorNamespace = $this->ask('Namespace Vendor Name! (e.g. Spatie)');
         $toolNamespace = $this->ask('Namespace Tool Name! (e.g. TailTool)');
 
-        $target = $this->anticipate('Where to install your package?', ['../packages/' . $name, 'packages/' . $name]);
+        $target = $this->anticipate('Where to install your package?', ['../packages/'.$name, 'packages/'.$name]);
 
         $this->clone($target);
         $this->replaceOld(
@@ -71,7 +71,7 @@ class NovaMakeCommand extends Command
 
     /**
      * Clone skeleton-nova-tool.
-     * 
+     *
      * @param string $target
      * @return void
      */
@@ -79,13 +79,13 @@ class NovaMakeCommand extends Command
     {
         $this->call('package:clone', [
             'src' => $this->skeletonSrc,
-            'target' => $target
+            'target' => $target,
         ]);
     }
 
     /**
      * Replace old inputs with new ones.
-     * 
+     *
      * @param string $target
      * @param array ...$new
      * @return void
@@ -102,10 +102,9 @@ class NovaMakeCommand extends Command
                 ':package_description',
                 ':vendor',
                 ':namespace_vendor',
-                ':namespace_tool_name'
+                ':namespace_tool_name',
             ],
-            '--new' => $new
+            '--new' => $new,
         ]);
-
     }
 }

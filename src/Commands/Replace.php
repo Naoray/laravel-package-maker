@@ -61,17 +61,17 @@ class Replace extends Command
                 }
             );
         }
-        
+
         if ($this->files->isFile($path)) {
             $this->buildFile($path);
         }
-        
+
         $this->info('All old inputs got replaced!');
     }
 
     /**
      * Builds the new file.
-     * 
+     *
      * @param string $path
      * @return void
      */
@@ -126,7 +126,7 @@ class Replace extends Command
 
     /**
      * Get path directory.
-     * 
+     *
      * @return string
      */
     public function getPathInput()
