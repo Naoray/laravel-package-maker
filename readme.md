@@ -57,6 +57,8 @@ php artisan make:package
 php artisan make:nova
 ```
 
+![make:nova](https://user-images.githubusercontent.com/10154100/44515270-5d100f80-a6c2-11e8-9a8c-a26e9a3af55d.png)
+
 Inspired by [Spatie's nova-skeleton-tool](https://github.com/spatie/skeleton-nova-tool) this command clones the repository, replaces all strings with your own and adds it to your own project.
 
 <a name="internals-add"/>
