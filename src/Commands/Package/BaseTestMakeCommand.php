@@ -43,7 +43,7 @@ class BaseTestMakeCommand extends GeneratorCommand
         $this->call('package:replace', [
             'path' => $path,
             '--old' => ['DummyPackageServiceProvider'],
-            '--new' => [$this->getProviderInput()]
+            '--new' => [$this->getProviderInput()],
         ]);
     }
 
