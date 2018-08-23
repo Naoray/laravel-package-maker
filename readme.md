@@ -28,9 +28,12 @@ I hate creating new controllers, middlewares, ... by copy & paste. Wouldn't it b
 
 ## Usage
 - [Create a package](#internals-create)
+- [Create a nova tool](#internals-nova)
 - [Add a package](#internals-add)
 - [Save package credentials](#internals-save)
 - [Delete package credentials](#internals-delete)
+- [Clone a package](#internals-clone)
+- [Replace content](#internals-replace)
 - [Make Commands](#make-commands)
 	+ [Foundation](#make-commands-foundation)
 	+ [Database](#make-commands-database)
@@ -46,6 +49,15 @@ php artisan make:package
 ```
 
 ![make:package](https://user-images.githubusercontent.com/10154100/44323501-89bdf000-a452-11e8-8fc4-3ec5c451c30a.gif)
+
+<a name="internals-nova"/>
+
+### Create a nova tool
+```
+php artisan make:nova
+```
+
+Inspired by [Spatie's nova-skeleton-tool](https://github.com/spatie/skeleton-nova-tool) this command clones the repository, replaces all strings with your own and adds it to your own project.
 
 <a name="internals-add"/>
 
@@ -75,11 +87,31 @@ php artisan package:delete
 ```
 This one wipes all stored credentials from your cache.
 
+<a name="internals-clone"/>
+
+### Clone a package
+```
+php artisan package:clone
+                {src : Source path of the package to clone}
+                {target : Path where it should be cloned in}
+```
+The clone command clones a given repository or directory into the given target.
+
+<a name="internals-replace"/>
+
+### Replace Content
+```
+php artisan package:replace 
+                {path : The path to a file or directory}
+                {--O|old=* : Old strings which will be replaced}
+                {--N|new=* : New strings which will be used as replacement}'
+```
+The replace command takes a path of a file or a directory and an indefinite number of 'old' options which will be replaced by the 'new' options.
 
 
 <a name="make-commands"/>
 
-### Make:Package Commands
+### Make Commands
 All of these commands do have all arguments & options to which you are used to in a normal laravel app! To execute any of these commands simply add the prefix `package:`.
 
 <a name="make-commands-foundation"/>
