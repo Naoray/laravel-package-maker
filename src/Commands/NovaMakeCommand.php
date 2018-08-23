@@ -1,6 +1,6 @@
 <?php
 
-namespace Naoray\LaravelPackageMaker\Commands\Package;
+namespace Naoray\LaravelPackageMaker\Commands;
 
 use Illuminate\Console\Command;
 
@@ -11,7 +11,7 @@ class NovaMakeCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'package:nova';
+    protected $signature = 'make:nova';
 
     /**
      * The console command description.
