@@ -66,13 +66,13 @@ class ClonePackage extends Command
 
         if ($this->files->isDirectory($vendor = $this->getTargetInput().'/vendor')) {
             $this->files->deleteDirectory($vendor);
-            
+
             $this->info('Removed vendor folder.');
         }
 
         $this->info('Cloning was successful!');
     }
-    
+
     /**
      * Clone package via git.
      *
@@ -91,7 +91,7 @@ class ClonePackage extends Command
 
     /**
      * Checks if source is remote.
-     * 
+     *
      * @return bool
      */
     public function srcIsRemote()
@@ -106,12 +106,12 @@ class ClonePackage extends Command
      */
     public function getSrcInput()
     {
-        return trim($this->argument('src'));    
+        return trim($this->argument('src'));
     }
 
     /**
      * Get the target path.
-     * 
+     *
      * @return string
      */
     public function getTargetInput()

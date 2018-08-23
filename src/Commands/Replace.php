@@ -83,7 +83,7 @@ class Replace extends Command
 
     /**
      * Replace old contents.
-     * 
+     *
      * @param string $path
      * @return string
      */
@@ -96,7 +96,7 @@ class Replace extends Command
 
     /**
      * Rename file.
-     * 
+     *
      * @param string $path
      * @return void
      */
@@ -111,7 +111,7 @@ class Replace extends Command
 
     /**
      * Replace all occurrenes of old values with new ones.
-     * 
+     *
      * @param string $stub
      * @return string
      */
