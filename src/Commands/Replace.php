@@ -13,7 +13,7 @@ class Replace extends Command
      * @var string
      */
     protected $signature = 'package:replace 
-                                {package : The package directory}
+                                {path : The path to a file or directory}
                                 {--O|old=* : Old strings which will be replaced}
                                 {--N|new=* : New strings which will be used as replacement}';
 
@@ -22,7 +22,7 @@ class Replace extends Command
      *
      * @var string
      */
-    protected $description = 'Replaces the namspace of a package';
+    protected $description = 'Replaces all old inputs with new ones.';
 
     /**
      * The filesystem instance.
@@ -54,16 +54,31 @@ class Replace extends Command
             return $this->error('Old and new options need to have the same length!');
         }
 
-        collect($this->files->allFiles($this->getPackageInput()))
-            ->each(function ($file) {
-                $path = $file->getPathName();
-
-                $this->files->put($path, $this->replaceContents($path));
-                $this->renameFile($path);
-            }
-        );
+        if ($this->files->isDirectory($path = $this->getPathInput())) {
+            collect($this->files->allFiles($path))
+                ->each(function ($file) {
+                    $this->buildFile($file->getPathName());
+                }
+            );
+        }
+        
+        if ($this->files->isFile($path)) {
+            $this->buildFile($path);
+        }
         
         $this->info('All old inputs got replaced!');
+    }
+
+    /**
+     * Builds the new file.
+     * 
+     * @param string $path
+     * @return void
+     */
+    public function buildFile($path)
+    {
+        $this->files->put($path, $this->replaceContents($path));
+        $this->renameFile($path);
     }
 
     /**
@@ -110,13 +125,13 @@ class Replace extends Command
     }
 
     /**
-     * Get package directory.
+     * Get path directory.
      * 
      * @return string
      */
-    public function getPackageInput()
+    public function getPathInput()
     {
-        return trim($this->argument('package'));
+        return trim($this->argument('path'));
     }
 
     /**
