@@ -11,7 +11,7 @@ class AddPackage extends Command
      *
      * @var string
      */
-    protected $signature = 'package:add {name?} {path?} {vendor?} {branch} {--type=path} {--without-interaction}';
+    protected $signature = 'package:add {name?} {path?} {vendor?} {branch?} {--type=path} {--without-interaction}';
 
     /**
      * The console command description.
