@@ -80,9 +80,9 @@ class ClonePackage extends Command
      */
     public function gitClone()
     {
-        exec('git clone ' . $this->argument('src') . ' ' . $this->argument('target'));
+        exec('git clone '.$this->argument('src').' '.$this->argument('target'));
 
-        if ($this->files->isDirectory($git = $this->getTargetInput() . '/.git')) {
+        if ($this->files->isDirectory($git = $this->getTargetInput().'/.git')) {
             $this->files->deleteDirectory($git);
 
             $this->info('Removed .git folder.');

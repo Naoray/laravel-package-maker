@@ -74,7 +74,7 @@ class AddPackage extends Command
         exec('composer require "'.$vendor.'/'.$name.':'.$branch.'"');
 
         $this->call('package:save', [
-            'namespace' => ucfirst($vendor) . '\\' .ucfirst(camel_case($name)),
+            'namespace' => ucfirst($vendor).'\\'.ucfirst(camel_case($name)),
             'path' => $path,
         ]);
     }
