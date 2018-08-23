@@ -14,8 +14,8 @@ class Replace extends Command
      */
     protected $signature = 'package:replace 
                                 {package : The package directory}
-                                {old : Old Namespace which will be replaced}
-                                {new : New Namespace which will be used as replacement}';
+                                {--O|old=* : Old strings which will be replaced}
+                                {--N|new=* : New strings which will be used as replacement}';
 
     /**
      * The console command description.
@@ -50,6 +50,10 @@ class Replace extends Command
      */
     public function handle()
     {
+        if ($this->getOldInput()->count() !== $this->getNewInput()->count()) {
+            return $this->error('Old and new options need to have the same length!');
+        }
+
         collect($this->files->allFiles($this->getPackageInput()))
             ->each(function ($file) {
                 $path = $file->getPathName();
@@ -98,106 +102,11 @@ class Replace extends Command
      */
     protected function replaceAll($stub)
     {
-        return $this->replaceNamespace($stub)->replaceNames($stub);
-    }
-
-    /**
-     * Replace old with new namespace.
-     * 
-     * @param string $stub
-     * @return $this
-     */
-    protected function replaceNamespace(&$stub)
-    {
-        $stub = str_replace(
-            [$this->namespaceVendor('old'), $this->namespacePackageName('old')],
-            [$this->namespaceVendor('new'), $this->namespacePackageName('new')],
-            $stub
-        );
-
-        return $this;
-    }
-
-    /**
-     * Replace old with new names.
-     *
-     * @param string $stub
-     * @return string
-     */
-    protected function replaceNames(&$stub)
-    {
         return str_replace(
-            [$this->vendorName('old'), $this->packageName('old')],
-            [$this->vendorName('new'), $this->packageName('new')],
+            $this->getOldInput()->toArray(),
+            $this->getNewInput()->toArray(),
             $stub
         );
-    }
-
-    /**
-     * Get packages namespace vendor.
-     *
-     * @param string $name
-     * @return string
-     */
-    protected function namespaceVendor($name)
-    {
-        return str_before($this->splitNamespace($name), '\\');
-    }
-
-    /**
-     * Get packages namespace name.
-     * 
-     * @param string $name
-     * @return string
-     */
-    protected function namespacePackageName($name)
-    {
-        return str_after($this->splitNamespace($name), '\\');
-    }
-
-    /**
-     * Get vendor name.
-     *
-     * @return string
-     */
-    protected function vendorName($name)
-    {
-        return lcfirst($this->namespaceVendor($name));
-    }
-
-    /**
-     * Get Package name.
-     *
-     * @return string
-     */
-    protected function packageName($name)
-    {
-        return str_slug(snake_case($this->namespacePackageName($name)));
-    }
-
-    /**
-     * Get the desired class namespace from the input.
-     *
-     * @return string
-     */
-    protected function splitNamespace($name)
-    {
-        $namespace = trim($this->{'get'.ucfirst($name).'Input'}($name));
-
-        if (! $namespace && ! $namespace = cache()->get('package:namespace')) {
-            $namespace = $this->ask('What is the namespace of your package?');
-        }
-
-        if (str_contains($namespace, '\\')) {
-            return $namespace;
-        }
-
-        $namespace = explode(
-            '_',
-            snake_case($this->{'get'.ucfirst($name).'Input'}($name))
-        );
-
-        return implode('\\', array_map('ucfirst', $namespace));
     }
 
     /**
@@ -217,7 +126,7 @@ class Replace extends Command
      */
     public function getOldInput()
     {
-        return trim($this->argument('old'));
+        return collect($this->option('old'));
     }
 
     /**
@@ -227,6 +136,6 @@ class Replace extends Command
      */
     public function getNewInput()
     {
-        return trim($this->argument('new'));
+        return collect($this->option('new'));
     }
 }
