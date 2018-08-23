@@ -28,6 +28,26 @@ class BaseTestMakeCommand extends GeneratorCommand
     protected $type = 'Testbase';
 
     /**
+     * Execute the console command.
+     *
+     * @return bool|null
+     */
+    public function handle()
+    {
+        parent::handle();
+
+        $name = $this->qualifyClass($this->getNameInput());
+
+        $path = $this->getPath($name);
+
+        $this->call('package:replace', [
+            'path' => $path,
+            '--old' => ['DummyPackageServiceProvider'],
+            '--new' => [$this->getProviderInput()]
+        ]);
+    }
+
+    /**
      * Get the stub file for the generator.
      *
      * @return string
@@ -54,23 +74,7 @@ class BaseTestMakeCommand extends GeneratorCommand
      */
     protected function resolveDirectory()
     {
-        return $this->getDirInput().'/tests';
-    }
-
-    /**
-     * Replace the names for the given stub.
-     *
-     * @param string $stub
-     *
-     * @return \Naoray\LaravelPackageMaker\Commands\BaseTestMakeCommand
-     */
-    protected function replaceStubSpecifics(&$stub, $name)
-    {
-        return str_replace(
-            ['DummyPackageServiceProvider'],
-            [$this->getProviderInput()],
-            $stub
-        );
+        return $this->getDirInput().'tests';
     }
 
     /**
