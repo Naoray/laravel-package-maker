@@ -147,6 +147,15 @@ All of these commands do have all arguments & options to which you are used to i
 - `controller`
 - `middleware`
 
+<a name="make-standards">
+
+#### Standard Php
+All of the following routes only accept a `name` argument.
+
+- `contract`
+- `interface` (same as `contract`)
+- `trait`
+
 <a name="internals-stubs"/>
 
 ### Commands used for creating initial package stubs
