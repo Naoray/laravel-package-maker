@@ -24,6 +24,6 @@ class RequestMakeCommand extends MakeRequest
      */
     protected function resolveDirectory()
     {
-        return $this->getDirInput().'/src';
+        return $this->getDirInput().'src';
     }
 }
