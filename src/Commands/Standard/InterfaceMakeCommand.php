@@ -31,7 +31,7 @@ class InterfaceMakeCommand extends Command
     public function handle()
     {
         $this->call('package:contract', [
-            'name' => $this->argument('name')
+            'name' => $this->argument('name'),
         ]);
     }
 }
