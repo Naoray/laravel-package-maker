@@ -3,6 +3,7 @@
 namespace Naoray\LaravelPackageMaker\Commands\Package;
 
 use Symfony\Component\Console\Input\InputOption;
+use Naoray\LaravelPackageMaker\Commands\GeneratorCommand;
 
 class LicenseMakeCommand extends GeneratorCommand
 {

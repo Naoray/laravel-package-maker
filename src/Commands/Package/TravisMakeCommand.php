@@ -2,6 +2,8 @@
 
 namespace Naoray\LaravelPackageMaker\Commands\Package;
 
+use Naoray\LaravelPackageMaker\Commands\GeneratorCommand;
+
 class TravisMakeCommand extends GeneratorCommand
 {
     /**
