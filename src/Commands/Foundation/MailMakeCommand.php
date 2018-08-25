@@ -2,20 +2,20 @@
 
 namespace Naoray\LaravelPackageMaker\Commands\Foundation;
 
-use Naoray\LaravelPackageMaker\Traits\HasNameAttribute;
+use Naoray\LaravelPackageMaker\Traits\HasNameInput;
 use Naoray\LaravelPackageMaker\Traits\CreatesPackageStubs;
 use Illuminate\Foundation\Console\MailMakeCommand as MakeMail;
 
 class MailMakeCommand extends MakeMail
 {
-    use CreatesPackageStubs, HasNameAttribute;
+    use CreatesPackageStubs, HasNameInput;
 
     /**
      * The console command name.
      *
      * @var string
      */
-    protected $name = 'make:package:mail';
+    protected $name = 'package:mail';
 
     /**
      * Get the destination class path.

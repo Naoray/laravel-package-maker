@@ -2,20 +2,20 @@
 
 namespace Naoray\LaravelPackageMaker\Commands\Routing;
 
-use Naoray\LaravelPackageMaker\Traits\HasNameAttribute;
+use Naoray\LaravelPackageMaker\Traits\HasNameInput;
 use Naoray\LaravelPackageMaker\Traits\CreatesPackageStubs;
 use Illuminate\Routing\Console\ControllerMakeCommand as MakeController;
 
 class ControllerMakeCommand extends MakeController
 {
-    use CreatesPackageStubs, HasNameAttribute;
+    use CreatesPackageStubs, HasNameInput;
 
     /**
      * The console command name.
      *
      * @var string
      */
-    protected $name = 'make:package:controller';
+    protected $name = 'package:controller';
 
     /**
      * Get the destination class path.
@@ -38,7 +38,7 @@ class ControllerMakeCommand extends MakeController
 
         if (! class_exists($parentModelClass)) {
             if ($this->confirm("A {$parentModelClass} model does not exist. Do you want to generate it?", true)) {
-                $this->call('make:package:model', [
+                $this->call('package:model', [
                     'name' => $parentModelClass,
                     '--namespace' => $this->rootNamespace(),
                     '--dir' => $this->basePath(),
@@ -65,7 +65,7 @@ class ControllerMakeCommand extends MakeController
 
         if (! class_exists($modelClass)) {
             if ($this->confirm("A {$modelClass} model does not exist. Do you want to generate it?", true)) {
-                $this->call('make:package:model', [
+                $this->call('package:model', [
                     'name' => $modelClass,
                     '--namespace' => $this->rootNamespace(),
                     '--dir' => $this->basePath(),

@@ -9,7 +9,7 @@ class TravisMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'make:package:travis';
+    protected $name = 'package:travis';
 
     /**
      * The console command description.

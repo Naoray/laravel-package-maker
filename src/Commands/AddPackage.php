@@ -61,7 +61,7 @@ class AddPackage extends Command
         }
 
         if (! $branch) {
-            $branch = $this->anticipate('What branch do you want to link?', ['dev', 'master']);
+            $branch = '*';
         }
 
         $this->table(['vendor', 'name', 'path', 'branch', 'type'], [[$vendor, $name, $path, $branch, $type]]);
@@ -69,12 +69,13 @@ class AddPackage extends Command
             return;
         }
 
-        if ($branch === 'dev' || $branch === 'master') {
-            $branch = 'dev-'.$branch;
-        }
-
         exec('composer config repositories.'.$name.' '.$type.' '.$path);
         sleep(1);
         exec('composer require "'.$vendor.'/'.$name.':'.$branch.'"');
+
+        $this->call('package:save', [
+            'namespace' => ucfirst($vendor).'\\'.ucfirst(camel_case($name)),
+            'path' => $path,
+        ]);
     }
 }

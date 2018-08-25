@@ -2,20 +2,20 @@
 
 namespace Naoray\LaravelPackageMaker\Commands\Foundation;
 
-use Naoray\LaravelPackageMaker\Traits\HasNameAttribute;
+use Naoray\LaravelPackageMaker\Traits\HasNameInput;
 use Naoray\LaravelPackageMaker\Traits\CreatesPackageStubs;
 use Illuminate\Foundation\Console\PolicyMakeCommand as MakePolicy;
 
 class PolicyMakeCommand extends MakePolicy
 {
-    use CreatesPackageStubs, HasNameAttribute;
+    use CreatesPackageStubs, HasNameInput;
 
     /**
      * The console command name.
      *
      * @var string
      */
-    protected $name = 'make:package:policy';
+    protected $name = 'package:policy';
 
     /**
      * Get the destination class path.

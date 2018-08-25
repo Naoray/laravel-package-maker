@@ -3,20 +3,20 @@
 namespace Naoray\LaravelPackageMaker\Commands\Foundation;
 
 use Symfony\Component\Console\Input\InputOption;
-use Naoray\LaravelPackageMaker\Traits\HasNameAttribute;
+use Naoray\LaravelPackageMaker\Traits\HasNameInput;
 use Naoray\LaravelPackageMaker\Traits\CreatesPackageStubs;
 use Illuminate\Foundation\Console\TestMakeCommand as MakeTest;
 
 class TestMakeCommand extends MakeTest
 {
-    use CreatesPackageStubs, HasNameAttribute;
+    use CreatesPackageStubs, HasNameInput;
 
     /**
      * The console command name.
      *
      * @var string
      */
-    protected $name = 'make:package:test';
+    protected $name = 'package:test';
 
     /**
      * The console command name.

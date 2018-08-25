@@ -2,20 +2,20 @@
 
 namespace Naoray\LaravelPackageMaker\Commands\Foundation;
 
-use Naoray\LaravelPackageMaker\Traits\HasNameAttribute;
+use Naoray\LaravelPackageMaker\Traits\HasNameInput;
 use Naoray\LaravelPackageMaker\Traits\CreatesPackageStubs;
 use Illuminate\Foundation\Console\NotificationMakeCommand as MakeNotification;
 
 class NotificationMakeCommand extends MakeNotification
 {
-    use CreatesPackageStubs, HasNameAttribute;
+    use CreatesPackageStubs, HasNameInput;
 
     /**
      * The console command name.
      *
      * @var string
      */
-    protected $name = 'make:package:notification';
+    protected $name = 'package:notification';
 
     /**
      * Get the destination class path.

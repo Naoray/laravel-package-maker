@@ -11,7 +11,7 @@ class ComposerMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'make:package:composer';
+    protected $name = 'package:composer';
 
     /**
      * The console command description.
@@ -26,6 +26,26 @@ class ComposerMakeCommand extends GeneratorCommand
      * @var string
      */
     protected $type = 'composer';
+
+    /**
+     * Execute the console command.
+     *
+     * @return bool|null
+     */
+    public function handle()
+    {
+        parent::handle();
+
+        $name = $this->qualifyClass($this->getNameInput());
+
+        $path = $this->getPath($name);
+
+        $this->call('package:replace', [
+            'path' => $path,
+            '--old' => ['DummyAuthor', 'DummyEmail', 'DummyComposerNamespace', 'DummyComposerProviderNamespace'],
+            '--new' => [$this->getAuthorInput(), $this->getEmailInput(), $this->composerNamespace(), $this->composerProviderNamespace()],
+        ]);
+    }
 
     /**
      * Get the stub file for the generator.
@@ -55,22 +75,6 @@ class ComposerMakeCommand extends GeneratorCommand
     protected function getNameInput()
     {
         return 'composer';
-    }
-
-    /**
-     * Replace the names for the given stub.
-     *
-     * @param string $stub
-     *
-     * @return \Naoray\LaravelPackageMaker\Commands\ComposerMakeCommand
-     */
-    protected function replaceStubSpecifics(&$stub, $name)
-    {
-        return str_replace(
-            ['DummyAuthor', 'DummyEmail', 'DummyComposerNamespace', 'DummyComposerProviderNamespace'],
-            [$this->getAuthorInput(), $this->getEmailInput(), $this->composerNamespace(), $this->composerProviderNamespace()],
-            $stub
-        );
     }
 
     /**

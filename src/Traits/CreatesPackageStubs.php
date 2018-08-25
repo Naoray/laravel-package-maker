@@ -51,7 +51,7 @@ trait CreatesPackageStubs
     {
         $class = parent::buildClass($name);
 
-        return $this->replacePackageName($class)->replaceStubSpecifics($class, $name);
+        return $this->replacePackageName($class);
     }
 
     /**
@@ -59,29 +59,15 @@ trait CreatesPackageStubs
      *
      * @param string $stub
      *
-     * @return \Naoray\LaravelPackageMaker\Traits\CreatsPackageStubs
+     * @return string
      */
     protected function replacePackageName(&$stub)
     {
-        $stub = str_replace(
+        return str_replace(
             ['DummyVendor', 'DummyPackageName'],
             [$this->vendorName(), $this->packageName()],
             $stub
         );
-
-        return $this;
-    }
-
-    /**
-     * Replace the dummy data for the given stub.
-     *
-     * @param string $stub
-     *
-     * @return \Naoray\LaravelPackageMaker\Traits\CreatePackageStubs
-     */
-    protected function replaceStubSpecifics(&$stub, $name)
-    {
-        return $stub;
     }
 
     /**

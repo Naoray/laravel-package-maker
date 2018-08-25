@@ -2,20 +2,20 @@
 
 namespace Naoray\LaravelPackageMaker\Commands\Foundation;
 
-use Naoray\LaravelPackageMaker\Traits\HasNameAttribute;
+use Naoray\LaravelPackageMaker\Traits\HasNameInput;
 use Naoray\LaravelPackageMaker\Traits\CreatesPackageStubs;
 use Illuminate\Foundation\Console\ListenerMakeCommand as MakeListener;
 
 class ListenerMakeCommand extends MakeListener
 {
-    use CreatesPackageStubs, HasNameAttribute;
+    use CreatesPackageStubs, HasNameInput;
 
     /**
      * The console command name.
      *
      * @var string
      */
-    protected $name = 'make:package:listener';
+    protected $name = 'package:listener';
 
     /**
      * Get the destination class path.

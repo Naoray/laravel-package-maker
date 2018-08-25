@@ -28,9 +28,12 @@ I hate creating new controllers, middlewares, ... by copy & paste. Wouldn't it b
 
 ## Usage
 - [Create a package](#internals-create)
+- [Create a nova tool](#internals-nova)
 - [Add a package](#internals-add)
 - [Save package credentials](#internals-save)
 - [Delete package credentials](#internals-delete)
+- [Clone a package](#internals-clone)
+- [Replace content](#internals-replace)
 - [Make Commands](#make-commands)
 	+ [Foundation](#make-commands-foundation)
 	+ [Database](#make-commands-database)
@@ -46,6 +49,17 @@ php artisan make:package
 ```
 
 ![make:package](https://user-images.githubusercontent.com/10154100/44323501-89bdf000-a452-11e8-8fc4-3ec5c451c30a.gif)
+
+<a name="internals-nova"/>
+
+### Create a nova tool
+```
+php artisan make:nova
+```
+
+Inspired by [Spatie's nova-skeleton-tool](https://github.com/spatie/skeleton-nova-tool) this command clones the repository, replaces all strings with your own and adds it to your own project.
+
+![make:nova](https://user-images.githubusercontent.com/10154100/44515270-5d100f80-a6c2-11e8-9a8c-a26e9a3af55d.png)
 
 <a name="internals-add"/>
 
@@ -65,7 +79,7 @@ php artisan package:save
 				{namespace : Root namespace of the package (Vendor\Package_name)}
 				{path : Relative path to the package's directory}
 ```
-Every `make:package:*` command needs to know the package's *namespace* and the relative *path* to the location your package is stored. Because of that every `make:package:*` command comes with those two options by default. To avoid entering those two options every time a `make:package:*` command executed this command saves the credentials of your package in the cache.
+Every `package:*` command needs to know the package's *namespace* and the relative *path* to the location your package is stored. Because of that every `package:*` command comes with those two options by default. To avoid entering those two options every time a `package:*` command executed this command saves the credentials of your package in the cache.
 
 <a name="internals-delete"/>
 
@@ -75,12 +89,32 @@ php artisan package:delete
 ```
 This one wipes all stored credentials from your cache.
 
+<a name="internals-clone"/>
+
+### Clone a package
+```
+php artisan package:clone
+                {src : Source path of the package to clone}
+                {target : Path where it should be cloned in}
+```
+The clone command clones a given repository or directory into the given target.
+
+<a name="internals-replace"/>
+
+### Replace Content
+```
+php artisan package:replace 
+                {path : The path to a file or directory}
+                {--O|old=* : Old strings which will be replaced}
+                {--N|new=* : New strings which will be used as replacement}'
+```
+The replace command takes a path of a file or a directory and an indefinite number of 'old' options which will be replaced by the 'new' options.
 
 
 <a name="make-commands"/>
 
-### Make:Package Commands
-All of these commands do have all arguments & options to which you are used to in a normal laravel app! To execute any of these commands simply add the prefix `make:package:`.
+### Make Commands
+All of these commands do have all arguments & options to which you are used to in a normal laravel app! To execute any of these commands simply add the prefix `package:`.
 
 <a name="make-commands-foundation"/>
 
@@ -118,25 +152,25 @@ All of these commands do have all arguments & options to which you are used to i
 <a name="internals-stubs"/>
 
 ### Commands used for creating initial package stubs
-- `make:package:basetest {provider : The package's provider name}` - creates `TestCase` in `tests` folder
-- `make:package:codecov` - creates a `.codecov.yml` file
-- `make:package:composer {author : The author of the package.} {email : The author's email.}` - creates `composer.json`
-- `make:package:contribution` - creates `CONTRIBUTING.md`
-- `make:package:gitignore` - creates `.gitignore` file
-- `make:package:license {--copyright : The company or vendor name to place it int the license file}` - creates `LICENSE.md` file
-- `make:package:phpunit` - creates `phpunit.xml`
-- `make:package:readme` - creates `readme.md`
-- `make:package:styleci` - creates `.styleci.yml`
-- `make:package:travis` - creates `.travis.yml`
+- `package:basetest {provider : The package's provider name}` - creates `TestCase` in `tests` folder
+- `package:codecov` - creates a `.codecov.yml` file
+- `package:composer {author : The author of the package.} {email : The author's email.}` - creates `composer.json`
+- `package:contribution` - creates `CONTRIBUTING.md`
+- `package:gitignore` - creates `.gitignore` file
+- `package:license {--copyright : The company or vendor name to place it int the license file}` - creates `LICENSE.md` file
+- `package:phpunit` - creates `phpunit.xml`
+- `package:readme` - creates `readme.md`
+- `package:styleci` - creates `.styleci.yml`
+- `package:travis` - creates `.travis.yml`
 
 <a name="make-commands-example-usage"/>
 
 ### Example Usage
 *Use a few `make` commands*
-![make:package:*](https://user-images.githubusercontent.com/10154100/44323506-8cb8e080-a452-11e8-9f7c-fb07462c9b96.gif)
+![package:*](https://user-images.githubusercontent.com/10154100/44323506-8cb8e080-a452-11e8-9f7c-fb07462c9b96.gif)
 
 *All arguments & options you know from the standard `make` commands are available. Create a model with all option.*
-![make:package:model --all](https://user-images.githubusercontent.com/10154100/44323509-8f1b3a80-a452-11e8-9a98-1ecaa96b1ae6.gif)
+![package:model --all](https://user-images.githubusercontent.com/10154100/44323509-8f1b3a80-a452-11e8-9a98-1ecaa96b1ae6.gif)
 
 ## Testing
 Run the tests with:
