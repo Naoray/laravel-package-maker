@@ -92,7 +92,7 @@ class NovaMakeCommand extends Command
      */
     public function replaceOld($target, ...$new)
     {
-        $this->call('package:replace', [
+        $this->callSilent('package:replace', [
             'path' => $target,
             '--old' => [
                 ':author_name',

@@ -41,7 +41,7 @@ class ComposerMakeCommand extends GeneratorCommand
 
         $path = $this->getPath($name);
 
-        $this->call('package:replace', [
+        $this->callSilent('package:replace', [
             'path' => $path,
             '--old' => ['DummyAuthor', 'DummyEmail', 'DummyComposerNamespace', 'DummyComposerProviderNamespace'],
             '--new' => [$this->getAuthorInput(), $this->getEmailInput(), $this->composerNamespace(), $this->composerProviderNamespace()],

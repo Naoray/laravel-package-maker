@@ -41,7 +41,7 @@ class BaseTestMakeCommand extends GeneratorCommand
 
         $path = $this->getPath($name);
 
-        $this->call('package:replace', [
+        $this->callSilent('package:replace', [
             'path' => $path,
             '--old' => ['DummyPackageServiceProvider'],
             '--new' => [$this->getProviderInput()],
