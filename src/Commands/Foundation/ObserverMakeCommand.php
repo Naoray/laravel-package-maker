@@ -24,7 +24,7 @@ class ObserverMakeCommand extends MakeObserver
      */
     protected function resolveDirectory()
     {
-        return $this->getDirInput().'/src';
+        return $this->getDirInput().'src';
     }
 
     /**
