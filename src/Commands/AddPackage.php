@@ -25,28 +25,28 @@ class AddPackage extends Command
 
     /**
      * Package name.
-     * 
+     *
      * @var string
      */
     protected $packageName;
 
     /**
      * Package vendor name.
-     * 
+     *
      * @var string
      */
     protected $vendor;
-    
+
     /**
      * Relative path to the package.
-     * 
+     *
      * @var string
      */
     protected $path;
-    
+
     /**
      * Branch to add.
-     * 
+     *
      * @var string
      */
     protected $branch;
@@ -82,7 +82,7 @@ class AddPackage extends Command
 
     /**
      * Update composer dependencies.
-     * 
+     *
      * @return void
      */
     public function updateComposer()
@@ -119,7 +119,7 @@ class AddPackage extends Command
     {
         $composer = json_decode(file_get_contents(base_path('composer.json')), true);
 
-        $composer['require'][$this->vendor . '/' . $this->packageName] = '*';
+        $composer['require'][$this->vendor.'/'.$this->packageName] = '*';
 
         file_put_contents(
             base_path('composer.json'),
@@ -144,7 +144,7 @@ class AddPackage extends Command
         $branch = $this->getBranchInput();
 
         $this->table(['vendor', 'name', 'path', 'branch'], [[$vendor, $name, $path, $branch]]);
-        if (!$this->option('without-interaction') && !$this->confirm('Do you wish to continue?')) {
+        if (! $this->option('without-interaction') && ! $this->confirm('Do you wish to continue?')) {
             return;
         }
     }
@@ -160,7 +160,7 @@ class AddPackage extends Command
             return $this->packageName;
         }
 
-        if (!$this->packageName = trim($this->argument('name'))) {
+        if (! $this->packageName = trim($this->argument('name'))) {
             $this->packageName = $this->ask('What is your package\'s name?');
         }
 
@@ -178,7 +178,7 @@ class AddPackage extends Command
             return $this->vendor;
         }
 
-        if (!$this->vendor = trim($this->argument('vendor'))) {
+        if (! $this->vendor = trim($this->argument('vendor'))) {
             $this->vendor = $this->ask('What is your package\'s vendor name?');
         }
 
@@ -196,9 +196,9 @@ class AddPackage extends Command
             return $this->path;
         }
 
-        if (!$this->path = trim($this->argument('path'))) {
+        if (! $this->path = trim($this->argument('path'))) {
             $this->path = $this->anticipate('What is your package\'s path?', [
-                '../packages/' . $this->packageName, 'packages/' . $this->packageName
+                '../packages/'.$this->packageName, 'packages/'.$this->packageName,
             ]);
         }
 
@@ -216,7 +216,7 @@ class AddPackage extends Command
             return $this->branch;
         }
 
-        if (!$this->branch = trim($this->argument('branch'))) {
+        if (! $this->branch = trim($this->argument('branch'))) {
             $this->branch = '*';
         }
 
