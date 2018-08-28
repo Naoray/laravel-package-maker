@@ -58,7 +58,7 @@ class ContractMakeCommand extends GeneratorCommand
      */
     protected function getStub()
     {
-        return __DIR__ . '/stubs/dummy.stub';
+        return __DIR__.'/stubs/dummy.stub';
     }
 
     /**
@@ -68,7 +68,7 @@ class ContractMakeCommand extends GeneratorCommand
      */
     protected function resolveDirectory()
     {
-        return $this->getDirInput() . 'src';
+        return $this->getDirInput().'src';
     }
 
     /**
@@ -79,6 +79,6 @@ class ContractMakeCommand extends GeneratorCommand
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace . '\Contracts';
+        return $rootNamespace.'\Contracts';
     }
 }
