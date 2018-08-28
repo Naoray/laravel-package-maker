@@ -4,9 +4,12 @@ namespace Naoray\LaravelPackageMaker\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
+use Naoray\LaravelPackageMaker\Traits\InteractsWithTerminal;
 
 class ClonePackage extends Command
 {
+    use InteractsWithTerminal;
+
     /**
      * The name and signature of the console command.
      *
@@ -80,7 +83,7 @@ class ClonePackage extends Command
      */
     public function gitClone()
     {
-        exec('git clone '.$this->argument('src').' '.$this->argument('target'));
+        $this->runCommand('git clone '.$this->argument('src').' '.$this->argument('target'), getcwd());
 
         if ($this->files->isDirectory($git = $this->getTargetInput().'/.git')) {
             $this->files->deleteDirectory($git);

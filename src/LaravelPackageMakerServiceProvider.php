@@ -9,6 +9,7 @@ use Naoray\LaravelPackageMaker\Commands\ClonePackage;
 use Naoray\LaravelPackageMaker\Commands\NovaMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\PackageMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\SavePackageCredentials;
+use Naoray\LaravelPackageMaker\Commands\Standard\AnyMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\DeletePackageCredentials;
 use Naoray\LaravelPackageMaker\Commands\Foundation\JobMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\Package\ReadmeMakeCommand;
@@ -167,6 +168,7 @@ class LaravelPackageMakerServiceProvider extends ServiceProvider
     protected function standardCommands()
     {
         return [
+            AnyMakeCommand::class,
             TraitMakeCommand::class,
             ContractMakeCommand::class,
             InterfaceMakeCommand::class,
