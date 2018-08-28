@@ -40,7 +40,7 @@ class ContractMakeCommand extends Command
         $this->callSilent('package:any', [
             'name' => $this->argument('name'),
             '--type' => 'interface',
-            '--category' => $this->type ,
+            '--category' => $this->type,
         ]);
     }
 }
