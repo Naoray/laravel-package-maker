@@ -99,7 +99,7 @@ class ClonePackage extends Command
      */
     public function srcIsRemote()
     {
-        return str_contains($this->getSrcInput(), 'https');
+        return str_contains($this->getSrcInput(), ['https', 'git@']);
     }
 
     /**
