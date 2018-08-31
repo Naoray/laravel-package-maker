@@ -10,7 +10,7 @@
          stopOnFailure="false">
 
     <testsuites>
-        <testsuite name="DummyVendorName/DummyPackageName Test Suite">
+        <testsuite name="DummyVendor/DummyPackageName Test Suite">
             <directory>tests</directory>
         </testsuite>
     </testsuites>
