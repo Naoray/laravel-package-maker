@@ -24,7 +24,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Naoray\\LaravelPackageMaker\\Test\\": "tests"
+            "Naoray\\LaravelPackageMaker\\Tests\\": "tests"
         }
     },
     "scripts": {
