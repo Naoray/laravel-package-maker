@@ -14,7 +14,7 @@ class ClonePackageTest extends TestCase
 
         $this->artisan('package:clone', [
             'src' => $src,
-            'target' => $target
+            'target' => $target,
         ]);
 
         $this->assertTrue($this->files->isDirectory($target));
@@ -31,12 +31,12 @@ class ClonePackageTest extends TestCase
 
         $this->artisan('package:clone', [
             'src' => $src,
-            'target' => $target
+            'target' => $target,
         ]);
 
         $this->assertTrue($this->files->isDirectory($target));
         $this->assertEquals(
-            count($this->files->allFiles($target . '/src', true)),
+            count($this->files->allFiles($target.'/src', true)),
             count($this->files->allFiles('./src', true))
         );
 
@@ -51,12 +51,12 @@ class ClonePackageTest extends TestCase
 
         $this->artisan('package:clone', [
             'src' => $src,
-            'target' => $target
+            'target' => $target,
         ]);
 
         $this->assertTrue($this->files->isDirectory($target));
         $this->assertEquals(
-            count($this->files->allFiles($target . '/src', true)),
+            count($this->files->allFiles($target.'/src', true)),
             count($this->files->allFiles('./src', true))
         );
 

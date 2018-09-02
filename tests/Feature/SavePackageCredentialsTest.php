@@ -14,7 +14,7 @@ class SavePackageCredentialsTest extends TestCase
 
         $this->artisan('package:save', [
             'namespace' => $namespace,
-            'path' => $path
+            'path' => $path,
         ]);
 
         $this->assertEquals($namespace, cache()->get('package:namespace'));
