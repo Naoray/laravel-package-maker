@@ -17,13 +17,13 @@ class ResplaceTest extends TestCase
         $old = 'TestPackageNamespace';
         $new = 'NewPackageNamespace';
 
-        $this->runCommand('echo -n \'# ' . $old . '\' >> ' . $fileName, $path);
+        $this->runCommand('echo -n \'# '.$old.'\' >> '.$fileName, $path);
 
         $this->runReplaceCommand($path, $old, $new);
 
-        $this->assertEquals($this->files->get($path . $fileName), '# ' . $new);
+        $this->assertEquals($this->files->get($path.$fileName), '# '.$new);
 
-        $this->files->delete($path . $fileName);
+        $this->files->delete($path.$fileName);
     }
 
     /** @test */
@@ -36,7 +36,7 @@ class ResplaceTest extends TestCase
         $this->runReplaceCommand($path, $old, $new);
 
         $this->assertEquals(
-            json_decode($this->files->get($path . 'composer.json'), true)['name'],
+            json_decode($this->files->get($path.'composer.json'), true)['name'],
             strtolower($new)
         );
 
@@ -60,7 +60,7 @@ class ResplaceTest extends TestCase
         $this->artisan('package:replace', [
             'path' => $path,
             '--old' => $oldInput,
-            '--new' => $newInput
+            '--new' => $newInput,
         ]);
     }
 }
