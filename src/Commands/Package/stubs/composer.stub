@@ -22,7 +22,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "DummyComposerNamespaceTest\\": "tests"
+            "DummyComposerNamespaceTests\\": "tests"
         }
     },
     "scripts": {

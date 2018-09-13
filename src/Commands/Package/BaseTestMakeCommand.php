@@ -3,6 +3,7 @@
 namespace Naoray\LaravelPackageMaker\Commands\Package;
 
 use Symfony\Component\Console\Input\InputArgument;
+use Naoray\LaravelPackageMaker\Commands\GeneratorCommand;
 
 class BaseTestMakeCommand extends GeneratorCommand
 {
@@ -40,7 +41,7 @@ class BaseTestMakeCommand extends GeneratorCommand
 
         $path = $this->getPath($name);
 
-        $this->call('package:replace', [
+        $this->callSilent('package:replace', [
             'path' => $path,
             '--old' => ['DummyPackageServiceProvider'],
             '--new' => [$this->getProviderInput()],

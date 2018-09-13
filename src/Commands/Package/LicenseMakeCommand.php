@@ -3,6 +3,7 @@
 namespace Naoray\LaravelPackageMaker\Commands\Package;
 
 use Symfony\Component\Console\Input\InputOption;
+use Naoray\LaravelPackageMaker\Commands\GeneratorCommand;
 
 class LicenseMakeCommand extends GeneratorCommand
 {
@@ -26,6 +27,26 @@ class LicenseMakeCommand extends GeneratorCommand
      * @var string
      */
     protected $type = 'license';
+
+    /**
+     * Execute the console command.
+     *
+     * @return bool|null
+     */
+    public function handle()
+    {
+        parent::handle();
+
+        $name = $this->qualifyClass($this->getNameInput());
+
+        $path = $this->getPath($name);
+
+        $this->callSilent('package:replace', [
+            'path' => $path,
+            '--old' => ['CompanyOrVendorName'],
+            '--new' => [$this->getCopyrightInput()],
+        ]);
+    }
 
     /**
      * Get the stub file for the generator.
@@ -65,24 +86,6 @@ class LicenseMakeCommand extends GeneratorCommand
     protected function getCopyrightInput()
     {
         return trim($this->option('copyright'));
-    }
-
-    /**
-     * Replace the names for the given stub.
-     *
-     * @param string $stub
-     *
-     * @return \Naoray\LaravelPackageMaker\Commands\LicenseMakeCommand
-     */
-    protected function replaceOthers(&$stub, $name)
-    {
-        $class = parent::replaceOthers($stub, $name);
-
-        return str_replace(
-            ['CompanyOrVendorName'],
-            [$this->getCopyrightInput()],
-            $class
-        );
     }
 
     /**

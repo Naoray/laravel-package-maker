@@ -24,7 +24,7 @@ class ProviderMakeCommand extends MakeProvider
      */
     protected function resolveDirectory()
     {
-        return $this->getDirInput().'/src';
+        return $this->getDirInput().'src';
     }
 
     /**
