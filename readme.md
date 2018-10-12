@@ -59,6 +59,8 @@ php artisan make:nova
 
 Inspired by [Spatie's nova-skeleton-tool](https://github.com/spatie/skeleton-nova-tool) this command clones the repository, replaces all strings with your own and adds it to your own project.
 
+![make:nova](https://user-images.githubusercontent.com/10154100/44515270-5d100f80-a6c2-11e8-9a8c-a26e9a3af55d.png)
+
 <a name="internals-add"/>
 
 ### Add a package
