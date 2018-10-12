@@ -1,0 +1,41 @@
+{
+    "name": "test/package",
+    "description": "A description for package.",
+    "type": "package",
+    "license": "MIT",
+    "keywords": [
+        "laravel"
+    ],
+    "authors": [
+        {
+            "name": "test Author",
+            "email": "author@test.com"
+        }
+    ],
+    "require": {
+        "illuminate/support": "5.6.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Test\\Package\\": "./src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Test\\Package\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Test\\Package\\PackageServiceProvider"
+            ]
+        }
+    },
+    "require-dev": {
+        "orchestra/testbench": "^3.6"
+    }
+}

@@ -14,7 +14,7 @@ class AddPackage extends Command
      *
      * @var string
      */
-    protected $signature = 'package:add {name?} {path?} {vendor?} {branch?} {--without-interaction}';
+    protected $signature = 'package:add {name?} {path?} {vendor?} {branch?}';
 
     /**
      * The console command description.
@@ -144,7 +144,7 @@ class AddPackage extends Command
         $branch = $this->getBranchInput();
 
         $this->table(['vendor', 'name', 'path', 'branch'], [[$vendor, $name, $path, $branch]]);
-        if (! $this->option('without-interaction') && ! $this->confirm('Do you wish to continue?')) {
+        if (! $this->option('no-interaction') && ! $this->confirm('Do you wish to continue?')) {
             return;
         }
     }

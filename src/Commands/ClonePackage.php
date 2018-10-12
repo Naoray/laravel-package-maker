@@ -63,9 +63,18 @@ class ClonePackage extends Command
         $this->localClone();
     }
 
+    /**
+     * Clone local package.
+     *
+     * @return void
+     */
     public function localClone()
     {
-        $this->files->copyDirectory($this->getSrcInput(), $this->getTargetInput());
+        $successfull = $this->files->copyDirectory($this->getSrcInput(), $this->getTargetInput());
+
+        if (! $successfull) {
+            $this->error('Copying was not successfull!');
+        }
 
         if ($this->files->isDirectory($vendor = $this->getTargetInput().'/vendor')) {
             $this->files->deleteDirectory($vendor);
@@ -79,7 +88,7 @@ class ClonePackage extends Command
     /**
      * Clone package via git.
      *
-     * @return string
+     * @return void
      */
     public function gitClone()
     {

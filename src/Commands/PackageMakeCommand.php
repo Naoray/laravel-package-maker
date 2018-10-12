@@ -97,7 +97,7 @@ class PackageMakeCommand extends Command
     {
         $this->checkForInputs();
 
-        if (! $this->confirm('Do you wish to continue?')) {
+        if (! $this->option('no-interaction') && ! $this->confirm('Do you wish to continue?')) {
             return $this->error('Canceled command!');
         }
 
@@ -110,9 +110,9 @@ class PackageMakeCommand extends Command
         $this->createServiceProvider();
         $this->createBaseTestCase();
 
-        $this->configureCICDService();
-        $this->configureCodeQualityService();
-        $this->configureCodeCoverageService();
+        // $this->configureCICDService();
+        // $this->configureCodeQualityService();
+        // $this->configureCodeCoverageService();
 
         $this->info('Package successfully created!');
 
@@ -122,11 +122,11 @@ class PackageMakeCommand extends Command
         ]);
 
         $this->callSilent('package:add', [
-            'name'                  => $this->packageName,
-            'path'                  => $this->dir.$this->packageName,
-            'vendor'                => $this->vendor,
-            'branch'                => 'master',
-            '--without-interaction' => true,
+            'name' => $this->packageName,
+            'path' => $this->dir.$this->packageName,
+            'vendor' => $this->vendor,
+            'branch' => 'master',
+            '--no-interaction' => true,
         ]);
     }
 
@@ -238,7 +238,7 @@ class PackageMakeCommand extends Command
             $this->packageOptions(),
             [
                 '--author' => $this->author,
-                '--email'  => $this->email,
+                '--email' => $this->email,
             ]
         ));
     }
@@ -282,7 +282,7 @@ class PackageMakeCommand extends Command
     {
         return [
             '--namespace' => $this->rootNamespace(),
-            '--dir'       => $this->packagePath(),
+            '--dir' => $this->packagePath(),
         ];
     }
 

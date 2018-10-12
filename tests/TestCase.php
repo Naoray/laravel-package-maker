@@ -1,11 +1,29 @@
 <?php
 
-namespace Naoray\LaravelPackageMaker\Test;
+namespace Naoray\LaravelPackageMaker\Tests;
 
+use Illuminate\Filesystem\Filesystem;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
 {
+    /**
+     * @var \Illuminate\Filesystem\Filesystem
+     */
+    protected $files;
+
+    /**
+     * Setup the test environment.
+     *
+     * @return void
+     */
+    public function setUp()
+    {
+        parent::setUp();
+
+        $this->files = new Filesystem;
+    }
+
     /**
      * Get package providers.
      *

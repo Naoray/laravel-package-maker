@@ -24,7 +24,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Naoray\\LaravelPackageMaker\\Test\\": "tests"
+            "Naoray\\LaravelPackageMaker\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -38,6 +38,7 @@
         }
     },
     "require-dev": {
-        "orchestra/testbench": "^3.7"
+        "orchestra/testbench": "^3.7",
+        "mockery/mockery": "^1.2"
     }
 }
