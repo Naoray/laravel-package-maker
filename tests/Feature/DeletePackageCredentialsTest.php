@@ -11,7 +11,7 @@ class DeletePackageCredentialsTest extends TestCase
     {
         $this->artisan('package:save', [
             'namespace' => 'Test\Package',
-            'path' => './tests/Support/package'
+            'path' => './tests/Support/package',
         ]);
 
         $this->artisan('package:delete');
