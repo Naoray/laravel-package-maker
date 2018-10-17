@@ -27,7 +27,7 @@ trait CreatesPackageStubs
     {
         $name = str_replace_first($this->rootNamespace(), '', $name);
 
-        return $this->basePath().str_replace('\\', '/', $name).$this->getFileType();
+        return $this->basePath() . str_replace('\\', '/', $name) . $this->getFileType();
     }
 
     /**
@@ -37,7 +37,7 @@ trait CreatesPackageStubs
      */
     protected function basePath()
     {
-        return base_path().'/'.$this->resolveDirectory();
+        return base_path() . '/' . str_finish($this->resolveDirectory(), '/');
     }
 
     /**
@@ -77,7 +77,7 @@ trait CreatesPackageStubs
      */
     protected function rootNamespace()
     {
-        return $this->getNamespaceInput();
+        return $this->getNamespaceInput() . '\\';
     }
 
     /**
@@ -109,7 +109,7 @@ trait CreatesPackageStubs
     {
         $namespace = trim($this->option('namespace'));
 
-        if (! $namespace && ! $namespace = cache()->get('package:namespace')) {
+        if (!$namespace && !$namespace = cache()->get('package:namespace')) {
             $namespace = $this->ask('What is the namespace of your package?');
         }
 
@@ -134,11 +134,11 @@ trait CreatesPackageStubs
     {
         $dir = trim($this->option('dir'));
 
-        if (! $dir && ! $dir = cache()->get('package:path')) {
+        if (!$dir && !$dir = cache()->get('package:path')) {
             $dir = $this->ask('Where is your package stored (relative path)?');
         }
 
-        return ends_with($dir, '/') ? $dir : $dir.'/';
+        return ends_with($dir, '/') ? $dir : $dir . '/';
     }
 
     /**
