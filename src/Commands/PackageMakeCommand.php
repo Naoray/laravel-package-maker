@@ -97,7 +97,7 @@ class PackageMakeCommand extends Command
     {
         $this->checkForInputs();
 
-        if (! $this->option('no-interaction') && ! $this->confirm('Do you wish to continue?')) {
+        if (!$this->option('no-interaction') && !$this->confirm('Do you wish to continue?')) {
             return $this->error('Canceled command!');
         }
 
@@ -110,20 +110,20 @@ class PackageMakeCommand extends Command
         $this->createServiceProvider();
         $this->createBaseTestCase();
 
-        // $this->configureCICDService();
-        // $this->configureCodeQualityService();
-        // $this->configureCodeCoverageService();
+        $this->configureCICDService();
+        $this->configureCodeQualityService();
+        $this->configureCodeCoverageService();
 
         $this->info('Package successfully created!');
 
         $this->call('package:save', [
             'namespace' => $this->rootNamespace(),
-            'path' => $this->dir.$this->packageName,
+            'path' => $this->dir . $this->packageName,
         ]);
 
         $this->callSilent('package:add', [
             'name' => $this->packageName,
-            'path' => $this->dir.$this->packageName,
+            'path' => $this->dir . $this->packageName,
             'vendor' => $this->vendor,
             'branch' => 'master',
             '--no-interaction' => true,
@@ -252,7 +252,7 @@ class PackageMakeCommand extends Command
     {
         $this->call('package:provider', array_merge(
             [
-                'name' => $this->packageName().'ServiceProvider',
+                'name' => $this->packageName() . 'ServiceProvider',
             ],
             $this->packageOptions()
         ));
@@ -267,7 +267,7 @@ class PackageMakeCommand extends Command
     {
         $this->call('package:basetest', array_merge(
             [
-                'provider' => $this->packageName().'ServiceProvider',
+                'provider' => $this->packageName() . 'ServiceProvider',
             ],
             $this->packageOptions()
         ));
@@ -291,7 +291,7 @@ class PackageMakeCommand extends Command
      */
     protected function rootNamespace()
     {
-        return ucfirst($this->vendor).'\\'.$this->packageName();
+        return ucfirst($this->vendor) . '\\' . $this->packageName();
     }
 
     /**
@@ -319,7 +319,7 @@ class PackageMakeCommand extends Command
      */
     protected function packagePath()
     {
-        return $this->getDirectoryInput().$this->packageName;
+        return $this->getDirectoryInput() . $this->packageName;
     }
 
     /**
@@ -353,7 +353,7 @@ class PackageMakeCommand extends Command
             return $this->dir;
         }
 
-        if (! $this->dir = $this->argument('dir')) {
+        if (!$this->dir = $this->argument('dir')) {
             $this->dir = $this->anticipate('Where should the package be installed?', ['../packages/', 'packages/']);
         }
 
@@ -371,7 +371,7 @@ class PackageMakeCommand extends Command
             return $this->copyright;
         }
 
-        if (! $this->copyright = $this->argument('copyright')) {
+        if (!$this->copyright = $this->argument('copyright')) {
             $this->copyright = $this->ask('Who will hold the copyrights?');
         }
 
@@ -389,7 +389,7 @@ class PackageMakeCommand extends Command
             return $this->packageName;
         }
 
-        if (! $this->packageName = trim($this->argument('name'))) {
+        if (!$this->packageName = trim($this->argument('name'))) {
             $this->packageName = $this->ask('What\'s your packages name?');
         }
 
@@ -407,7 +407,7 @@ class PackageMakeCommand extends Command
             return $this->vendor;
         }
 
-        if (! $this->vendor = trim($this->argument('vendor'))) {
+        if (!$this->vendor = trim($this->argument('vendor'))) {
             $this->vendor = $this->ask('What\'s the packages github name (vendor name of the package)?');
         }
 
@@ -425,7 +425,7 @@ class PackageMakeCommand extends Command
             return $this->author;
         }
 
-        if (! $this->author = $this->argument('author')) {
+        if (!$this->author = $this->argument('author')) {
             $this->author = $this->ask('Who is the author of the package?');
         }
 
@@ -443,7 +443,7 @@ class PackageMakeCommand extends Command
             return $this->email;
         }
 
-        if (! $this->email = $this->argument('email')) {
+        if (!$this->email = $this->argument('email')) {
             $this->email = $this->ask('What\'s the mantainer\'s e-mail?');
         }
 
