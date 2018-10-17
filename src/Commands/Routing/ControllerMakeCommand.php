@@ -24,7 +24,33 @@ class ControllerMakeCommand extends MakeController
      */
     protected function resolveDirectory()
     {
-        return $this->getDirInput().'src';
+        return $this->getDirInput() . 'src';
+    }
+
+    /**
+     * Build the class with the given name.
+     *
+     * @param string $name
+     *
+     * @return string
+     */
+    protected function buildClass($name)
+    {
+        $class = parent::buildClass($name);
+
+        if (str_contains($class, $this->rootNamespace() . 'Http\Controllers\Controller')) {
+            return str_replace(
+                $this->rootNamespace() . 'Http\Controllers\Controller',
+                'Illuminate\Routing\Controller',
+                $class
+            );
+        }
+
+        return str_replace(
+            'use Illuminate\Http\Request;',
+            "use Illuminate\Http\Request;\nuse Illuminate\Routing\Controller;",
+            $class
+        );
     }
 
     /**
@@ -36,7 +62,7 @@ class ControllerMakeCommand extends MakeController
     {
         $parentModelClass = $this->parseModel($this->option('parent'));
 
-        if (! class_exists($parentModelClass)) {
+        if (!class_exists($parentModelClass)) {
             if ($this->confirm("A {$parentModelClass} model does not exist. Do you want to generate it?", true)) {
                 $this->call('package:model', [
                     'name' => $parentModelClass,
@@ -63,7 +89,7 @@ class ControllerMakeCommand extends MakeController
     {
         $modelClass = $this->parseModel($this->option('model'));
 
-        if (! class_exists($modelClass)) {
+        if (!class_exists($modelClass)) {
             if ($this->confirm("A {$modelClass} model does not exist. Do you want to generate it?", true)) {
                 $this->call('package:model', [
                     'name' => $modelClass,
@@ -94,8 +120,8 @@ class ControllerMakeCommand extends MakeController
 
         $model = trim(str_replace('/', '\\', $model), '\\');
 
-        if (! starts_with($model, $rootNamespace = $this->rootNamespace()) && ! starts_with($model, $this->laravel->getNamespace())) {
-            $model = $rootNamespace.'\\'.$model;
+        if (!starts_with($model, $rootNamespace = $this->rootNamespace()) && !starts_with($model, $this->laravel->getNamespace())) {
+            $model = $rootNamespace . '\\' . $model;
         }
 
         return $model;
