@@ -24,7 +24,35 @@ class ControllerMakeCommand extends MakeController
      */
     protected function resolveDirectory()
     {
+        // Illuminate\Routing\Controller DummyRootNamespaceHttp\Controllers\Controller;
+
         return $this->getDirInput().'src';
+    }
+
+    /**
+     * Build the class with the given name.
+     *
+     * @param string $name
+     *
+     * @return string
+     */
+    protected function buildClass($name)
+    {
+        $class = parent::buildClass($name);
+
+        if (str_contains($class, $this->rootNamespace().'Http\Controllers\Controller')) {
+            return str_replace(
+                $this->rootNamespace().'Http\Controllers\Controller',
+                'Illuminate\Routing\Controller',
+                $class
+            );
+        }
+
+        return str_replace(
+            'use Illuminate\Http\Request;',
+            "use Illuminate\Http\Request;\nuse Illuminate\Routing\Controller;",
+            $class
+        );
     }
 
     /**
