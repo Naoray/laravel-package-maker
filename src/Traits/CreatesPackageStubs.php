@@ -37,7 +37,7 @@ trait CreatesPackageStubs
      */
     protected function basePath()
     {
-        return base_path().'/'.$this->resolveDirectory();
+        return base_path().'/'.str_finish($this->resolveDirectory(), '/');
     }
 
     /**
@@ -77,7 +77,7 @@ trait CreatesPackageStubs
      */
     protected function rootNamespace()
     {
-        return $this->getNamespaceInput();
+        return $this->getNamespaceInput().'\\';
     }
 
     /**
