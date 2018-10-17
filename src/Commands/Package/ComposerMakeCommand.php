@@ -83,7 +83,7 @@ class ComposerMakeCommand extends GeneratorCommand
      */
     protected function composerNamespace()
     {
-        return ucfirst($this->vendorName()).'\\\\'.ucfirst($this->packageName()).'\\\\';
+        return ucfirst($this->vendorName()).'\\\\'.studly_case($this->packageName()).'\\\\';
     }
 
     /**
@@ -91,7 +91,7 @@ class ComposerMakeCommand extends GeneratorCommand
      */
     protected function composerProviderNamespace()
     {
-        return $this->composerNamespace().ucfirst($this->packageName()).'ServiceProvider';
+        return $this->composerNamespace().studly_case($this->packageName()).'ServiceProvider';
     }
 
     /**

@@ -110,9 +110,9 @@ class PackageMakeCommand extends Command
         $this->createServiceProvider();
         $this->createBaseTestCase();
 
-        // $this->configureCICDService();
-        // $this->configureCodeQualityService();
-        // $this->configureCodeCoverageService();
+        $this->configureCICDService();
+        $this->configureCodeQualityService();
+        $this->configureCodeCoverageService();
 
         $this->info('Package successfully created!');
 

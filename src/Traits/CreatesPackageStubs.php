@@ -97,7 +97,7 @@ trait CreatesPackageStubs
      */
     protected function packageName()
     {
-        return lcfirst(str_after($this->getNamespaceInput(), '\\'));
+        return str_slug(snake_Case(str_after($this->getNamespaceInput(), '\\')));
     }
 
     /**
