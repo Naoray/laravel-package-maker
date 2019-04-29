@@ -1,44 +1,44 @@
 {
-    "name": "naoray/laravel-package-maker",
-    "description": "Get a package skeleton and all other `make` commands from laravel base for package development.",
-    "type": "package",
-    "license": "MIT",
-    "keywords": [
-        "laravel"
-    ],
-    "authors": [
-        {
-            "name": "Krishan Koenig",
-            "email": "krishan.koenig@googlemail.com"
-        }
-    ],
-    "require": {
-        "illuminate/support": "5.7.*",
-        "illuminate/console": "5.7.*",
-        "illuminate/filesystem": "5.7.*"
-    },
-    "autoload": {
-        "psr-4": {
-            "Naoray\\LaravelPackageMaker\\": "./src"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Naoray\\LaravelPackageMaker\\Tests\\": "tests"
-        }
-    },
-    "scripts": {
-        "test": "vendor/bin/phpunit"
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Naoray\\LaravelPackageMaker\\LaravelPackageMakerServiceProvider"
-            ]
-        }
-    },
-    "require-dev": {
-        "orchestra/testbench": "^3.7",
-        "mockery/mockery": "^1.2"
+  "name": "naoray/laravel-package-maker",
+  "description": "Get a package skeleton and all other `make` commands from laravel base for package development.",
+  "type": "package",
+  "license": "MIT",
+  "keywords": [
+    "laravel"
+  ],
+  "authors": [
+    {
+      "name": "Krishan Koenig",
+      "email": "krishan.koenig@googlemail.com"
     }
+  ],
+  "require": {
+    "illuminate/support": "~5.7.0|~5.8.0",
+    "illuminate/console": "~5.7.0|~5.8.0",
+    "illuminate/filesystem": "~5.7.0|~5.8.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Naoray\\LaravelPackageMaker\\": "./src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Naoray\\LaravelPackageMaker\\Tests\\": "tests"
+    }
+  },
+  "scripts": {
+    "test": "vendor/bin/phpunit"
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Naoray\\LaravelPackageMaker\\LaravelPackageMakerServiceProvider"
+      ]
+    }
+  },
+  "require-dev": {
+    "orchestra/testbench": "^3.8",
+    "mockery/mockery": "^1.2"
+  }
 }
