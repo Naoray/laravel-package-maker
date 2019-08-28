@@ -24,8 +24,6 @@ class ControllerMakeCommand extends MakeController
      */
     protected function resolveDirectory()
     {
-        // Illuminate\Routing\Controller DummyRootNamespaceHttp\Controllers\Controller;
-
         return $this->getDirInput().'src';
     }
 
@@ -84,7 +82,8 @@ class ControllerMakeCommand extends MakeController
     /**
      * Build the model replacement values.
      *
-     * @param  array  $replace
+     * @param array $replace
+     *
      * @return array
      */
     protected function buildModelReplacements(array $replace)
@@ -111,7 +110,8 @@ class ControllerMakeCommand extends MakeController
     /**
      * Get the fully-qualified model class name.
      *
-     * @param  string  $model
+     * @param string $model
+     *
      * @return string
      */
     protected function parseModel($model)

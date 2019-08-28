@@ -29,8 +29,6 @@ class ModelMakeCommand extends MakeModel
 
     /**
      * Create a model factory for the model.
-     *
-     * @return void
      */
     protected function createFactory()
     {
@@ -39,15 +37,13 @@ class ModelMakeCommand extends MakeModel
         $this->call('package:factory', [
             'name' => "{$factory}Factory",
             '--model' => $this->argument('name'),
-            '--namespace' => $this->rootNamespace(),
-            '--dir' => $this->basePath(),
+            '--namespace' => $this->getNamespaceInput(),
+            '--dir' => $this->getDirInput(),
         ]);
     }
 
     /**
      * Create a migration file for the model.
-     *
-     * @return void
      */
     protected function createMigration()
     {
@@ -56,15 +52,13 @@ class ModelMakeCommand extends MakeModel
         $this->call('package:migration', [
             'name' => "create_{$table}_table",
             '--create' => $table,
-            '--namespace' => $this->rootNamespace(),
-            '--dir' => $this->basePath(),
+            '--namespace' => $this->getNamespaceInput(),
+            '--dir' => $this->getDirInput(),
         ]);
     }
 
     /**
      * Create a controller for the model.
-     *
-     * @return void
      */
     protected function createController()
     {
@@ -75,8 +69,8 @@ class ModelMakeCommand extends MakeModel
         $this->call('package:controller', [
             'name' => "{$controller}Controller",
             '--model' => $this->option('resource') ? $modelName : null,
-            '--namespace' => $this->rootNamespace(),
-            '--dir' => $this->basePath(),
+            '--namespace' => $this->getNamespaceInput(),
+            '--dir' => $this->getDirInput(),
         ]);
     }
 }

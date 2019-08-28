@@ -31,10 +31,9 @@ class MigrationMakeCommand extends MakeMigration
     /**
      * Create a new migration install command instance.
      *
-     * @param  Illuminate\Filesystem\Filesystem  $creator
-     * @param  \Illuminate\Database\Migrations\MigrationCreator  $creator
-     * @param  \Illuminate\Support\Composer  $composer
-     * @return void
+     * @param Illuminate\Filesystem\Filesystem                 $creator
+     * @param \Illuminate\Database\Migrations\MigrationCreator $creator
+     * @param \Illuminate\Support\Composer                     $composer
      */
     public function __construct(Filesystem $files, MigrationCreator $creator, Composer $composer)
     {
@@ -66,7 +65,8 @@ class MigrationMakeCommand extends MakeMigration
     /**
      * Build the directory for the class if necessary.
      *
-     * @param  string  $path
+     * @param string $path
+     *
      * @return string
      */
     protected function makeDirectory($path)
@@ -92,7 +92,9 @@ class MigrationMakeCommand extends MakeMigration
 
             ['path', null, InputOption::VALUE_REQUIRED, 'The location where the migration file should be created'],
 
-            ['realpath', null, InputOption::VALUE_REQUIRED, 'Indicate any provided migration file paths are pre - resolved absolute paths'],
+            ['realpath', null, InputOption::VALUE_NONE, 'Indicate any provided migration file paths are pre - resolved absolute paths'],
+
+            ['fullpath', null, InputOption::VALUE_NONE, 'Output the full path of the migration'],
         ];
     }
 }
