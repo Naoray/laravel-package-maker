@@ -49,15 +49,15 @@ class MigrationMakeCommand extends MakeMigration
      */
     protected function getMigrationPath()
     {
-        $path = $this->basePath() . 'database/migrations';
+        $path = $this->basePath().'database/migrations';
 
         if (! is_null($targetPath = $this->input->getOption('path'))) {
             $path = ! $this->usingRealPath()
-                ? $this->basePath() . $targetPath
+                ? $this->basePath().$targetPath
                 : $targetPath;
         }
 
-        $this->makeDirectory($path . '/some_migration.php');
+        $this->makeDirectory($path.'/some_migration.php');
 
         return $path;
     }
