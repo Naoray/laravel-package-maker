@@ -24,7 +24,7 @@ class ModelMakeCommand extends MakeModel
      */
     protected function resolveDirectory()
     {
-        return $this->getDirInput() . 'src';
+        return $this->getDirInput().'src';
     }
 
     /**
