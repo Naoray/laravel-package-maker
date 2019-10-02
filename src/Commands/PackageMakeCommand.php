@@ -12,7 +12,7 @@ class PackageMakeCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'make:package 
+    protected $signature = 'make:package
                              {name? : The name of the package}
                              {vendor? : Vendor name of the package}
                              {dir? : Directory where the package will be stored}
@@ -139,7 +139,13 @@ class PackageMakeCommand extends Command
      */
     protected function createCommonFiles()
     {
-        $this->call('package:readme', $this->packageOptions());
+        $this->call('package:readme', array_merge(
+            $this->packageOptions(),
+            [
+                '--author' => $this->author,
+                '--email' => $this->email,
+            ]
+        ));
         $this->call('package:license', array_merge(
             $this->packageOptions(),
             ['--copyright' => $this->copyright]
