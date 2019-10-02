@@ -27,19 +27,29 @@ I hate creating new controllers, middlewares, ... by copy & paste. Wouldn't it b
 `composer require naoray/laravel-package-maker --dev`
 
 ## Usage
-- [Create a package](#internals-create)
-- [Create a nova tool](#internals-nova)
-- [Add a package](#internals-add)
-- [Save package credentials](#internals-save)
-- [Delete package credentials](#internals-delete)
-- [Clone a package](#internals-clone)
-- [Replace content](#internals-replace)
-- [Make Commands](#make-commands)
-	+ [Foundation](#make-commands-foundation)
-	+ [Database](#make-commands-database)
-	+ [Routing](#make-commands-routing)
-- [Other Commands](#internals-stubs)
-- [Example Usage](#make-commands-example-usage)
+- [laravel-package-maker](#laravel-package-maker)
+  - [Install](#install)
+  - [Usage](#usage)
+    - [Create a package](#create-a-package)
+    - [Create a nova tool](#create-a-nova-tool)
+    - [Add a package](#add-a-package)
+    - [Save package credentials](#save-package-credentials)
+    - [Delete package credentials](#delete-package-credentials)
+    - [Clone a package](#clone-a-package)
+    - [Replace Content](#replace-content)
+    - [Make Commands](#make-commands)
+      - [Foundation](#foundation)
+      - [Database](#database)
+      - [Routing](#routing)
+      - [Standard Php](#standard-php)
+    - [Commands used for creating initial package stubs](#commands-used-for-creating-initial-package-stubs)
+    - [Example Usage](#example-usage)
+  - [Testing](#testing)
+  - [Changelog](#changelog)
+  - [Contributing](#contributing)
+  - [Credits](#credits)
+  - [Security](#security)
+  - [License](#license)
 
 <a name="internals-create"/>
 
@@ -163,12 +173,12 @@ All of the following routes only accept a `name` argument.
 ### Commands used for creating initial package stubs
 - `package:basetest {provider : The package's provider name}` - creates `TestCase` in `tests` folder
 - `package:codecov` - creates a `.codecov.yml` file
-- `package:composer {author : The author of the package.} {email : The author's email.}` - creates `composer.json`
+- `package:composer {--author : The author of the package.} {--email : The author's email.}` - creates `composer.json`
 - `package:contribution` - creates `CONTRIBUTING.md`
 - `package:gitignore` - creates `.gitignore` file
 - `package:license {--copyright : The company or vendor name to place it int the license file}` - creates `LICENSE.md` file
 - `package:phpunit` - creates `phpunit.xml`
-- `package:readme` - creates `readme.md`
+- `package:readme {--author : The author of the package.} {--email : The author's email.}` - creates `readme.md`
 - `package:styleci` - creates `.styleci.yml`
 - `package:travis` - creates `.travis.yml`
 
@@ -193,6 +203,10 @@ Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recen
 
 ## Contributing
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
+
+## Credits
+- [Krishan König](https://github.com/naoray)
+- [All Contributors](https://github.com/naoray/laravel-package-maker/contributors)
 
 ## Security
 If you discover any security-related issues, please email krishan.koenig@googlemail.com instead of using the issue tracker.
