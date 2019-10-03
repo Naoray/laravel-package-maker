@@ -17,7 +17,7 @@ class ResplaceTest extends TestCase
         $old = 'TestPackageNamespace';
         $new = 'NewPackageNamespace';
 
-        $this->runCommand('echo -n \'# '.$old.'\' >> '.$fileName, $path);
+        $this->runCommand('echo \'# '.$old . '\c'.'\' > '.$fileName, $path);
 
         $this->runReplaceCommand($path, $old, $new);
 
