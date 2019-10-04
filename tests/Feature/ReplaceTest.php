@@ -5,7 +5,7 @@ namespace Naoray\LaravelPackageMaker\Tests\Feature;
 use Naoray\LaravelPackageMaker\Tests\TestCase;
 use Naoray\LaravelPackageMaker\Traits\InteractsWithTerminal;
 
-class ResplaceTest extends TestCase
+class ReplaceTest extends TestCase
 {
     use InteractsWithTerminal;
 
