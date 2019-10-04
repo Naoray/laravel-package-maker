@@ -5,7 +5,7 @@ namespace Naoray\LaravelPackageMaker\Tests\Feature;
 use Naoray\LaravelPackageMaker\Tests\TestCase;
 use Naoray\LaravelPackageMaker\Traits\InteractsWithTerminal;
 
-class ResplaceTest extends TestCase
+class ReplaceTest extends TestCase
 {
     use InteractsWithTerminal;
 
@@ -17,7 +17,7 @@ class ResplaceTest extends TestCase
         $old = 'TestPackageNamespace';
         $new = 'NewPackageNamespace';
 
-        $this->runCommand('echo -n \'# '.$old.'\' >> '.$fileName, $path);
+        $this->runCommand('/bin/echo -n \'# '.$old.'\' >> '.$fileName, $path);
 
         $this->runReplaceCommand($path, $old, $new);
 
