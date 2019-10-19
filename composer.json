@@ -22,6 +22,7 @@
       "Naoray\\LaravelPackageMaker\\": "./src"
     }
   },
+  "minimum-stability": "dev",
   "autoload-dev": {
     "psr-4": {
       "Naoray\\LaravelPackageMaker\\Tests\\": "tests"
