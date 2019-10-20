@@ -87,7 +87,7 @@ class AddPackage extends Command
      */
     public function updateComposer()
     {
-        $this->runCommand('composer update', getcwd());
+        $this->runPackageCommand('composer update', getcwd());
     }
 
     /**

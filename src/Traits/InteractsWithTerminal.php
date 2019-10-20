@@ -13,7 +13,7 @@ trait InteractsWithTerminal
      * @param  string  $path
      * @return void
      */
-    protected function runCommand($command, $path)
+    protected function runPackageCommand($command, $path)
     {
         $process = (new Process($command, $path))->setTimeout(null);
 

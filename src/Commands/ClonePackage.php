@@ -92,7 +92,7 @@ class ClonePackage extends Command
      */
     public function gitClone()
     {
-        $this->runCommand('git clone '.$this->argument('src').' '.$this->argument('target'), getcwd());
+        $this->runPackageCommand('git clone '.$this->argument('src').' '.$this->argument('target'), getcwd());
 
         if ($this->files->isDirectory($git = $this->getTargetInput().'/.git')) {
             $this->files->deleteDirectory($git);
