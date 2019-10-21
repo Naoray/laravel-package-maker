@@ -25,7 +25,7 @@ class ObserverMakeCommand extends MakeObserver
      */
     protected function resolveDirectory()
     {
-        return $this->getDirInput() . 'src';
+        return $this->getDirInput().'src';
     }
 
     /**
@@ -40,7 +40,7 @@ class ObserverMakeCommand extends MakeObserver
     {
         $model = str_replace('/', '\\', $model);
 
-        $namespaceModel = $this->rootNamespace() . '\\' . $model;
+        $namespaceModel = $this->rootNamespace().'\\'.$model;
 
         if (Str::startsWith($model, '\\')) {
             $stub = str_replace('NamespacedDummyModel', trim($model, '\\'), $stub);

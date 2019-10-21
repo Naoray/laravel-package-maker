@@ -74,7 +74,7 @@ class AddPackage extends Command
         $this->updateComposer();
 
         $this->call('package:save', [
-            'namespace' => ucfirst($this->vendor) . '\\' . ucfirst(Str::camel($this->packageName)),
+            'namespace' => ucfirst($this->vendor).'\\'.ucfirst(Str::camel($this->packageName)),
             'path' => $this->path,
         ]);
     }
@@ -112,7 +112,7 @@ class AddPackage extends Command
     {
         $composer = json_decode(file_get_contents(base_path('composer.json')), true);
 
-        $composer['require'][$this->vendor . '/' . $this->packageName] = '*';
+        $composer['require'][$this->vendor.'/'.$this->packageName] = '*';
 
         file_put_contents(
             base_path('composer.json'),
@@ -191,7 +191,7 @@ class AddPackage extends Command
 
         if (! $this->path = trim($this->argument('path'))) {
             $this->path = $this->anticipate('What is your package\'s path?', [
-                '../packages/' . $this->packageName, 'packages/' . $this->packageName,
+                '../packages/'.$this->packageName, 'packages/'.$this->packageName,
             ]);
         }
 

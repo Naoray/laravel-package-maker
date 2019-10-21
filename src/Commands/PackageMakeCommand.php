@@ -119,12 +119,12 @@ class PackageMakeCommand extends Command
 
         $this->call('package:save', [
             'namespace' => $this->rootNamespace(),
-            'path' => $this->dir . $this->packageName,
+            'path' => $this->dir.$this->packageName,
         ]);
 
         $this->callSilent('package:add', [
             'name' => $this->packageName,
-            'path' => $this->dir . $this->packageName,
+            'path' => $this->dir.$this->packageName,
             'vendor' => $this->vendor,
             'branch' => 'master',
             '--no-interaction' => true,
@@ -255,7 +255,7 @@ class PackageMakeCommand extends Command
     {
         $this->call('package:provider', array_merge(
             [
-                'name' => $this->packageName() . 'ServiceProvider',
+                'name' => $this->packageName().'ServiceProvider',
             ],
             $this->packageOptions()
         ));
@@ -268,7 +268,7 @@ class PackageMakeCommand extends Command
     {
         $this->call('package:basetest', array_merge(
             [
-                'provider' => $this->packageName() . 'ServiceProvider',
+                'provider' => $this->packageName().'ServiceProvider',
             ],
             $this->packageOptions()
         ));
@@ -292,7 +292,7 @@ class PackageMakeCommand extends Command
      */
     protected function rootNamespace()
     {
-        return ucfirst($this->vendor) . '\\' . $this->packageName();
+        return ucfirst($this->vendor).'\\'.$this->packageName();
     }
 
     /**
@@ -320,7 +320,7 @@ class PackageMakeCommand extends Command
      */
     protected function packagePath()
     {
-        return $this->getDirectoryInput() . $this->packageName;
+        return $this->getDirectoryInput().$this->packageName;
     }
 
     /**
