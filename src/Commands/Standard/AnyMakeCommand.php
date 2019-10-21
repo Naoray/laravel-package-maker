@@ -2,6 +2,7 @@
 
 namespace Naoray\LaravelPackageMaker\Commands\Standard;
 
+use Illuminate\Support\Str;
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Naoray\LaravelPackageMaker\Traits\HasNameInput;
@@ -61,7 +62,7 @@ class AnyMakeCommand extends GeneratorCommand
      */
     protected function getStub()
     {
-        return __DIR__.'/stubs/dummy.stub';
+        return __DIR__ . '/stubs/dummy.stub';
     }
 
     /**
@@ -71,18 +72,19 @@ class AnyMakeCommand extends GeneratorCommand
      */
     protected function resolveDirectory()
     {
-        return $this->getDirInput().'src';
+        return $this->getDirInput() . 'src';
     }
 
     /**
      * Get the default namespace for the class.
      *
-     * @param  string  $rootNamespace
+     * @param string $rootNamespace
+     *
      * @return string
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace.'\\'.str_plural(ucfirst(camel_case($this->getCategoryInput())));
+        return $rootNamespace . '\\' . Str::plural(ucfirst(Str::camel($this->getCategoryInput())));
     }
 
     /**

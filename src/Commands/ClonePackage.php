@@ -2,6 +2,7 @@
 
 namespace Naoray\LaravelPackageMaker\Commands;
 
+use Illuminate\Support\Str;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Naoray\LaravelPackageMaker\Traits\InteractsWithTerminal;
@@ -35,8 +36,6 @@ class ClonePackage extends Command
 
     /**
      * Create a new command instance.
-     *
-     * @return void
      */
     public function __construct(Filesystem $files)
     {
@@ -53,7 +52,7 @@ class ClonePackage extends Command
     public function handle()
     {
         if ($this->files->isDirectory($target = $this->getTargetInput())) {
-            $this->error($target.' directory already exists!');
+            $this->error($target . ' directory already exists!');
         }
 
         if ($this->srcIsRemote()) {
@@ -65,8 +64,6 @@ class ClonePackage extends Command
 
     /**
      * Clone local package.
-     *
-     * @return void
      */
     public function localClone()
     {
@@ -76,7 +73,7 @@ class ClonePackage extends Command
             $this->error('Copying was not successfull!');
         }
 
-        if ($this->files->isDirectory($vendor = $this->getTargetInput().'/vendor')) {
+        if ($this->files->isDirectory($vendor = $this->getTargetInput() . '/vendor')) {
             $this->files->deleteDirectory($vendor);
 
             $this->info('Removed vendor folder.');
@@ -87,14 +84,12 @@ class ClonePackage extends Command
 
     /**
      * Clone package via git.
-     *
-     * @return void
      */
     public function gitClone()
     {
-        $this->runCommand('git clone '.$this->argument('src').' '.$this->argument('target'), getcwd());
+        $this->runConsoleCommand('git clone ' . $this->argument('src') . ' ' . $this->argument('target'), getcwd());
 
-        if ($this->files->isDirectory($git = $this->getTargetInput().'/.git')) {
+        if ($this->files->isDirectory($git = $this->getTargetInput() . '/.git')) {
             $this->files->deleteDirectory($git);
 
             $this->info('Removed .git folder.');
@@ -108,7 +103,7 @@ class ClonePackage extends Command
      */
     public function srcIsRemote()
     {
-        return str_contains($this->getSrcInput(), ['https', 'git@']);
+        return Str::contains($this->getSrcInput(), ['https', 'git@']);
     }
 
     /**

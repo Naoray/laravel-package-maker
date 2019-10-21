@@ -9,11 +9,10 @@ trait InteractsWithTerminal
     /**
      * Run the given command as a process.
      *
-     * @param  string  $command
-     * @param  string  $path
-     * @return void
+     * @param string $command
+     * @param string $path
      */
-    protected function runCommand($command, $path)
+    protected function runConsoleCommand($command, $path)
     {
         $process = (new Process($command, $path))->setTimeout(null);
 

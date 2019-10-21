@@ -2,6 +2,7 @@
 
 namespace Naoray\LaravelPackageMaker\Traits;
 
+use Illuminate\Support\Str;
 use Symfony\Component\Console\Input\InputOption;
 
 trait CreatesPackageStubs
@@ -25,9 +26,9 @@ trait CreatesPackageStubs
      */
     protected function getPath($name)
     {
-        $name = str_replace_first($this->rootNamespace(), '', $name);
+        $name = Str::replaceFirst($this->rootNamespace(), '', $name);
 
-        return $this->basePath().str_replace('\\', '/', $name).$this->getFileType();
+        return $this->basePath() . str_replace('\\', '/', $name) . $this->getFileType();
     }
 
     /**
@@ -37,7 +38,7 @@ trait CreatesPackageStubs
      */
     protected function basePath()
     {
-        return base_path().'/'.str_finish($this->resolveDirectory(), '/');
+        return base_path() . '/' . Str::finish($this->resolveDirectory(), '/');
     }
 
     /**
@@ -77,7 +78,7 @@ trait CreatesPackageStubs
      */
     protected function rootNamespace()
     {
-        return $this->getNamespaceInput().'\\';
+        return $this->getNamespaceInput() . '\\';
     }
 
     /**
@@ -87,7 +88,7 @@ trait CreatesPackageStubs
      */
     protected function vendorName()
     {
-        return lcfirst(str_before($this->getNamespaceInput(), '\\'));
+        return lcfirst(Str::before($this->getNamespaceInput(), '\\'));
     }
 
     /**
@@ -97,7 +98,7 @@ trait CreatesPackageStubs
      */
     protected function packageName()
     {
-        return str_slug(snake_Case(str_after($this->getNamespaceInput(), '\\')));
+        return Str::slug(Str::snake(Str::after($this->getNamespaceInput(), '\\')));
     }
 
     /**
@@ -113,13 +114,13 @@ trait CreatesPackageStubs
             $namespace = $this->ask('What is the namespace of your package?');
         }
 
-        if (str_contains($namespace, '\\')) {
+        if (Str::contains($namespace, '\\')) {
             return $namespace;
         }
 
         $namespace = explode(
             '_',
-            snake_case(trim($this->option('namespace')))
+            Str::snake(trim($this->option('namespace')))
         );
 
         return implode('\\', array_map('ucfirst', $namespace));
@@ -138,7 +139,7 @@ trait CreatesPackageStubs
             $dir = $this->ask('Where is your package stored (relative path)?');
         }
 
-        return ends_with($dir, '/') ? $dir : $dir.'/';
+        return Str::endsWith($dir, '/') ? $dir : $dir . '/';
     }
 
     /**

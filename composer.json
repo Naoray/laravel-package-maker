@@ -13,9 +13,9 @@
     }
   ],
   "require": {
-    "illuminate/support": "~5.7.0|~5.8.0",
-    "illuminate/console": "~5.7.0|~5.8.0",
-    "illuminate/filesystem": "~5.7.0|~5.8.0"
+    "illuminate/support": "~5.7.0|~5.8.0|^6.0",
+    "illuminate/console": "~5.7.0|~5.8.0|^6.0",
+    "illuminate/filesystem": "~5.7.0|~5.8.0|^6.0"
   },
   "autoload": {
     "psr-4": {
@@ -38,7 +38,7 @@
     }
   },
   "require-dev": {
-    "orchestra/testbench": "^3.8",
+    "orchestra/testbench": "^3.8|^4.0",
     "mockery/mockery": "^1.2"
   }
 }
