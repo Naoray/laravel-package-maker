@@ -1,5 +1,85 @@
 # Change Log
 
+## [2.0.0](https://github.com/naoray/laravel-package-maker/tree/2.0.0) (2019-10-21)
+[Full Changelog](https://github.com/naoray/laravel-package-maker/compare/v1.4.4...2.0.0)
+
+**Implemented enhancements:**
+
+- Add support for Laravel 6.0 [\#54](https://github.com/Naoray/laravel-package-maker/issues/54)
+- Add Credits to generate readme command [\#52](https://github.com/Naoray/laravel-package-maker/issues/52)
+
+**Closed issues:**
+
+- Exhausted allowed memory on Model Creation [\#55](https://github.com/Naoray/laravel-package-maker/issues/55)
+
+**Merged pull requests:**
+
+- Apply fixes from StyleCI [\#62](https://github.com/Naoray/laravel-package-maker/pull/62) ([Naoray](https://github.com/Naoray))
+- Laravel 6 support [\#61](https://github.com/Naoray/laravel-package-maker/pull/61) ([immeyti](https://github.com/immeyti))
+- Fix: test breaking due to incorrect string appended to the test output [\#60](https://github.com/Naoray/laravel-package-maker/pull/60) ([byjujohn](https://github.com/byjujohn))
+- add credits [\#59](https://github.com/Naoray/laravel-package-maker/pull/59) ([Naoray](https://github.com/Naoray))
+
+## [v1.4.4](https://github.com/naoray/laravel-package-maker/tree/v1.4.4) (2019-08-28)
+[Full Changelog](https://github.com/naoray/laravel-package-maker/compare/v1.4.3...v1.4.4)
+
+**Merged pull requests:**
+
+- Fix model creation with flags [\#57](https://github.com/Naoray/laravel-package-maker/pull/57) ([Naoray](https://github.com/Naoray))
+- Apply fixes from StyleCI [\#56](https://github.com/Naoray/laravel-package-maker/pull/56) ([Naoray](https://github.com/Naoray))
+
+## [v1.4.3](https://github.com/naoray/laravel-package-maker/tree/v1.4.3) (2019-04-29)
+[Full Changelog](https://github.com/naoray/laravel-package-maker/compare/v1.4.2...v1.4.3)
+
+## [v1.4.2](https://github.com/naoray/laravel-package-maker/tree/v1.4.2) (2019-04-29)
+[Full Changelog](https://github.com/naoray/laravel-package-maker/compare/v1.4.1...v1.4.2)
+
+## [v1.4.1](https://github.com/naoray/laravel-package-maker/tree/v1.4.1) (2019-04-29)
+[Full Changelog](https://github.com/naoray/laravel-package-maker/compare/v1.4.0...v1.4.1)
+
+## [v1.4.0](https://github.com/naoray/laravel-package-maker/tree/v1.4.0) (2019-04-29)
+[Full Changelog](https://github.com/naoray/laravel-package-maker/compare/v1.3.4...v1.4.0)
+
+**Implemented enhancements:**
+
+- Update for Laravel 5.8 usage [\#53](https://github.com/Naoray/laravel-package-maker/issues/53)
+
+## [v1.3.4](https://github.com/naoray/laravel-package-maker/tree/v1.3.4) (2019-01-04)
+[Full Changelog](https://github.com/naoray/laravel-package-maker/compare/v1.3.3...v1.3.4)
+
+**Merged pull requests:**
+
+- bump License [\#51](https://github.com/Naoray/laravel-package-maker/pull/51) ([Naoray](https://github.com/Naoray))
+
+## [v1.3.3](https://github.com/naoray/laravel-package-maker/tree/v1.3.3) (2018-10-17)
+[Full Changelog](https://github.com/naoray/laravel-package-maker/compare/v1.2.9...v1.3.3)
+
+**Merged pull requests:**
+
+- Fix Base Controller Use [\#50](https://github.com/Naoray/laravel-package-maker/pull/50) ([Naoray](https://github.com/Naoray))
+
+## [v1.2.9](https://github.com/naoray/laravel-package-maker/tree/v1.2.9) (2018-10-17)
+[Full Changelog](https://github.com/naoray/laravel-package-maker/compare/v1.3.2...v1.2.9)
+
+**Merged pull requests:**
+
+- Apply fixes from StyleCI [\#49](https://github.com/Naoray/laravel-package-maker/pull/49) ([Naoray](https://github.com/Naoray))
+- Apply fixes from StyleCI [\#48](https://github.com/Naoray/laravel-package-maker/pull/48) ([Naoray](https://github.com/Naoray))
+
+## [v1.3.2](https://github.com/naoray/laravel-package-maker/tree/v1.3.2) (2018-10-17)
+[Full Changelog](https://github.com/naoray/laravel-package-maker/compare/v1.2.8...v1.3.2)
+
+**Merged pull requests:**
+
+- Version 1.3.2 [\#47](https://github.com/Naoray/laravel-package-maker/pull/47) ([Naoray](https://github.com/Naoray))
+
+## [v1.2.8](https://github.com/naoray/laravel-package-maker/tree/v1.2.8) (2018-10-17)
+[Full Changelog](https://github.com/naoray/laravel-package-maker/compare/v1.3.1...v1.2.8)
+
+**Merged pull requests:**
+
+- Apply fixes from StyleCI [\#46](https://github.com/Naoray/laravel-package-maker/pull/46) ([Naoray](https://github.com/Naoray))
+- Apply fixes from StyleCI [\#45](https://github.com/Naoray/laravel-package-maker/pull/45) ([Naoray](https://github.com/Naoray))
+
 ## [v1.3.1](https://github.com/naoray/laravel-package-maker/tree/v1.3.1) (2018-10-17)
 [Full Changelog](https://github.com/naoray/laravel-package-maker/compare/v1.2.7...v1.3.1)
 
