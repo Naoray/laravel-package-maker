@@ -2,6 +2,7 @@
 
 namespace Naoray\LaravelPackageMaker\Commands;
 
+use Illuminate\Support\Str;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 
@@ -118,12 +119,12 @@ class PackageMakeCommand extends Command
 
         $this->call('package:save', [
             'namespace' => $this->rootNamespace(),
-            'path' => $this->dir.$this->packageName,
+            'path' => $this->dir . $this->packageName,
         ]);
 
         $this->callSilent('package:add', [
             'name' => $this->packageName,
-            'path' => $this->dir.$this->packageName,
+            'path' => $this->dir . $this->packageName,
             'vendor' => $this->vendor,
             'branch' => 'master',
             '--no-interaction' => true,
@@ -235,8 +236,6 @@ class PackageMakeCommand extends Command
 
     /**
      * Creates composer file.
-     *
-     * @return void
      */
     protected function createComposer()
     {
@@ -251,14 +250,12 @@ class PackageMakeCommand extends Command
 
     /**
      * Creates package service provider.
-     *
-     * @return void
      */
     protected function createServiceProvider()
     {
         $this->call('package:provider', array_merge(
             [
-                'name' => $this->packageName().'ServiceProvider',
+                'name' => $this->packageName() . 'ServiceProvider',
             ],
             $this->packageOptions()
         ));
@@ -266,14 +263,12 @@ class PackageMakeCommand extends Command
 
     /**
      * Creates base test.
-     *
-     * @return void
      */
     protected function createBaseTestCase()
     {
         $this->call('package:basetest', array_merge(
             [
-                'provider' => $this->packageName().'ServiceProvider',
+                'provider' => $this->packageName() . 'ServiceProvider',
             ],
             $this->packageOptions()
         ));
@@ -297,7 +292,7 @@ class PackageMakeCommand extends Command
      */
     protected function rootNamespace()
     {
-        return ucfirst($this->vendor).'\\'.$this->packageName();
+        return ucfirst($this->vendor) . '\\' . $this->packageName();
     }
 
     /**
@@ -305,7 +300,7 @@ class PackageMakeCommand extends Command
      */
     protected function packageName()
     {
-        return ucfirst(camel_case($this->packageName));
+        return ucfirst(Str::camel($this->packageName));
     }
 
     /**
@@ -325,7 +320,7 @@ class PackageMakeCommand extends Command
      */
     protected function packagePath()
     {
-        return $this->getDirectoryInput().$this->packageName;
+        return $this->getDirectoryInput() . $this->packageName;
     }
 
     /**

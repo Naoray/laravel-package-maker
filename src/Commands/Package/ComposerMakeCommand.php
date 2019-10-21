@@ -2,6 +2,7 @@
 
 namespace Naoray\LaravelPackageMaker\Commands\Package;
 
+use Illuminate\Support\Str;
 use Symfony\Component\Console\Input\InputOption;
 use Naoray\LaravelPackageMaker\Commands\GeneratorCommand;
 
@@ -55,7 +56,7 @@ class ComposerMakeCommand extends GeneratorCommand
      */
     protected function getStub()
     {
-        return __DIR__.'/stubs/composer.stub';
+        return __DIR__ . '/stubs/composer.stub';
     }
 
     /**
@@ -83,7 +84,7 @@ class ComposerMakeCommand extends GeneratorCommand
      */
     protected function composerNamespace()
     {
-        return ucfirst($this->vendorName()).'\\\\'.studly_case($this->packageName()).'\\\\';
+        return ucfirst($this->vendorName()) . '\\\\' . Str::studly($this->packageName()) . '\\\\';
     }
 
     /**
@@ -91,7 +92,7 @@ class ComposerMakeCommand extends GeneratorCommand
      */
     protected function composerProviderNamespace()
     {
-        return $this->composerNamespace().studly_case($this->packageName()).'ServiceProvider';
+        return $this->composerNamespace() . Str::studly($this->packageName()) . 'ServiceProvider';
     }
 
     /**

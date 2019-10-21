@@ -2,6 +2,7 @@
 
 namespace Naoray\LaravelPackageMaker\Commands\Routing;
 
+use Illuminate\Support\Str;
 use Naoray\LaravelPackageMaker\Traits\HasNameInput;
 use Naoray\LaravelPackageMaker\Traits\CreatesPackageStubs;
 use Illuminate\Routing\Console\ControllerMakeCommand as MakeController;
@@ -24,7 +25,7 @@ class ControllerMakeCommand extends MakeController
      */
     protected function resolveDirectory()
     {
-        return $this->getDirInput().'src';
+        return $this->getDirInput() . 'src';
     }
 
     /**
@@ -38,9 +39,9 @@ class ControllerMakeCommand extends MakeController
     {
         $class = parent::buildClass($name);
 
-        if (str_contains($class, $this->rootNamespace().'Http\Controllers\Controller')) {
+        if (Str::contains($class, $this->rootNamespace() . 'Http\Controllers\Controller')) {
             return str_replace(
-                $this->rootNamespace().'Http\Controllers\Controller',
+                $this->rootNamespace() . 'Http\Controllers\Controller',
                 'Illuminate\Routing\Controller',
                 $class
             );
@@ -122,8 +123,8 @@ class ControllerMakeCommand extends MakeController
 
         $model = trim(str_replace('/', '\\', $model), '\\');
 
-        if (! starts_with($model, $rootNamespace = $this->rootNamespace()) && ! starts_with($model, $this->laravel->getNamespace())) {
-            $model = $rootNamespace.'\\'.$model;
+        if (! Str::startsWith($model, $rootNamespace = $this->rootNamespace()) && ! Str::startsWith($model, $this->laravel->getNamespace())) {
+            $model = $rootNamespace . '\\' . $model;
         }
 
         return $model;

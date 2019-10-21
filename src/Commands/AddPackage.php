@@ -2,6 +2,7 @@
 
 namespace Naoray\LaravelPackageMaker\Commands;
 
+use Illuminate\Support\Str;
 use Illuminate\Console\Command;
 use Naoray\LaravelPackageMaker\Traits\InteractsWithTerminal;
 
@@ -53,8 +54,6 @@ class AddPackage extends Command
 
     /**
      * Create a new command instance.
-     *
-     * @return void
      */
     public function __construct()
     {
@@ -75,25 +74,21 @@ class AddPackage extends Command
         $this->updateComposer();
 
         $this->call('package:save', [
-            'namespace' => ucfirst($this->vendor).'\\'.ucfirst(camel_case($this->packageName)),
+            'namespace' => ucfirst($this->vendor) . '\\' . ucfirst(Str::camel($this->packageName)),
             'path' => $this->path,
         ]);
     }
 
     /**
      * Update composer dependencies.
-     *
-     * @return void
      */
     public function updateComposer()
     {
-        $this->runPackageCommand('composer update', getcwd());
+        $this->runConsoleCommand('composer update', getcwd());
     }
 
     /**
      * Add a path repository for the tool to the application's composer.json file.
-     *
-     * @return void
      */
     protected function addPackageRepositoryToRootComposer()
     {
@@ -112,14 +107,12 @@ class AddPackage extends Command
 
     /**
      * Add a package entry for the tool to the application's composer.json file.
-     *
-     * @return void
      */
     protected function addPackageToRootComposer()
     {
         $composer = json_decode(file_get_contents(base_path('composer.json')), true);
 
-        $composer['require'][$this->vendor.'/'.$this->packageName] = '*';
+        $composer['require'][$this->vendor . '/' . $this->packageName] = '*';
 
         file_put_contents(
             base_path('composer.json'),
@@ -134,9 +127,9 @@ class AddPackage extends Command
     {
         $name = $this->getNameInput();
 
-        if ($name && str_contains($name, '/')) {
-            $this->vendor = str_before($name, '/');
-            $this->name = str_after($name, '/');
+        if ($name && Str::contains($name, '/')) {
+            $this->vendor = Str::before($name, '/');
+            $this->name = Str::after($name, '/');
         }
 
         $vendor = $this->getVendorInput();
@@ -198,7 +191,7 @@ class AddPackage extends Command
 
         if (! $this->path = trim($this->argument('path'))) {
             $this->path = $this->anticipate('What is your package\'s path?', [
-                '../packages/'.$this->packageName, 'packages/'.$this->packageName,
+                '../packages/' . $this->packageName, 'packages/' . $this->packageName,
             ]);
         }
 
