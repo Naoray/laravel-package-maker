@@ -56,7 +56,7 @@ class ComposerMakeCommand extends GeneratorCommand
      */
     protected function getStub()
     {
-        return __DIR__ . '/stubs/composer.stub';
+        return __DIR__.'/stubs/composer.stub';
     }
 
     /**
@@ -84,7 +84,7 @@ class ComposerMakeCommand extends GeneratorCommand
      */
     protected function composerNamespace()
     {
-        return ucfirst($this->vendorName()) . '\\\\' . Str::studly($this->packageName()) . '\\\\';
+        return ucfirst($this->vendorName()).'\\\\'.Str::studly($this->packageName()).'\\\\';
     }
 
     /**
@@ -92,7 +92,7 @@ class ComposerMakeCommand extends GeneratorCommand
      */
     protected function composerProviderNamespace()
     {
-        return $this->composerNamespace() . Str::studly($this->packageName()) . 'ServiceProvider';
+        return $this->composerNamespace().Str::studly($this->packageName()).'ServiceProvider';
     }
 
     /**
