@@ -2,9 +2,9 @@
 
 namespace Naoray\LaravelPackageMaker\Commands\Foundation;
 
-use Naoray\LaravelPackageMaker\Traits\HasNameInput;
-use Naoray\LaravelPackageMaker\Traits\CreatesPackageStubs;
 use Illuminate\Foundation\Console\MailMakeCommand as MakeMail;
+use Naoray\LaravelPackageMaker\Traits\CreatesPackageStubs;
+use Naoray\LaravelPackageMaker\Traits\HasNameInput;
 
 class MailMakeCommand extends MakeMail
 {

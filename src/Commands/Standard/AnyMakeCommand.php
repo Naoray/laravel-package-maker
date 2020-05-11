@@ -2,11 +2,11 @@
 
 namespace Naoray\LaravelPackageMaker\Commands\Standard;
 
-use Illuminate\Support\Str;
 use Illuminate\Console\Command;
-use Symfony\Component\Console\Input\InputOption;
-use Naoray\LaravelPackageMaker\Traits\HasNameInput;
+use Illuminate\Support\Str;
 use Naoray\LaravelPackageMaker\Commands\GeneratorCommand;
+use Naoray\LaravelPackageMaker\Traits\HasNameInput;
+use Symfony\Component\Console\Input\InputOption;
 
 class AnyMakeCommand extends GeneratorCommand
 {

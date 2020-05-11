@@ -2,9 +2,9 @@
 
 namespace Naoray\LaravelPackageMaker\Commands;
 
-use Illuminate\Support\Str;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Str;
 
 class PackageMakeCommand extends Command
 {

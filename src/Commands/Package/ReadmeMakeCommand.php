@@ -2,8 +2,8 @@
 
 namespace Naoray\LaravelPackageMaker\Commands\Package;
 
-use Symfony\Component\Console\Input\InputOption;
 use Naoray\LaravelPackageMaker\Commands\GeneratorCommand;
+use Symfony\Component\Console\Input\InputOption;
 
 class ReadmeMakeCommand extends GeneratorCommand
 {

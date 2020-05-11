@@ -3,8 +3,8 @@
 namespace Naoray\LaravelPackageMaker\Commands\Package;
 
 use Illuminate\Support\Str;
-use Symfony\Component\Console\Input\InputOption;
 use Naoray\LaravelPackageMaker\Commands\GeneratorCommand;
+use Symfony\Component\Console\Input\InputOption;
 
 class ComposerMakeCommand extends GeneratorCommand
 {
