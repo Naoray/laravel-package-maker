@@ -2,10 +2,10 @@
 
 namespace Naoray\LaravelPackageMaker\Commands\Routing;
 
-use Illuminate\Support\Str;
-use Naoray\LaravelPackageMaker\Traits\HasNameInput;
-use Naoray\LaravelPackageMaker\Traits\CreatesPackageStubs;
 use Illuminate\Routing\Console\ControllerMakeCommand as MakeController;
+use Illuminate\Support\Str;
+use Naoray\LaravelPackageMaker\Traits\CreatesPackageStubs;
+use Naoray\LaravelPackageMaker\Traits\HasNameInput;
 
 class ControllerMakeCommand extends MakeController
 {
