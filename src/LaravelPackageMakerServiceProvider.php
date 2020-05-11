@@ -5,6 +5,7 @@ namespace Naoray\LaravelPackageMaker;
 use Illuminate\Support\ServiceProvider;
 use Naoray\LaravelPackageMaker\Commands\Replace;
 use Naoray\LaravelPackageMaker\Commands\AddPackage;
+use Illuminate\Database\Migrations\MigrationCreator;
 use Naoray\LaravelPackageMaker\Commands\ClonePackage;
 use Naoray\LaravelPackageMaker\Commands\NovaMakeCommand;
 use Naoray\LaravelPackageMaker\Commands\PackageMakeCommand;
@@ -48,6 +49,20 @@ use Naoray\LaravelPackageMaker\Commands\Foundation\NotificationMakeCommand;
 
 class LaravelPackageMakerServiceProvider extends ServiceProvider
 {
+    /**
+     * Register any application services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        $this->app->when(MigrationCreator::class)
+            ->needs('$customStubPath')
+            ->give(function ($app) {
+                return $app->basePath('stubs');
+            });
+    }
+
     /**
      * Bootstrap the application services.
      *
