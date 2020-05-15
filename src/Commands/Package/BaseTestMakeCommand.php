@@ -2,8 +2,8 @@
 
 namespace Naoray\LaravelPackageMaker\Commands\Package;
 
-use Symfony\Component\Console\Input\InputArgument;
 use Naoray\LaravelPackageMaker\Commands\GeneratorCommand;
+use Symfony\Component\Console\Input\InputArgument;
 
 class BaseTestMakeCommand extends GeneratorCommand
 {

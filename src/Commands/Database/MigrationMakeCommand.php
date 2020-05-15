@@ -2,13 +2,13 @@
 
 namespace Naoray\LaravelPackageMaker\Commands\Database;
 
-use Illuminate\Support\Composer;
-use Illuminate\Filesystem\Filesystem;
-use Symfony\Component\Console\Input\InputOption;
-use Naoray\LaravelPackageMaker\Traits\HasNameInput;
-use Illuminate\Database\Migrations\MigrationCreator;
-use Naoray\LaravelPackageMaker\Traits\CreatesPackageStubs;
 use Illuminate\Database\Console\Migrations\MigrateMakeCommand as MakeMigration;
+use Illuminate\Database\Migrations\MigrationCreator;
+use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Composer;
+use Naoray\LaravelPackageMaker\Traits\CreatesPackageStubs;
+use Naoray\LaravelPackageMaker\Traits\HasNameInput;
+use Symfony\Component\Console\Input\InputOption;
 
 class MigrationMakeCommand extends MakeMigration
 {

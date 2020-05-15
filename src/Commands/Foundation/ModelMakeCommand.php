@@ -2,10 +2,10 @@
 
 namespace Naoray\LaravelPackageMaker\Commands\Foundation;
 
-use Illuminate\Support\Str;
-use Naoray\LaravelPackageMaker\Traits\HasNameInput;
-use Naoray\LaravelPackageMaker\Traits\CreatesPackageStubs;
 use Illuminate\Foundation\Console\ModelMakeCommand as MakeModel;
+use Illuminate\Support\Str;
+use Naoray\LaravelPackageMaker\Traits\CreatesPackageStubs;
+use Naoray\LaravelPackageMaker\Traits\HasNameInput;
 
 class ModelMakeCommand extends MakeModel
 {

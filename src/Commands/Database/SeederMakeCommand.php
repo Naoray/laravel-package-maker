@@ -2,9 +2,9 @@
 
 namespace Naoray\LaravelPackageMaker\Commands\Database;
 
-use Naoray\LaravelPackageMaker\Traits\HasNameInput;
-use Naoray\LaravelPackageMaker\Traits\CreatesPackageStubs;
 use Illuminate\Database\Console\Seeds\SeederMakeCommand as MakeSeeder;
+use Naoray\LaravelPackageMaker\Traits\CreatesPackageStubs;
+use Naoray\LaravelPackageMaker\Traits\HasNameInput;
 
 class SeederMakeCommand extends MakeSeeder
 {
