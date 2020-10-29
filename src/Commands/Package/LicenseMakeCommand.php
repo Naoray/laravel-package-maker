@@ -43,7 +43,7 @@ class LicenseMakeCommand extends GeneratorCommand
 
         $this->callSilent('package:replace', [
             'path' => $path,
-            '--old' => ['{{ year  }}', '{{ companyOrVendor }}'],
+            '--old' => ['{{ year }}', '{{ companyOrVendor }}'],
             '--new' => [date('Y'), $this->getCopyrightInput()],
         ]);
     }
