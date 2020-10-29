@@ -2,8 +2,8 @@
 
 namespace Naoray\LaravelPackageMaker\Commands\Package;
 
-use Symfony\Component\Console\Input\InputArgument;
 use Naoray\LaravelPackageMaker\Commands\GeneratorCommand;
+use Symfony\Component\Console\Input\InputArgument;
 
 class BaseTestMakeCommand extends GeneratorCommand
 {
@@ -55,7 +55,7 @@ class BaseTestMakeCommand extends GeneratorCommand
      */
     protected function getStub()
     {
-        return __DIR__ . '/stubs/base-test.stub';
+        return __DIR__.'/stubs/base-test.stub';
     }
 
     /**
@@ -75,7 +75,7 @@ class BaseTestMakeCommand extends GeneratorCommand
      */
     protected function resolveDirectory()
     {
-        return $this->getDirInput() . 'tests';
+        return $this->getDirInput().'tests';
     }
 
     /**

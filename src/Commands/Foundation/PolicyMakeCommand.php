@@ -2,10 +2,10 @@
 
 namespace Naoray\LaravelPackageMaker\Commands\Foundation;
 
-use Illuminate\Support\Str;
-use Naoray\LaravelPackageMaker\Traits\HasNameInput;
-use Naoray\LaravelPackageMaker\Traits\CreatesPackageStubs;
 use Illuminate\Foundation\Console\PolicyMakeCommand as MakePolicy;
+use Illuminate\Support\Str;
+use Naoray\LaravelPackageMaker\Traits\CreatesPackageStubs;
+use Naoray\LaravelPackageMaker\Traits\HasNameInput;
 
 class PolicyMakeCommand extends MakePolicy
 {
@@ -25,7 +25,7 @@ class PolicyMakeCommand extends MakePolicy
      */
     protected function resolveDirectory()
     {
-        return $this->getDirInput() . 'src';
+        return $this->getDirInput().'src';
     }
 
     /**
@@ -43,7 +43,7 @@ class PolicyMakeCommand extends MakePolicy
         if (Str::startsWith($model, '\\')) {
             $namespacedModel = trim($model, '\\');
         } else {
-            $namespacedModel = $namespacedModel = $this->rootNamespace() . '\\' . $model;
+            $namespacedModel = $namespacedModel = $this->rootNamespace().'\\'.$model;
         }
 
         $model = class_basename(trim($model, '\\'));
