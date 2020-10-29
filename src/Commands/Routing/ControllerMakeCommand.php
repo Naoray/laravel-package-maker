@@ -2,11 +2,11 @@
 
 namespace Naoray\LaravelPackageMaker\Commands\Routing;
 
+use Illuminate\Routing\Console\ControllerMakeCommand as MakeController;
 use Illuminate\Support\Str;
 use InvalidArgumentException;
-use Naoray\LaravelPackageMaker\Traits\HasNameInput;
 use Naoray\LaravelPackageMaker\Traits\CreatesPackageStubs;
-use Illuminate\Routing\Console\ControllerMakeCommand as MakeController;
+use Naoray\LaravelPackageMaker\Traits\HasNameInput;
 
 class ControllerMakeCommand extends MakeController
 {
@@ -26,7 +26,7 @@ class ControllerMakeCommand extends MakeController
      */
     protected function resolveDirectory()
     {
-        return $this->getDirInput() . 'src';
+        return $this->getDirInput().'src';
     }
 
     /**
@@ -40,9 +40,9 @@ class ControllerMakeCommand extends MakeController
     {
         $class = parent::buildClass($name);
 
-        if (Str::contains($class, $this->rootNamespace() . 'Http\Controllers\Controller')) {
+        if (Str::contains($class, $this->rootNamespace().'Http\Controllers\Controller')) {
             return str_replace(
-                $this->rootNamespace() . 'Http\Controllers\Controller',
+                $this->rootNamespace().'Http\Controllers\Controller',
                 'Illuminate\Routing\Controller',
                 $class
             );
@@ -64,7 +64,7 @@ class ControllerMakeCommand extends MakeController
     {
         $parentModelClass = $this->parseModel($this->option('parent'));
 
-        if (!class_exists($parentModelClass)) {
+        if (! class_exists($parentModelClass)) {
             if ($this->confirm("A {$parentModelClass} model does not exist. Do you want to generate it?", true)) {
                 $this->call('package:model', [
                     'name' => $parentModelClass,
@@ -92,7 +92,7 @@ class ControllerMakeCommand extends MakeController
     {
         $modelClass = $this->parseModel($this->option('model'));
 
-        if (!class_exists($modelClass)) {
+        if (! class_exists($modelClass)) {
             if ($this->confirm("A {$modelClass} model does not exist. Do you want to generate it?", true)) {
                 $this->call('package:model', [
                     'name' => $modelClass,
@@ -130,8 +130,8 @@ class ControllerMakeCommand extends MakeController
 
         $model = trim(str_replace('/', '\\', $model), '\\');
 
-        if (!Str::startsWith($model, $rootNamespace = $this->rootNamespace()) && !Str::startsWith($model, $this->laravel->getNamespace())) {
-            $model = $rootNamespace . '\\' . $model;
+        if (! Str::startsWith($model, $rootNamespace = $this->rootNamespace()) && ! Str::startsWith($model, $this->laravel->getNamespace())) {
+            $model = $rootNamespace.'\\'.$model;
         }
 
         return $model;

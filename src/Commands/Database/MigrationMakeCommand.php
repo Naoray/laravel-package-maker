@@ -2,13 +2,13 @@
 
 namespace Naoray\LaravelPackageMaker\Commands\Database;
 
-use Illuminate\Support\Composer;
-use Illuminate\Filesystem\Filesystem;
-use Symfony\Component\Console\Input\InputOption;
-use Naoray\LaravelPackageMaker\Traits\HasNameInput;
-use Illuminate\Database\Migrations\MigrationCreator;
-use Naoray\LaravelPackageMaker\Traits\CreatesPackageStubs;
 use Illuminate\Database\Console\Migrations\MigrateMakeCommand as MakeMigration;
+use Illuminate\Database\Migrations\MigrationCreator;
+use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Composer;
+use Naoray\LaravelPackageMaker\Traits\CreatesPackageStubs;
+use Naoray\LaravelPackageMaker\Traits\HasNameInput;
+use Symfony\Component\Console\Input\InputOption;
 
 class MigrationMakeCommand extends MakeMigration
 {
@@ -49,11 +49,11 @@ class MigrationMakeCommand extends MakeMigration
      */
     protected function getMigrationPath()
     {
-        $path = $this->basePath() . 'database/migrations';
+        $path = $this->basePath().'database/migrations';
 
-        if (!is_null($targetPath = $this->input->getOption('path'))) {
-            $path = !$this->usingRealPath()
-                ? $this->basePath() . $targetPath
+        if (! is_null($targetPath = $this->input->getOption('path'))) {
+            $path = ! $this->usingRealPath()
+                ? $this->basePath().$targetPath
                 : $targetPath;
         }
 
@@ -69,7 +69,7 @@ class MigrationMakeCommand extends MakeMigration
      */
     protected function makeDirectory($path)
     {
-        if (!$this->files->isDirectory(dirname($path))) {
+        if (! $this->files->isDirectory(dirname($path))) {
             $this->files->makeDirectory(dirname($path), 0777, true, true);
         }
 

@@ -2,8 +2,8 @@
 
 namespace Naoray\LaravelPackageMaker\Commands\Package;
 
-use Symfony\Component\Console\Input\InputOption;
 use Naoray\LaravelPackageMaker\Commands\GeneratorCommand;
+use Symfony\Component\Console\Input\InputOption;
 
 class ReadmeMakeCommand extends GeneratorCommand
 {
@@ -55,7 +55,7 @@ class ReadmeMakeCommand extends GeneratorCommand
      */
     protected function getStub()
     {
-        return __DIR__ . '/stubs/readme.stub';
+        return __DIR__.'/stubs/readme.stub';
     }
 
     /**

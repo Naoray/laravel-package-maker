@@ -2,9 +2,9 @@
 
 namespace Naoray\LaravelPackageMaker\Commands\Foundation;
 
-use Naoray\LaravelPackageMaker\Traits\HasNameInput;
-use Naoray\LaravelPackageMaker\Traits\CreatesPackageStubs;
 use Illuminate\Foundation\Console\NotificationMakeCommand as MakeNotification;
+use Naoray\LaravelPackageMaker\Traits\CreatesPackageStubs;
+use Naoray\LaravelPackageMaker\Traits\HasNameInput;
 
 class NotificationMakeCommand extends MakeNotification
 {
@@ -24,7 +24,7 @@ class NotificationMakeCommand extends MakeNotification
      */
     protected function resolveDirectory()
     {
-        return $this->getDirInput() . 'src';
+        return $this->getDirInput().'src';
     }
 
     /**
@@ -34,7 +34,7 @@ class NotificationMakeCommand extends MakeNotification
      */
     protected function writeMarkdownTemplate()
     {
-        $path = base_path($this->getDirInput() . '/resources/views/' . str_replace('.', '/', $this->option('markdown'))) . '.blade.php';
+        $path = base_path($this->getDirInput().'/resources/views/'.str_replace('.', '/', $this->option('markdown'))).'.blade.php';
 
         $this->files->ensureDirectoryExists($path);
 
@@ -51,7 +51,7 @@ class NotificationMakeCommand extends MakeNotification
         $parentFileName = (new \ReflectionClass('Illuminate\Foundation\Console\NotificationMakeCommand'))->getFileName();
 
         return file_get_contents(
-            dirname($parentFileName) . '/stubs/markdown.stub'
+            dirname($parentFileName).'/stubs/markdown.stub'
         );
     }
 }
