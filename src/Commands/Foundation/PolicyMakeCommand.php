@@ -2,10 +2,10 @@
 
 namespace Naoray\LaravelPackageMaker\Commands\Foundation;
 
-use Illuminate\Foundation\Console\PolicyMakeCommand as MakePolicy;
 use Illuminate\Support\Str;
-use Naoray\LaravelPackageMaker\Traits\CreatesPackageStubs;
 use Naoray\LaravelPackageMaker\Traits\HasNameInput;
+use Naoray\LaravelPackageMaker\Traits\CreatesPackageStubs;
+use Illuminate\Foundation\Console\PolicyMakeCommand as MakePolicy;
 
 class PolicyMakeCommand extends MakePolicy
 {
@@ -25,7 +25,7 @@ class PolicyMakeCommand extends MakePolicy
      */
     protected function resolveDirectory()
     {
-        return $this->getDirInput().'src';
+        return $this->getDirInput() . 'src';
     }
 
     /**
@@ -40,19 +40,11 @@ class PolicyMakeCommand extends MakePolicy
     {
         $model = str_replace('/', '\\', $model);
 
-        $namespaceModel = $this->rootNamespace().'\\'.$model;
-
         if (Str::startsWith($model, '\\')) {
-            $stub = str_replace('NamespacedDummyModel', trim($model, '\\'), $stub);
+            $namespacedModel = trim($model, '\\');
         } else {
-            $stub = str_replace('NamespacedDummyModel', $namespaceModel, $stub);
+            $namespacedModel = $namespacedModel = $this->rootNamespace() . '\\' . $model;
         }
-
-        $stub = str_replace(
-            "use {$namespaceModel};\nuse {$namespaceModel};",
-            "use {$namespaceModel};",
-            $stub
-        );
 
         $model = class_basename(trim($model, '\\'));
 
@@ -60,14 +52,29 @@ class PolicyMakeCommand extends MakePolicy
 
         $dummyModel = 'user' === Str::camel($model) ? 'model' : $model;
 
-        $stub = str_replace('DocDummyModel', Str::snake($dummyModel, ' '), $stub);
+        $replace = [
+            'NamespacedDummyModel' => $namespacedModel,
+            '{{ namespacedModel }}' => $namespacedModel,
+            '{{namespacedModel}}' => $namespacedModel,
+            'DummyModel' => $model,
+            '{{ model }}' => $model,
+            '{{model}}' => $model,
+            'dummyModel' => Str::camel($dummyModel),
+            '{{ modelVariable }}' => Str::camel($dummyModel),
+            '{{modelVariable}}' => Str::camel($dummyModel),
+            'DummyUser' => $dummyUser,
+            '{{ user }}' => $dummyUser,
+            '{{user}}' => $dummyUser,
+        ];
 
-        $stub = str_replace('DummyModel', $model, $stub);
+        $stub = str_replace(
+            array_keys($replace), array_values($replace), $stub
+        );
 
-        $stub = str_replace('dummyModel', Str::camel($dummyModel), $stub);
-
-        $stub = str_replace('DummyUser', $dummyUser, $stub);
-
-        return str_replace('DocDummyPluralModel', Str::snake(Str::plural($dummyModel), ' '), $stub);
+        return str_replace(
+            "use {$namespacedModel};\nuse {$namespacedModel};",
+            "use {$namespacedModel};",
+            $stub
+        );
     }
 }

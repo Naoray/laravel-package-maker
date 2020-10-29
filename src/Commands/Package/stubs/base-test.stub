@@ -1,6 +1,6 @@
 <?php
 
-namespace DummyNamespace\Tests;
+namespace {{ DummyNamespace }}\Tests;
 
 use Orchestra\Testbench\TestCase as Orchestra;
 
@@ -16,7 +16,7 @@ class TestCase extends Orchestra
     protected function getPackageProviders($app)
     {
         return [
-            \DummyRootNamespaceDummyPackageServiceProvider::class,
+            \{{ rootNamespace }}{{ serviceProvider }}::class,
         ];
     }
 
@@ -29,6 +29,6 @@ class TestCase extends Orchestra
      */
     protected function getEnvironmentSetUp($app)
     {
-        $app['config']->set('app.key', '6rE9Nz59bGRbeMATftriyQjrpF7DcOQm');
+        //
     }
 }

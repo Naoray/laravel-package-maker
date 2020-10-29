@@ -1,8 +1,8 @@
 <?php
 
-namespace DummyNamespace;
+namespace {{ namespace }};
 
-DummyType DummyClass
+{{ type }} {{ class }}
 {
 	
 }

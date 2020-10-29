@@ -2,9 +2,9 @@
 
 namespace Naoray\LaravelPackageMaker\Commands\Foundation;
 
-use Illuminate\Foundation\Console\MailMakeCommand as MakeMail;
-use Naoray\LaravelPackageMaker\Traits\CreatesPackageStubs;
 use Naoray\LaravelPackageMaker\Traits\HasNameInput;
+use Naoray\LaravelPackageMaker\Traits\CreatesPackageStubs;
+use Illuminate\Foundation\Console\MailMakeCommand as MakeMail;
 
 class MailMakeCommand extends MakeMail
 {
@@ -24,7 +24,7 @@ class MailMakeCommand extends MakeMail
      */
     protected function resolveDirectory()
     {
-        return $this->getDirInput().'src';
+        return $this->getDirInput() . 'src';
     }
 
     /**
@@ -34,11 +34,9 @@ class MailMakeCommand extends MakeMail
      */
     protected function writeMarkdownTemplate()
     {
-        $path = base_path($this->getDirInput().'/resources/views/'.str_replace('.', '/', $this->option('markdown'))).'.blade.php';
+        $path = base_path($this->getDirInput() . '/resources/views/' . str_replace('.', '/', $this->option('markdown'))) . '.blade.php';
 
-        if (! $this->files->isDirectory(dirname($path))) {
-            $this->files->makeDirectory(dirname($path), 0755, true);
-        }
+        $this->files->ensureDirectoryExists($path);
 
         $this->files->put($path, $this->getStubViewPath());
     }
@@ -53,7 +51,7 @@ class MailMakeCommand extends MakeMail
         $parentFileName = (new \ReflectionClass('Illuminate\Foundation\Console\MailMakeCommand'))->getFileName();
 
         return file_get_contents(
-            dirname($parentFileName).'/stubs/markdown.stub'
+            dirname($parentFileName) . '/stubs/markdown.stub'
         );
     }
 }

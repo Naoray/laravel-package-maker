@@ -2,10 +2,10 @@
 
 namespace Naoray\LaravelPackageMaker\Commands\Foundation;
 
-use Illuminate\Foundation\Console\TestMakeCommand as MakeTest;
-use Naoray\LaravelPackageMaker\Traits\CreatesPackageStubs;
-use Naoray\LaravelPackageMaker\Traits\HasNameInput;
 use Symfony\Component\Console\Input\InputOption;
+use Naoray\LaravelPackageMaker\Traits\HasNameInput;
+use Naoray\LaravelPackageMaker\Traits\CreatesPackageStubs;
+use Illuminate\Foundation\Console\TestMakeCommand as MakeTest;
 
 class TestMakeCommand extends MakeTest
 {
@@ -32,11 +32,22 @@ class TestMakeCommand extends MakeTest
      */
     protected function getStub()
     {
-        if ($this->option('unit')) {
-            return __DIR__.'/stubs/unit-test.stub';
-        }
+        return $this->option('unit')
+                    ? $this->resolveStubPath('/stubs/test.unit.stub')
+                    : $this->resolveStubPath('/stubs/test.stub');
+    }
 
-        return __DIR__.'/stubs/test.stub';
+    /**
+     * Resolve the fully-qualified path to the stub.
+     *
+     * @param  string  $stub
+     * @return string
+     */
+    protected function resolveStubPath($stub)
+    {
+        return file_exists($customPath = base_path(trim($stub, '/')))
+                        ? $customPath
+                        : __DIR__ . $stub;
     }
 
     /**
@@ -46,7 +57,7 @@ class TestMakeCommand extends MakeTest
      */
     protected function rootNamespace()
     {
-        return $this->getNamespaceInput().'\Tests';
+        return $this->getNamespaceInput() . '\Tests';
     }
 
     /**
@@ -56,7 +67,7 @@ class TestMakeCommand extends MakeTest
      */
     protected function resolveDirectory()
     {
-        return $this->getDirInput().'/tests';
+        return $this->getDirInput() . '/tests';
     }
 
     /**

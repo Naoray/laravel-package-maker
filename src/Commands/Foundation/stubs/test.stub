@@ -1,12 +1,12 @@
 <?php
 
-namespace DummyNamespace;
+namespace {{ namespace }};
 
-use DummyRootNamespace\TestCase;
+use {{ rootNamespace }}\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class DummyClass extends TestCase
+class {{ class }} extends TestCase
 {
     /**
      * A basic test example.
