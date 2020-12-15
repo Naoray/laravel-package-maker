@@ -3,7 +3,7 @@
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 [![Total Downloads](https://img.shields.io/packagist/dt/naoray/laravel-package-maker.svg?style=flat-square)](https://packagist.org/packages/naoray/laravel-package-maker)
 
-I hate creating new controllers, middlewares, ... by copy & paste. Wouldn't it be cool to have all the `make` commands you use in your daily Laravel app development workflow also for developing new packages? This package was created solely for the purpose to make package development as fast and easy as possible. Creating a new package only takes one command (`make:package`) and you will end up with the following file structure:
+All the `make` commands you use in your daily Laravel app development workflow but for packages! This package was created solely for the purpose to make package development as fast and easy as possible. Creating a new package only takes one command (`make:package`) and you will end up with the following file structure:
 
 ```bash
 .
