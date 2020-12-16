@@ -1,6 +1,6 @@
 <?php
 
-namespace {{ DummyNamespace }}\Tests;
+namespace {{ rootNamespace }}\Tests;
 
 use Orchestra\Testbench\TestCase as Orchestra;
 
