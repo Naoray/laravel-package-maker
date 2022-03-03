@@ -1,5 +1,7 @@
 # laravel-package-maker
 
+### forked from [Naoray/laravel-package-maker](https://github.com/Naoray/laravel-package-maker)
+
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 [![Total Downloads](https://img.shields.io/packagist/dt/naoray/laravel-package-maker.svg?style=flat-square)](https://packagist.org/packages/naoray/laravel-package-maker)
 
